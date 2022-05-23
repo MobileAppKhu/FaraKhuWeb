@@ -1,5 +1,4 @@
-// import { toast } from 'react-toastify'
-
+import { toast } from 'react-toastify'
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL
 
@@ -15,7 +14,7 @@ export default async function request(
     cache: 'no-cache',
     credentials: 'same-origin',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
       // Authorization: `Bearer ${getToken()}`
     },
     body: JSON.stringify(body)
@@ -39,11 +38,5 @@ export default async function request(
       window.location.reload()
       toast.error('Please log in')
       return { responseJSON: res, status }
-      // const resp = {
-      //   responseJSON: { message: 'server error!', error: true },
-      //   status
-      // }
-      // toast.error(resp.responseJSON.message)
-      // return resp
     })
 }
