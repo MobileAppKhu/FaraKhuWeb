@@ -1,7 +1,8 @@
-import Landing from '../pages/landing'
-import MainRouters from './main'
+import React from 'react'
+import AuthRouters from './auth'
 
-const Routers = () => {
-  return <Landing />
-}
+const Routers = () => (
+  <AuthRouters />
+)
+
 export default Routers
