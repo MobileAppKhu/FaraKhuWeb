@@ -4,8 +4,9 @@ const BASE_URL = process.env.REACT_APP_API_BASE_URL
 
 export default async function request(
   endpoint: string,
+  // eslint-disable-next-line default-param-last
   method: string = 'GET',
-  body?: any
+  body?: any,
 ) {
   let status: number
   return fetch(BASE_URL + endpoint, {
@@ -14,10 +15,10 @@ export default async function request(
     cache: 'no-cache',
     credentials: 'same-origin',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
       // Authorization: `Bearer ${getToken()}`
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   })
     .then((response) => {
       status = response.status
@@ -25,10 +26,9 @@ export default async function request(
     })
     .then((responseJSON) => {
       if (status >= 200 && status < 300) return { responseJSON, status }
-      else {
-        toast.error(responseJSON.message)
-        return { responseJSON, status }
-      }
+
+      toast.error(responseJSON.message)
+      return { responseJSON, status }
     })
     .catch((res) => {
       sessionStorage.clear()
