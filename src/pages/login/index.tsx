@@ -1,4 +1,8 @@
+import React from 'react'
+import useStyles from './styles/index.style'
+
 const Login = () => {
-  return <div>ads</div>
+  const classes = useStyles()
+  return <div className={classes.root}>ads</div>
 }
 export default Login

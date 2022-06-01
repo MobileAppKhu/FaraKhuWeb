@@ -1,6 +1,5 @@
-import { Route, Routes } from 'react-router-dom'
+import React from 'react'
+import { Routes } from 'react-router-dom'
 
-const MainRouters = () => {
-  return <Routes>{/* <Route path=""  /> */}</Routes>
-}
+const MainRouters = () => <Routes>{/* <Route path=""  /> */}</Routes>
 export default MainRouters

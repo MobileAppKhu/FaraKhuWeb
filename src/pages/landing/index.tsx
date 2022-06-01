@@ -1,4 +1,8 @@
+import React from 'react'
+import useStyles from './styles/index.style'
+
 const Landing = () => {
-  return <div>Landing</div>
+  const classes = useStyles()
+  return <div className={classes.root}>Landing</div>
 }
 export default Landing
