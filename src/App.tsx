@@ -1,10 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { CssBaseline } from '@mui/material'
-import { ThemeProvider } from '@mui/styles'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { Theme, ThemeProvider } from '@mui/material/styles'
 import RTL from './components/RTL'
 import Routers from './routes'
 import LightTheme from './theme'
+
+declare module '@mui/styles/defaultTheme' {
+  interface DefaultTheme extends Theme {}
+}
 
 const App = () => (
   <div>

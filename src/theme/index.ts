@@ -1,4 +1,6 @@
-import { createTheme } from '@mui/material'
+/* eslint-disable no-unused-vars */
+import { createTheme, responsiveFontSizes } from '@mui/material'
+import React from 'react'
 import getFont from './font'
 
 const lightPalette = {
@@ -30,6 +32,7 @@ const lightPalette = {
   background: {
     default: '#fdfcff',
     light: '#1b1b1d',
+    paper: '#fff',
   },
   surface: {
     main: '#fdfcff',
@@ -39,6 +42,8 @@ const lightPalette = {
   },
 
 }
+
+// eslint-disable-next-line import/no-mutable-exports
 const LightTheme = createTheme({
 //   direction: getDirection(),
   palette: lightPalette,
@@ -53,13 +58,9 @@ const LightTheme = createTheme({
   },
   typography: {
     fontFamily: getFont(),
-    fontWeightRegular: 600,
-    fontWeightMedium: 800,
-    fontSize: 16,
     h6: {
       fontSize: 12,
       color: lightPalette.primary.light,
-      lineHeight: '15px',
       fontWeight: 600,
       fontFamily: getFont(),
 
@@ -121,9 +122,7 @@ const LightTheme = createTheme({
     },
     button: {
       fontSize: 12,
-      textTransform: 'none',
       fontFamily: getFont(),
-
     },
   },
 })
