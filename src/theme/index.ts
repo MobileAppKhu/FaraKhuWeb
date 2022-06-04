@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@mui/material'
+import { createTheme } from '@mui/material'
 import getFont from './font'
 
 const lightPalette = {
@@ -39,7 +39,7 @@ const lightPalette = {
   },
 
 }
-const LightTheme = createMuiTheme({
+const LightTheme = createTheme({
 //   direction: getDirection(),
   palette: lightPalette,
   breakpoints: {
@@ -78,9 +78,9 @@ const LightTheme = createMuiTheme({
       fontFamily: getFont(),
     },
     h3: {
-      fontSize: 24,
+      fontSize: 25.9,
       fontWeight: 600,
-      color: lightPalette.secondary.dark,
+      color: lightPalette.secondary.main,
       fontFamily: getFont(),
 
     },
