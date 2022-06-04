@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@mui/material'
+import { createTheme } from '@mui/material'
 import getFont from './font'
 
 const lightPalette = {
@@ -39,7 +39,7 @@ const lightPalette = {
   },
 
 }
-const LightTheme = createMuiTheme({
+const LightTheme = createTheme({
 //   direction: getDirection(),
   palette: lightPalette,
   breakpoints: {
