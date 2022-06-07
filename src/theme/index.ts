@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { createTheme, responsiveFontSizes } from '@mui/material'
-import React from 'react'
+import { createTheme } from '@mui/material'
 import getFont from './font'
 
 const lightPalette = {
@@ -79,7 +77,7 @@ const LightTheme = createTheme({
       fontFamily: getFont(),
     },
     h3: {
-      fontSize: 20.9,
+      fontSize: 25.9,
       fontWeight: 'normal',
       color: lightPalette.secondary.main,
       fontFamily: getFont(),
