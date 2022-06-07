@@ -2,8 +2,10 @@ import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles(() => ({
   root: {
-    backgroundColor: 'red',
+    display: 'flex',
+    flexDirection: 'column',
     width: '100%',
+    // alignItems: 'center',
   },
 }))
 export default useStyles

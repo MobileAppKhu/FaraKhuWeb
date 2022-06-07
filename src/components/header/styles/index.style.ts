@@ -23,15 +23,9 @@ const useStyles = makeStyles((theme) => ({
   switchContainer: {
     display: 'flex',
     flexDirection: 'row',
-    // columnGap: 6.3,
     alignItems: 'center',
   },
-  lightIcon: {
-    // fontSize: 37,
-  },
-  darkIcon: {
-    // fontSize: 30,
-  },
+
   isSelectedIcon: {
     color: '#1660a5',
   },

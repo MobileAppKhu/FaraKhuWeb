@@ -8,25 +8,25 @@ const lightPalette = {
     main: '#1660a5',
     light: '#ffffff',
     dark: '#d3e4ff',
-    onContainer: '#001c3a',
+    contrastText: '#001c3a',
   },
   secondary: {
     main: '#545f70',
     light: '#ffffff',
     dark: '#d7e3f8',
-    onContainer: '#111c2b',
+    contrastText: '#111c2b',
   },
   tertiary: {
     main: '#6c5677',
     light: '#ffffff',
     dark: '#f5d9ff',
-    onContainer: '#261430',
+    contrastText: '#261430',
   },
   error: {
     main: '#ba1b1b',
     light: '#ffffff',
     dark: '#ffdad4',
-    onContainer: '#410001',
+    contrastText: '#410001',
 
   },
   background: {
@@ -38,7 +38,7 @@ const lightPalette = {
     main: '#fdfcff',
     light: '#1b1b1d',
     variant: '#dfe2eb',
-    onVariant: '#43474e',
+    contrastText: '#43474e',
   },
 
 }
@@ -86,9 +86,9 @@ const LightTheme = createTheme({
 
     },
     h2: {
-      fontSize: 28,
-      color: lightPalette.secondary.dark,
-      fontWeight: 600,
+      fontSize: 41,
+      color: lightPalette.secondary.light,
+      fontWeight: 'normal',
       fontFamily: getFont(),
 
     },
@@ -101,7 +101,7 @@ const LightTheme = createTheme({
     },
     body1: {
       fontSize: 16,
-      fontWeight: 600,
+      fontWeight: 'normal',
       color: lightPalette.secondary.light,
       fontFamily: getFont(),
 
