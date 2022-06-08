@@ -15,9 +15,9 @@ const AuthRouters = () => (
 )}
     >
       <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
       <Route path="*" element={<div>404</div>} />
     </Route>
+    <Route path="/login" element={<Login />} />
   </Routes>
 )
 export default AuthRouters
