@@ -3,22 +3,16 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-  ],
+  extends: ['plugin:react/recommended', 'airbnb'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
-
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: [
-    'react', '@typescript-eslint', 'react-hooks', 'jest', 'import',
-  ],
+  plugins: ['react', '@typescript-eslint', 'react-hooks', 'jest', 'import'],
   rules: {
     'react/jsx-filename-extension': [
       1,
@@ -26,14 +20,16 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     ],
-    'import/extensions': ['error',
+    'import/extensions': [
+      'error',
       'ignorePackages',
       {
         js: 'never',
         jsx: 'never',
         ts: 'never',
         tsx: 'never',
-      }],
+      },
+    ],
     'import/imports-first': ['error', 'absolute-first'],
     'import/newline-after-import': 'error',
     'import/prefer-default-export': 'off',
@@ -45,6 +41,9 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'react/require-default-props': 'off',
+    'object-curly-newline': 'off',
+    'react/jsx-wrap-multilines': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [
       2,
