@@ -1,7 +1,27 @@
 /* eslint-disable no-unused-vars */
-import { createTheme, responsiveFontSizes } from '@mui/material'
 import React from 'react'
+import { createTheme, responsiveFontSizes } from '@mui/material'
+
 import getFont from './font'
+
+declare module '@mui/material/styles' {
+  interface Palette {
+    tertiary: Palette['primary']
+    surface: Palette['primary']
+  }
+
+  interface PaletteOptions {
+    tertiary: PaletteOptions['primary']
+    surface: PaletteOptions['primary']
+  }
+
+  interface PaletteColor {
+    onContainer?: string
+  }
+  interface SimplePaletteColorOptions {
+    onContainer?: string
+  }
+}
 
 const lightPalette = {
   primary: {
@@ -27,7 +47,6 @@ const lightPalette = {
     light: '#ffffff',
     dark: '#ffdad4',
     onContainer: '#410001',
-
   },
   background: {
     default: '#fdfcff',
@@ -40,12 +59,11 @@ const lightPalette = {
     variant: '#dfe2eb',
     onVariant: '#43474e',
   },
-
 }
 
 // eslint-disable-next-line import/no-mutable-exports
 const LightTheme = createTheme({
-//   direction: getDirection(),
+  //   direction: getDirection(),
   palette: lightPalette,
   breakpoints: {
     values: {
@@ -63,18 +81,16 @@ const LightTheme = createTheme({
       color: lightPalette.primary.light,
       fontWeight: 600,
       fontFamily: getFont(),
-
     },
     h5: {
       fontSize: 14,
       fontWeight: 800,
       color: '#797979',
       fontFamily: getFont(),
-
     },
     h4: {
       fontSize: 16,
-      fontWeight: 800,
+      fontWeight: 'normal',
       color: lightPalette.secondary.dark,
       fontFamily: getFont(),
     },
@@ -83,42 +99,36 @@ const LightTheme = createTheme({
       fontWeight: 'normal',
       color: lightPalette.secondary.main,
       fontFamily: getFont(),
-
     },
     h2: {
       fontSize: 28,
       color: lightPalette.secondary.dark,
       fontWeight: 600,
       fontFamily: getFont(),
-
     },
     h1: {
       fontSize: 35,
       fontWeight: 600,
       color: lightPalette.secondary.main,
       fontFamily: getFont(),
-
     },
     body1: {
       fontSize: 16,
       fontWeight: 600,
       color: lightPalette.secondary.light,
       fontFamily: getFont(),
-
     },
     subtitle1: {
       fontSize: 18,
       fontWeight: 600,
       color: lightPalette.primary.light,
       fontFamily: getFont(),
-
     },
     subtitle2: {
       fontSize: 16,
       fontWeight: 600,
       color: lightPalette.primary.light,
       fontFamily: getFont(),
-
     },
     button: {
       fontSize: 12,

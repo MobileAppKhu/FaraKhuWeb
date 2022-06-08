@@ -48,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
     width: 173,
     height: 50,
     borderRadius: '18px !important',
+    '&:hover': {
+      backgroundColor: '#1660a5 !important',
+    },
   },
   loginButtonContainer: {
     display: 'flex',
