@@ -1,5 +1,4 @@
 import { Button, TextField, Typography } from '@mui/material'
-// import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 
 import useStyles from './styles/index.styles'
 import { getTranslate } from '../../../localization'
