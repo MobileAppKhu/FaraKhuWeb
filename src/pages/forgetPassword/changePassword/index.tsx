@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   Button,
   IconButton,
@@ -5,14 +6,15 @@ import {
   OutlinedInput,
   Typography,
 } from '@mui/material'
-
-import { useEffect, useState } from 'react'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
+
 import useStyles from './styles/index.styles'
 import { getTranslate } from '../../../localization'
+import Modal from '../../../components/Modal'
 
 const ChangePassword = () => {
   const classes = useStyles()
+  const [openModal, setOpenModal] = useState(false)
   const [inputs, setInputs] = useState([
     {
       label: 'رمز عبور جدید خود را وارد کنید:',
@@ -77,6 +79,23 @@ const ChangePassword = () => {
           {getTranslate('تغییر رمز عبور')}
         </Typography>
       </Button>
+
+      <Modal
+        title="رمز عبور شما با موفقیت تغییر یافت.
+در به خاطر سپردن آن کوشا باشید."
+        buttons={[
+          {
+            buttonText: 'باشه',
+            textColor: 'primary.main',
+            bgColor: 'transparent',
+            onClick: () => {
+              setOpenModal(false)
+            },
+          },
+        ]}
+        open={openModal}
+        handleClose={() => setOpenModal(false)}
+      />
     </>
   )
 }
