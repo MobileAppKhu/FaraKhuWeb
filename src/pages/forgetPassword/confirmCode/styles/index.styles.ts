@@ -19,6 +19,18 @@ const useStyles = makeStyles((theme) => ({
   numberField: {
     width: 60,
     height: 60,
+    [theme.breakpoints.down(500)]: {
+      width: 50,
+      height: 50,
+    },
+    [theme.breakpoints.down(430)]: {
+      width: 40,
+      height: 40,
+    },
+    [theme.breakpoints.down(340)]: {
+      width: 35,
+      height: 35,
+    },
     outline: 'none',
     border: '2px solid transparent',
     textAlign: 'center',
