@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     columnGap: 50,
-    transition: 'all 0.45s',
+    transition: 'top 0.45s ,z-index 0.45s ,column-gap 0.45s',
 
     [theme.breakpoints.down(1100)]: {
       display: 'flex',
