@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
-      rowGap: 20,
+      rowGap: 5,
       width: '50%',
       position: 'absolute',
       padding: 20,
@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
 
       '& > button': {
         width: '100%',
+        padding: '10px 0',
       },
     },
     [theme.breakpoints.down(1285)]: {
