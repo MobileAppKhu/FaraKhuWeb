@@ -4,7 +4,6 @@ import useStyles from './styles/index.style'
 
 const Landing = () => {
   const classes = useStyles()
-  console.log('landing page')
 
   return (
     <div className={classes.root}>

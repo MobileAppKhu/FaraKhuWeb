@@ -1,4 +1,13 @@
-import { Button, Checkbox, TextField, Typography } from '@mui/material'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  TextField,
+  Typography,
+} from '@mui/material'
 
 import useStyles from './styles/index.style'
 import KHULogo from '../../assets/images/KHU_logo.png'
@@ -7,6 +16,10 @@ import { getTranslate } from '../../localization'
 
 const Login = () => {
   const classes = useStyles()
+
+  useEffect(() => {
+    document.title = 'فراخو - ورود'
+  }, [])
 
   return (
     <div className={classes.outerContainer}>
@@ -37,11 +50,22 @@ const Login = () => {
             <div className={classes.helperText}>
               <div className="right">
                 <span>{getTranslate('رمز عبور خود را فراموش کردید؟')}</span>
-                <a href="#">{getTranslate('بازیابی رمز عبور')}</a>
+                <Link to="/forgetPassword">
+                  {getTranslate('بازیابی رمز عبور')}
+                </Link>
               </div>
               <div className="left">
-                <span>{getTranslate('مرا به خاطر بسپار')}</span>
-                <Checkbox size="small" />
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Checkbox size="small" />}
+                    label={
+                      <span className="rememberMe">
+                        {getTranslate('مرا به خاطر بسپار')}
+                      </span>
+                    }
+                    labelPlacement="start"
+                  />
+                </FormGroup>
               </div>
             </div>
           </div>

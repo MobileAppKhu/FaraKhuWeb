@@ -44,6 +44,7 @@ module.exports = {
     'object-curly-newline': 'off',
     'react/jsx-wrap-multilines': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/tabindex-no-positive': 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [
       2,
