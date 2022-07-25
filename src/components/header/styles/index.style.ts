@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     columnGap: 50,
-    transition: 'top 0.45s ,z-index 0.45s ,column-gap 0.45s',
+    transition: 'top 0.45s, z-index 1s ,column-gap 0.45s',
 
     [theme.breakpoints.down(1312)]: {
       columnGap: 24,
@@ -104,8 +104,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   openMenu: {
-    zIndex: 0,
+    zIndex: 1,
     top: 125,
+    transition: 'top 0.45s, z-index 0s, column-gap 0.45s',
   },
   switchContainerInsideMenu: {
     display: 'none !important',
