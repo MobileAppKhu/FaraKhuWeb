@@ -5,6 +5,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     width: '100%',
     boxShadow: '0 3px 6px 0 rgba(0, 0, 0, 0.09)',
+    position: 'relative', // required for z-index to work
+    zIndex: 2, // in order for box-shadow to work between two divs
   },
   root: {
     padding: '0 100px',
@@ -17,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    height: 120,
+    height: 100,
     justifyContent: 'space-between',
   },
   menuIcon: {
@@ -105,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
   },
   openMenu: {
     zIndex: 0,
-    top: 125,
+    top: 110,
   },
   switchContainerInsideMenu: {
     display: 'none !important',
