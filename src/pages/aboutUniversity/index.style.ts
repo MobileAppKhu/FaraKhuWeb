@@ -164,6 +164,98 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  famousPeople: {
+    padding: '3rem 0',
+    height: 1000,
+    backgroundColor: theme.palette.surface.variant,
+
+    '& .title': {
+      color: theme.palette.primary.onContainer,
+    },
+
+    '& .pics': {
+      position: 'relative',
+
+      '& .famousPerson': {
+        display: 'flex',
+        width: 'min-content',
+        overflow: 'hidden',
+        position: 'absolute',
+        transform: 'scale(0.8)',
+
+        '&.derakhshesh': {
+          left: '65%',
+        },
+        '&.mosaheb': {
+          left: '45%',
+        },
+        '&.behzad': {
+          left: '25%',
+        },
+        '&.shokoohi': {
+          left: '7%',
+        },
+        '&.gorgani': {
+          left: '78%',
+          top: 250,
+        },
+        '&.jalal': {
+          left: '61%',
+          top: 270,
+        },
+        '&.rajaee': {
+          left: '40%',
+          top: 280,
+        },
+        '&.parvin': {
+          left: '23%',
+          top: 255,
+        },
+        '&.khansari': {
+          left: '3%',
+          top: 280,
+        },
+        '&.enayat': {
+          left: '81%',
+          top: 500,
+        },
+        '&.mojtabyani': {
+          left: '52%',
+          top: 540,
+        },
+        '&.tavassoli': {
+          left: '35%',
+          top: 530,
+        },
+        '&.sarookhani': {
+          left: '7%',
+          top: 550,
+        },
+
+        '& .pic': {},
+
+        '&:hover > .name': {
+          transform: 'translate3d(0, 0, 0)',
+        },
+
+        '& .name': {
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          position: 'absolute',
+          bottom: 0,
+          padding: 10,
+          background: 'rgba(0,0,0,0.65)',
+          transform: 'translate3d(0, 100%, 0)',
+          transition: 'all 0.2s',
+
+          '& span': {
+            fontWeight: 400,
+          },
+        },
+      },
+    },
+  },
   container: {
     padding: '0 124px !important', // to align with the edges of the header
     [theme.breakpoints.down('lg')]: {

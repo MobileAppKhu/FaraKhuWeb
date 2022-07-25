@@ -17,9 +17,17 @@ declare module '@mui/material/styles' {
 
   interface PaletteColor {
     onContainer?: string
+    default?: string
+    paper?: string
+    variant?: string
+    onVariant?: string
   }
   interface SimplePaletteColorOptions {
     onContainer?: string
+    default?: string
+    paper?: string
+    variant?: string
+    onVariant?: string
   }
 }
 

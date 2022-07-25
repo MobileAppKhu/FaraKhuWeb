@@ -9,6 +9,19 @@ import img2 from '../../assets/images/about_university/1307.png'
 import img3 from '../../assets/images/about_university/1334.png'
 import img4 from '../../assets/images/about_university/1353.png'
 import img5 from '../../assets/images/about_university/1390.png'
+import derakhshesh from '../../assets/images/about_university/Derakhshesh.jpg'
+import mosaheb from '../../assets/images/about_university/Mosaheb.jpg'
+import behzad from '../../assets/images/about_university/Behzad.jpg'
+import shokoohi from '../../assets/images/about_university/Shokoohi.jpg'
+import gorgani from '../../assets/images/about_university/Gorgani.jpg'
+import jalal from '../../assets/images/about_university/Jalal.jpg'
+import rajaee from '../../assets/images/about_university/Rajaee.jpg'
+import parvin from '../../assets/images/about_university/Parvin.jpg'
+import khansari from '../../assets/images/about_university/Khansari.jpg'
+import enayat from '../../assets/images/about_university/Enayat.jpg'
+import mojtabyani from '../../assets/images/about_university/Mojtabyani.jpg'
+import tavassoli from '../../assets/images/about_university/Tavassoli.jpg'
+import sarookhani from '../../assets/images/about_university/Sarookhani.jpg'
 
 const timelineItems = [
   {
@@ -58,6 +71,74 @@ const timelineItems = [
   },
 ]
 
+const famousPeople = [
+  {
+    name: getTranslate('محمد درخشش'),
+    img: derakhshesh,
+    className: 'derakhshesh',
+  },
+  {
+    name: getTranslate('غلامحسین مصاحب'),
+    img: mosaheb,
+    className: 'mosaheb',
+  },
+  {
+    name: getTranslate('محمود بهزاد'),
+    img: behzad,
+    className: 'behzad',
+  },
+  {
+    name: getTranslate('غلامحسین شکوهی'),
+    img: shokoohi,
+    className: 'shokoohi',
+  },
+  {
+    name: getTranslate('عبدالکریم قریب گرگانی'),
+    img: gorgani,
+    className: 'gorgani',
+  },
+  {
+    name: getTranslate('جلال آل‌احمد'),
+    img: jalal,
+    className: 'jalal',
+  },
+  {
+    name: getTranslate('محمدعلی رجایی'),
+    img: rajaee,
+    className: 'rajaee',
+  },
+  {
+    name: getTranslate('پروین اعتصامی'),
+    img: parvin,
+    className: 'parvin',
+  },
+  {
+    name: getTranslate('محمد خوانساری'),
+    img: khansari,
+    className: 'khansari',
+  },
+  {
+    name: getTranslate('حمید عنایت'),
+    img: enayat,
+    className: 'enayat',
+  },
+  {
+    name: getTranslate('فتح‌الله مجتبیانی'),
+    img: mojtabyani,
+    className: 'mojtabyani',
+  },
+  {
+    name: getTranslate('غلامعباس توسلی'),
+    img: tavassoli,
+    className: 'tavassoli',
+  },
+  {
+    name: getTranslate('محمدباقر ساروخانی'),
+    img: sarookhani,
+    className: 'sarookhani',
+  },
+]
+
 const AboutUniversity = () => {
   const classes = useStyles()
 
@@ -97,6 +178,23 @@ const AboutUniversity = () => {
                 {getTranslate('از دارالمعلمین مرکزی تا دانشگاه خوارزمی')}
               </Typography>
             </div>
+          </div>
+        </Container>
+      </div>
+      <div className={classes.famousPeople}>
+        <Container maxWidth="xl" className={classes.container}>
+          <Typography variant="h2" className="title">
+            {getTranslate('چهره‌های ماندگار دانشگاه خوارزمی')}
+          </Typography>
+          <div className="pics">
+            {famousPeople.map((item) => (
+              <div className={`famousPerson ${item.className}`}>
+                <img src={item.img} alt={item.name} className="pic" />
+                <div className="name">
+                  <Typography component="span">{item.name}</Typography>
+                </div>
+              </div>
+            ))}
           </div>
         </Container>
       </div>
