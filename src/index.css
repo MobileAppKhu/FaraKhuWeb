@@ -3,8 +3,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Shabnam';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* width: 1920px; */
-  /* zoom: 80%; */
 }
 
 .innerContainer {
@@ -15,51 +13,57 @@ body {
 
 @font-face {
   font-family: Shabnam;
-  src: url('./assets/font/farsi/Shabnam.eot');
-  src: url('./assets/font/farsi/Shabnam.eot?#iefix') format('embedded-opentype'),
-    url('./assets/font/farsi/Shabnam.woff2') format('woff2'),
-    url('./assets/font/farsi/Shabnam.woff') format('woff'),
-    url('./assets/font/farsi/Shabnam.ttf') format('truetype');
+  src: url('./assets/font/farsi/Shabnam-FD.eot');
+  src: url('./assets/font/farsi/Shabnam-FD.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/font/farsi/Shabnam-FD.woff2') format('woff2'),
+    url('./assets/font/farsi/Shabnam-FD.woff') format('woff'),
+    url('./assets/font/farsi/Shabnam-FD.ttf') format('truetype');
   font-weight: normal;
 }
 
 @font-face {
   font-family: Shabnam;
-  src: url('./assets/font/farsi/Shabnam-Bold.eot');
-  src: url('./assets/font/farsi/Shabnam-Bold.eot?#iefix')
+  src: url('./assets/font/farsi/Shabnam-Bold-FD.eot');
+  src: url('./assets/font/farsi/Shabnam-Bold-FD.eot?#iefix')
       format('embedded-opentype'),
-    url('./assets/font/farsi/Shabnam-Bold.woff2') format('woff2'),
-    url('./assets/font/farsi/Shabnam-Bold.woff') format('woff'),
-    url('./assets/font/farsi/Shabnam-Bold.ttf') format('truetype');
+    url('./assets/font/farsi/Shabnam-Bold-FD.woff2') format('woff2'),
+    url('./assets/font/farsi/Shabnam-Bold-FD.woff') format('woff'),
+    url('./assets/font/farsi/Shabnam-Bold-FD.ttf') format('truetype');
   font-weight: bold;
 }
 
 @font-face {
   font-family: Shabnam;
-  src: url('./assets/font/farsi/Shabnam-Thin.eot');
-  src: url('./assets/font/farsi/Shabnam-Thin.eot?#iefix')
+  src: url('./assets/font/farsi/Shabnam-Thin-FD.eot');
+  src: url('./assets/font/farsi/Shabnam-Thin-FD.eot?#iefix')
       format('embedded-opentype'),
-    url('./assets/font/farsi/Shabnam-Thin.woff2') format('woff2'),
-    url('./assets/font/farsi/Shabnam-Thin.woff') format('woff'),
-    url('./assets/font/farsi/Shabnam-Thin.ttf') format('truetype');
+    url('./assets/font/farsi/Shabnam-Thin-FD.woff2') format('woff2'),
+    url('./assets/font/farsi/Shabnam-Thin-FD.woff') format('woff'),
+    url('./assets/font/farsi/Shabnam-Thin-FD.ttf') format('truetype');
   font-weight: 100;
 }
 
 @font-face {
   font-family: Shabnam;
-  src: url('./assets/font/farsi/Shabnam-Light.ttf');
+  src: url('./assets/font/farsi/Shabnam-Light-FD.eot');
+  src: url('./assets/font/farsi/Shabnam-Light-FD.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/font/farsi/Shabnam-Light-FD.woff2') format('woff2'),
+    url('./assets/font/farsi/Shabnam-Light-FD.woff') format('woff'),
+    url('./assets/font/farsi/Shabnam-Light-FD.ttf') format('truetype');
 
   font-weight: 300;
 }
 
 @font-face {
   font-family: Shabnam;
-  src: url('./assets/font/farsi/Shabnam-Medium.eot');
-  src: url('./assets/font/farsi/Shabnam-Medium.eot?#iefix')
+  src: url('./assets/font/farsi/Shabnam-Medium-FD.eot');
+  src: url('./assets/font/farsi/Shabnam-Medium-FD.eot?#iefix')
       format('embedded-opentype'),
-    url('./assets/font/farsi/Shabnam-Medium.woff2') format('woff2'),
-    url('./assets/font/farsi/Shabnam-Medium.woff') format('woff'),
-    url('./assets/font/farsi/Shabnam-Medium.ttf') format('truetype');
+    url('./assets/font/farsi/Shabnam-Medium-FD.woff2') format('woff2'),
+    url('./assets/font/farsi/Shabnam-Medium-FD.woff') format('woff'),
+    url('./assets/font/farsi/Shabnam-Medium-FD.ttf') format('truetype');
   font-weight: 500;
 }
 code {
