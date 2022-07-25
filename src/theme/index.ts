@@ -95,7 +95,7 @@ const LightTheme = createTheme({
       fontFamily: getFont(),
     },
     h3: {
-      fontSize: 20.9,
+      fontSize: 18,
       fontWeight: 'normal',
       color: lightPalette.secondary.main,
       fontFamily: getFont(),
