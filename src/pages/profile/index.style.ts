@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
     '& .role': {
       position: 'absolute',
-      left: -20,
+      left: -17,
       top: 45,
       background: theme.palette.primary.onContainer,
       width: 'auto',
