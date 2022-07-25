@@ -5,6 +5,7 @@ import GoogleIcon from '@mui/icons-material/Google'
 import LogoutIcon from '@mui/icons-material/Logout'
 import EditIcon from '@mui/icons-material/Edit'
 
+import Header from '../../components/header'
 import { getTranslate } from '../../localization'
 
 import avatar from '../../assets/images/user_avatar.jpg'
@@ -35,6 +36,7 @@ const Profile = () => {
 
   return (
     <div className={classes.outerContainer}>
+      <Header />
       <Container maxWidth="xl" sx={{ p: 0 }}>
         <div className={classes.innerContainer}>
           <div className={classes.infoCardContainer}>

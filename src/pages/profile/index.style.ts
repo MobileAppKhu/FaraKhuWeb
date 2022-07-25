@@ -10,10 +10,10 @@ const useStyles = makeStyles((theme) => ({
   innerContainer: {
     color: '#000',
     display: 'flex',
-    minHeight: '100vh',
+    // minHeight: '100vh',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '5rem 0',
+    padding: '3.3rem 0',
   },
   infoCardContainer: {
     display: 'flex',
