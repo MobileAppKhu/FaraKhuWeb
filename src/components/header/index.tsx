@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Container from '@mui/material/Container'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import { Button, IconButton, Switch, Typography } from '@mui/material'
@@ -12,6 +11,7 @@ import logo from '../../assets/images/logo.png'
 import khuLogo from '../../assets/images/KHU_logo.png'
 import useStyles from './styles/index.style'
 import { getTranslate } from '../../localization'
+import KhuContainer from '../KhuContainer'
 
 const SwitchContainer: React.FC<{ className: string }> = ({
   className,
@@ -48,7 +48,7 @@ const Header = () => {
 
   return (
     <div className={classes.container}>
-      <Container maxWidth="xl">
+      <KhuContainer>
         <div className={classes.root}>
           <div className={classes.menuIcon}>
             <IconButton
@@ -122,7 +122,7 @@ const Header = () => {
             </Button>
           </div>
         </div>
-      </Container>
+      </KhuContainer>
     </div>
   )
 }

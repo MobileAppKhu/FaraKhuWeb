@@ -9,13 +9,6 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 2, // in order for box-shadow to work between two divs
   },
   root: {
-    padding: '0 100px',
-    [theme.breakpoints.down('lg')]: {
-      padding: '0 50px',
-    },
-    [theme.breakpoints.down('md')]: {
-      padding: '0 0px',
-    },
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
