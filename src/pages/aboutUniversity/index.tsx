@@ -1,6 +1,8 @@
-import { Container, Typography } from '@mui/material'
+import { useEffect } from 'react'
+import { Typography } from '@mui/material'
 
 import Header from '../../components/header'
+import KhuContainer from '../../components/KhuContainer'
 import { getTranslate } from '../../localization'
 
 import useStyles from './index.style'
@@ -22,6 +24,7 @@ import enayat from '../../assets/images/about_university/Enayat.jpg'
 import mojtabyani from '../../assets/images/about_university/Mojtabyani.jpg'
 import tavassoli from '../../assets/images/about_university/Tavassoli.jpg'
 import sarookhani from '../../assets/images/about_university/Sarookhani.jpg'
+import Footer from '../../components/Footer'
 
 const timelineItems = [
   {
@@ -142,11 +145,15 @@ const famousPeople = [
 const AboutUniversity = () => {
   const classes = useStyles()
 
+  useEffect(() => {
+    document.title = 'فراخو - درباره دانشگاه خوارزمی'
+  }, [])
+
   return (
     <div>
       <Header />
       <div className={classes.historyContainer}>
-        <Container maxWidth="xl" className={classes.container}>
+        <KhuContainer>
           <div className="history">
             <div className="timeline">
               {timelineItems.map((item, index) => (
@@ -179,10 +186,10 @@ const AboutUniversity = () => {
               </Typography>
             </div>
           </div>
-        </Container>
+        </KhuContainer>
       </div>
       <div className={classes.famousPeople}>
-        <Container maxWidth="xl" className={`${classes.container} clearfix`}>
+        <KhuContainer className="clearfix">
           <Typography variant="h2" className="title">
             {getTranslate('چهره‌های ماندگار دانشگاه خوارزمی')}
           </Typography>
@@ -196,19 +203,24 @@ const AboutUniversity = () => {
               </div>
             ))}
           </div>
-        </Container>
+        </KhuContainer>
       </div>
-      <div className={classes.copyRight}>
-        <Typography variant="subtitle2" component="span">
-          {getTranslate(
-            'تمامی مطالب این صفحه برگرفته از سایت رسمی دانشگاه خوارزمی به نشانی',
-          )}
-          <a href="http://khu.ac.ir/" target="_blank" rel="noreferrer">
-            khu.ac.ir
-          </a>
-          {getTranslate('بوده و حقوق آن کاملا محفوظ است.')}
-        </Typography>
+      <div className={classes.copyRightContainer}>
+        <KhuContainer>
+          <div className="copyRight">
+            <Typography variant="subtitle2" component="span">
+              {getTranslate(
+                'تمامی مطالب این صفحه برگرفته از سایت رسمی دانشگاه خوارزمی به نشانی',
+              )}
+              <a href="http://khu.ac.ir/" target="_blank" rel="noreferrer">
+                khu.ac.ir
+              </a>
+              {getTranslate('بوده و حقوق آن کاملا محفوظ است.')}
+            </Typography>
+          </div>
+        </KhuContainer>
       </div>
+      <Footer />
     </div>
   )
 }

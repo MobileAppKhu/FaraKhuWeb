@@ -166,7 +166,6 @@ const useStyles = makeStyles((theme) => ({
   },
   famousPeople: {
     padding: '3rem 0',
-    // height: 1000,
     position: 'relative',
     backgroundColor: theme.palette.surface.variant,
 
@@ -174,11 +173,11 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.primary.onContainer,
       position: 'absolute',
       marginTop: 50,
-      width: '15%',
+      width: '13%',
       fontSize: 30,
       lineHeight: 1.4,
       transition: 'all 0.3s',
-      [theme.breakpoints.down(1395)]: {
+      [theme.breakpoints.down(1397)]: {
         position: 'initial',
         width: 'initial',
         marginTop: 30,
@@ -197,7 +196,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     '& .pics': {
-      [theme.breakpoints.down(1395)]: {
+      [theme.breakpoints.down(1397)]: {
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
@@ -214,21 +213,21 @@ const useStyles = makeStyles((theme) => ({
         transform: 'scale(0.8)',
         transition: 'all 0.3s',
 
-        [theme.breakpoints.down(1395)]: {
+        [theme.breakpoints.down(1397)]: {
           float: 'none',
           margin: '0 !important',
           transform: 'scale(1)',
         },
 
         '&.derakhshesh': {
-          marginRight: 250,
+          marginRight: 280,
           marginTop: 20,
           [theme.breakpoints.down(1520)]: {
             marginRight: 220,
           },
         },
         '&.mosaheb': {
-          marginRight: 10,
+          marginRight: -10,
           [theme.breakpoints.down(1520)]: {
             marginRight: -20,
           },
@@ -304,7 +303,7 @@ const useStyles = makeStyles((theme) => ({
         },
 
         '& .pic': {
-          [theme.breakpoints.down(1395)]: {
+          [theme.breakpoints.down(1397)]: {
             width: 250,
             height: 250,
             objectPosition: 'top',
@@ -338,31 +337,26 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  copyRight: {
+  copyRightContainer: {
     background: '#f1f0f4',
-    height: 160,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
 
-    '& span': {
-      color: theme.palette.primary.onContainer,
-      fontWeight: 500,
+    '& .copyRight': {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 160,
 
-      '& a': {
-        color: theme.palette.primary.main,
-        textDecoration: 'none',
-        padding: '0 10px',
+      '& span': {
+        color: theme.palette.primary.onContainer,
+        fontWeight: 500,
+        textAlign: 'center',
+
+        '& a': {
+          color: theme.palette.primary.main,
+          textDecoration: 'none',
+          padding: '0 10px',
+        },
       },
-    },
-  },
-  container: {
-    padding: '0 124px !important', // to align with the edges of the header
-    [theme.breakpoints.down('lg')]: {
-      padding: '0 74px !important',
-    },
-    [theme.breakpoints.down('md')]: {
-      padding: '0 24px !important',
     },
   },
 }))

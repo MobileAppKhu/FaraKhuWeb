@@ -45,6 +45,7 @@ module.exports = {
     'react/jsx-wrap-multilines': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'jsx-a11y/tabindex-no-positive': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [
       2,
