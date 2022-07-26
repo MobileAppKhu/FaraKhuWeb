@@ -164,6 +164,7 @@ const AboutUniversity = () => {
                   className={`timelineItem ${
                     index % 2 === 1 && 'timelineItemReverse'
                   }`}
+                  key={item.title}
                 >
                   <div className="year">
                     <img
@@ -198,7 +199,10 @@ const AboutUniversity = () => {
           </Typography>
           <div className="pics">
             {famousPeople.map((item) => (
-              <div className={`famousPerson ${item.className}`}>
+              <div
+                className={`famousPerson ${item.className}`}
+                key={item.className}
+              >
                 <img src={item.img} alt={item.name} className="pic" />
                 <div className="name">
                   <Typography component="span">{item.name}</Typography>
