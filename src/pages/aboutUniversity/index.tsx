@@ -152,6 +152,9 @@ const AboutUniversity = () => {
   return (
     <div>
       <Header />
+      <h1 className="sr-only">
+        درباره دانشگاه خوارزمی - از دارالمعلمین مرکزی تا دانشگاه خوارزمی
+      </h1>
       <div className={classes.historyContainer}>
         <KhuContainer>
           <div className="history">

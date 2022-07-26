@@ -17,6 +17,7 @@ const ForgetPassword = () => {
 
   return (
     <div className={classes.outerContainer}>
+      <h1 className="sr-only">فراموشی رمز عبور</h1>
       <div className={classes.innerContainer}>
         <div className={classes.backBtnContainer}>
           <IconButton
