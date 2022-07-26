@@ -103,11 +103,11 @@ const useStyles = makeStyles((theme) => ({
       '& > .navItem': {
         textAlign: 'center',
         width: '100%',
+      },
 
-        '& button': {
-          width: '100%',
-          padding: '10px 0',
-        },
+      '& button': {
+        width: '100%',
+        padding: '10px 0',
       },
     },
     [theme.breakpoints.down(500)]: {
