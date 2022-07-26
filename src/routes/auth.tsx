@@ -8,11 +8,13 @@ import ConfirmCode from '../pages/forgetPassword/confirmCode'
 import EnterEmail from '../pages/forgetPassword/enterEmail'
 import Landing from '../pages/landing'
 import Login from '../pages/login'
+import Profile from '../pages/profile'
 
 const AuthRouters = () => (
   <Routes>
     <Route index element={<Landing />} />
     <Route path="/login" element={<Login />} />
+    <Route path="/profile" element={<Profile />} />
     <Route path="/forgetPassword" element={<ForgetPassword />}>
       <Route index element={<EnterEmail />} />
       <Route path="confirmCode" element={<ConfirmCode />} />

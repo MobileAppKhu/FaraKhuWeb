@@ -66,7 +66,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     columnGap: 50,
-    transition: 'top 0.45s ,z-index 0.45s ,column-gap 0.45s',
     '& .navItem': {
       textDecoration: 'none',
       WebkitTapHighlightColor: 'transparent !important', // disable blue highlight on click on links in chrome mobile
@@ -78,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
         },
       },
     },
+    transition: 'top 0.45s, z-index 1s ,column-gap 0.45s',
 
     [theme.breakpoints.down(1312)]: {
       columnGap: 24,
@@ -115,8 +115,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   openMenu: {
-    zIndex: 0,
+    zIndex: 1,
     top: 110,
+    transition: 'top 0.45s, z-index 0s, column-gap 0.45s',
   },
   switchContainerInsideMenu: {
     display: 'none !important',
