@@ -47,7 +47,7 @@ const Header = () => {
   )
 
   return (
-    <div className={classes.container}>
+    <header className={classes.container}>
       <KhuContainer>
         <div className={classes.root}>
           <div className={classes.menuIcon}>
@@ -65,26 +65,28 @@ const Header = () => {
           <SwitchContainer className={classes.switchContainer}>
             {switchContainerContent}
           </SwitchContainer>
-          <div
+          <nav
             className={`${classes.buttonContainer} ${
               menuIcon && classes.openMenu
             }`}
           >
             <Button variant="text">
-              <Typography variant="h3">{getTranslate('ویژگی‌ها')}</Typography>
+              <Typography variant="h3" component="span">
+                {getTranslate('ویژگی‌ها')}
+              </Typography>
             </Button>
             <Button variant="text">
-              <Typography variant="h3">
+              <Typography variant="h3" component="span">
                 {getTranslate('درباره دانشگاه')}
               </Typography>
             </Button>
             <Button variant="text">
-              <Typography variant="h3">
+              <Typography variant="h3" component="span">
                 {getTranslate('نقشه دانشگاه')}
               </Typography>
             </Button>
             <Button variant="text">
-              <Typography variant="h3">
+              <Typography variant="h3" component="span">
                 {getTranslate('ارتباط با ما')}
               </Typography>
             </Button>
@@ -97,7 +99,7 @@ const Header = () => {
                 {switchContainerContent}
               </SwitchContainer>
             </Button>
-          </div>
+          </nav>
           <div className={classes.loginButtonContainer}>
             <IconButton size="large">
               <NotificationsNoneOutlinedIcon color="primary" fontSize="large" />
@@ -123,7 +125,7 @@ const Header = () => {
           </div>
         </div>
       </KhuContainer>
-    </div>
+    </header>
   )
 }
 export default Header

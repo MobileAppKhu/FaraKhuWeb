@@ -24,7 +24,7 @@ const Footer = () => {
   }
 
   return (
-    <div className={classes.footer}>
+    <footer className={classes.footer}>
       <KhuContainer>
         <div className="top">
           <div className="socialMedia">
@@ -141,7 +141,7 @@ const Footer = () => {
           </div>
         </KhuContainer>
       </div>
-    </div>
+    </footer>
   )
 }
 
