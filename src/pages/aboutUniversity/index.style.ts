@@ -166,73 +166,151 @@ const useStyles = makeStyles((theme) => ({
   },
   famousPeople: {
     padding: '3rem 0',
-    height: 1000,
+    // height: 1000,
+    position: 'relative',
     backgroundColor: theme.palette.surface.variant,
 
     '& .title': {
       color: theme.palette.primary.onContainer,
+      position: 'absolute',
+      marginTop: 50,
+      width: '15%',
+      fontSize: 30,
+      lineHeight: 1.4,
+      transition: 'all 0.3s',
+      [theme.breakpoints.down(1395)]: {
+        position: 'initial',
+        width: 'initial',
+        marginTop: 30,
+        marginBottom: 40,
+      },
+      [theme.breakpoints.down(530)]: {
+        fontSize: 25,
+      },
+      [theme.breakpoints.down(450)]: {
+        fontSize: 20,
+        textAlign: 'center',
+      },
+      [theme.breakpoints.down(370)]: {
+        fontSize: 18,
+      },
     },
 
     '& .pics': {
-      position: 'relative',
+      [theme.breakpoints.down(1395)]: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 20,
+      },
 
       '& .famousPerson': {
         display: 'flex',
         width: 'min-content',
         overflow: 'hidden',
-        position: 'absolute',
+        position: 'relative',
+        float: 'right',
         transform: 'scale(0.8)',
+        transition: 'all 0.3s',
+
+        [theme.breakpoints.down(1395)]: {
+          float: 'none',
+          margin: '0 !important',
+          transform: 'scale(1)',
+        },
 
         '&.derakhshesh': {
-          left: '65%',
+          marginRight: 250,
+          marginTop: 20,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: 220,
+          },
         },
         '&.mosaheb': {
-          left: '45%',
+          marginRight: 10,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: -20,
+          },
         },
         '&.behzad': {
-          left: '25%',
+          marginTop: 30,
+          marginRight: 10,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: -20,
+          },
         },
         '&.shokoohi': {
-          left: '7%',
+          marginTop: 20,
+          marginRight: 20,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: -20,
+          },
         },
         '&.gorgani': {
-          left: '78%',
-          top: 250,
+          marginRight: 80,
+          marginTop: -60,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: 20,
+          },
+          [theme.breakpoints.down(1445)]: {
+            marginRight: -30,
+          },
         },
         '&.jalal': {
-          left: '61%',
-          top: 270,
+          marginRight: -10,
+          marginTop: -40,
         },
         '&.rajaee': {
-          left: '40%',
-          top: 280,
+          marginTop: -20,
         },
         '&.parvin': {
-          left: '23%',
-          top: 255,
+          marginTop: -50,
         },
         '&.khansari': {
-          left: '3%',
-          top: 280,
+          marginTop: -20,
+          marginRight: 15,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: 0,
+          },
         },
         '&.enayat': {
-          left: '81%',
-          top: 500,
+          marginTop: -65,
+          marginRight: 50,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: -10,
+          },
+          [theme.breakpoints.down(1445)]: {
+            marginRight: -40,
+          },
         },
         '&.mojtabyani': {
-          left: '52%',
-          top: 540,
+          marginTop: -20,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: -20,
+          },
         },
         '&.tavassoli': {
-          left: '35%',
-          top: 530,
+          marginTop: -30,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: -20,
+          },
         },
         '&.sarookhani': {
-          left: '7%',
-          top: 550,
+          marginTop: -20,
+          [theme.breakpoints.down(1520)]: {
+            marginRight: -20,
+          },
         },
 
-        '& .pic': {},
+        '& .pic': {
+          [theme.breakpoints.down(1395)]: {
+            width: 250,
+            height: 250,
+            objectPosition: 'top',
+            objectFit: 'cover',
+          },
+        },
 
         '&:hover > .name': {
           transform: 'translate3d(0, 0, 0)',
@@ -249,10 +327,32 @@ const useStyles = makeStyles((theme) => ({
           transform: 'translate3d(0, 100%, 0)',
           transition: 'all 0.2s',
 
+          [theme.breakpoints.down(450)]: {
+            transform: 'translate3d(0, 0, 0)',
+          },
+
           '& span': {
             fontWeight: 400,
           },
         },
+      },
+    },
+  },
+  copyRight: {
+    background: '#f1f0f4',
+    height: 160,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    '& span': {
+      color: theme.palette.primary.onContainer,
+      fontWeight: 500,
+
+      '& a': {
+        color: theme.palette.primary.main,
+        textDecoration: 'none',
+        padding: '0 10px',
       },
     },
   },

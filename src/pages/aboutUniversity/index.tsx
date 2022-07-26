@@ -182,7 +182,7 @@ const AboutUniversity = () => {
         </Container>
       </div>
       <div className={classes.famousPeople}>
-        <Container maxWidth="xl" className={classes.container}>
+        <Container maxWidth="xl" className={`${classes.container} clearfix`}>
           <Typography variant="h2" className="title">
             {getTranslate('چهره‌های ماندگار دانشگاه خوارزمی')}
           </Typography>
@@ -197,6 +197,17 @@ const AboutUniversity = () => {
             ))}
           </div>
         </Container>
+      </div>
+      <div className={classes.copyRight}>
+        <Typography variant="subtitle2" component="span">
+          {getTranslate(
+            'تمامی مطالب این صفحه برگرفته از سایت رسمی دانشگاه خوارزمی به نشانی',
+          )}
+          <a href="http://khu.ac.ir/" target="_blank" rel="noreferrer">
+            khu.ac.ir
+          </a>
+          {getTranslate('بوده و حقوق آن کاملا محفوظ است.')}
+        </Typography>
       </div>
     </div>
   )

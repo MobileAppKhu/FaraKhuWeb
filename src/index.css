@@ -5,10 +5,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.innerContainer {
-  width: 95%;
-  max-width: 80em;
-  margin: 0 auto !important;
+.clearfix:before,
+.clearfix:after {
+  content: ' ';
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
 }
 
 @font-face {
