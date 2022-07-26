@@ -67,6 +67,17 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     columnGap: 50,
     transition: 'top 0.45s ,z-index 0.45s ,column-gap 0.45s',
+    '& .navItem': {
+      textDecoration: 'none',
+      WebkitTapHighlightColor: 'transparent !important', // disable blue highlight on click on links in chrome mobile
+
+      '&.active': {
+        '& span': {
+          fontWeight: 600,
+          color: theme.palette.primary.main,
+        },
+      },
+    },
 
     [theme.breakpoints.down(1312)]: {
       columnGap: 24,
@@ -89,9 +100,14 @@ const useStyles = makeStyles((theme) => ({
       top: -280,
       zIndex: -1,
 
-      '& > button': {
+      '& > .navItem': {
+        textAlign: 'center',
         width: '100%',
-        padding: '10px 0',
+
+        '& button': {
+          width: '100%',
+          padding: '10px 0',
+        },
       },
     },
     [theme.breakpoints.down(500)]: {

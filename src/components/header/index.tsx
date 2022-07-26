@@ -5,7 +5,7 @@ import { Button, IconButton, Switch, Typography } from '@mui/material'
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import MenuIcon from '@mui/icons-material/Menu'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/images/logo.png'
 import khuLogo from '../../assets/images/KHU_logo.png'
@@ -46,6 +46,9 @@ const Header = () => {
     </>
   )
 
+  const navItemClassName = ({ isActive }: { isActive: boolean }) =>
+    isActive ? 'navItem active' : 'navItem'
+
   return (
     <header className={classes.container}>
       <KhuContainer>
@@ -70,26 +73,34 @@ const Header = () => {
               menuIcon && classes.openMenu
             }`}
           >
-            <Button variant="text">
-              <Typography variant="h3" component="span">
-                {getTranslate('ویژگی‌ها')}
-              </Typography>
-            </Button>
-            <Button variant="text">
-              <Typography variant="h3" component="span">
-                {getTranslate('درباره دانشگاه')}
-              </Typography>
-            </Button>
-            <Button variant="text">
-              <Typography variant="h3" component="span">
-                {getTranslate('نقشه دانشگاه')}
-              </Typography>
-            </Button>
-            <Button variant="text">
-              <Typography variant="h3" component="span">
-                {getTranslate('ارتباط با ما')}
-              </Typography>
-            </Button>
+            <NavLink to="/features" className={navItemClassName}>
+              <Button variant="text">
+                <Typography variant="h3" component="span">
+                  {getTranslate('ویژگی‌ها')}
+                </Typography>
+              </Button>
+            </NavLink>
+            <NavLink to="/aboutUniversity" className={navItemClassName}>
+              <Button variant="text">
+                <Typography variant="h3" component="span">
+                  {getTranslate('درباره دانشگاه')}
+                </Typography>
+              </Button>
+            </NavLink>
+            <NavLink to="/map" className={navItemClassName}>
+              <Button variant="text">
+                <Typography variant="h3" component="span">
+                  {getTranslate('نقشه دانشگاه')}
+                </Typography>
+              </Button>
+            </NavLink>
+            <NavLink to="/contactUs" className={navItemClassName}>
+              <Button variant="text">
+                <Typography variant="h3" component="span">
+                  {getTranslate('ارتباط با ما')}
+                </Typography>
+              </Button>
+            </NavLink>
             <Button
               variant="text"
               disableRipple
