@@ -1,5 +1,6 @@
 import { Button, Checkbox, TextField, Typography } from '@mui/material'
-
+import { Link } from 'react-router-dom'
+import { Form } from 'formik'
 import useStyles from './styles/index.style'
 import KHULogo from '../../assets/images/KHU_logo.png'
 import footerImg from '../../assets/images/footer.svg'
@@ -11,19 +12,21 @@ const Login = () => {
   return (
     <div className={classes.outerContainer}>
       <div className={classes.innerContainer}>
-        <form className={classes.form}>
+        <Form className={classes.form}>
           <img src={KHULogo} alt="لوگوی خوارزمی" />
           <Typography variant="h1" className={classes.title}>
             {getTranslate('سامانه دانشگاهی فراخو')}
           </Typography>
           <div className={classes.formControl}>
-            <div className={classes.inputLable}>
+            {/* <div className={classes.inputLable}>
               {getTranslate('ایمیل دانشگاهی')}
-            </div>
+            </div> */}
             <TextField
               variant="outlined"
               size="small"
+              fullWidth
               className={classes.textField}
+              label={getTranslate('ایمیل دانشگاهی')}
             />
           </div>
           <div className={classes.formControl}>
@@ -33,11 +36,14 @@ const Login = () => {
               variant="outlined"
               size="small"
               type="password"
+              fullWidth
             />
             <div className={classes.helperText}>
               <div className="right">
                 <span>{getTranslate('رمز عبور خود را فراموش کردید؟')}</span>
-                <a href="#">{getTranslate('بازیابی رمز عبور')}</a>
+                <Link to="/forget-password">
+                  {getTranslate('بازیابی رمز عبور')}
+                </Link>
               </div>
               <div className="left">
                 <span>{getTranslate('مرا به خاطر بسپار')}</span>
@@ -45,15 +51,15 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <Button variant="contained" className={classes.submitBtn}>
+          <Button variant="contained" className={classes.submitBtn} fullWidth type="submit">
             <Typography variant="h4" color="white">
               {getTranslate('تایید')}
             </Typography>
           </Button>
-          <a href="#" className={classes.supportLink}>
+          <Link to="#" className={classes.supportLink}>
             {getTranslate('پشتیبانی')}
-          </a>
-        </form>
+          </Link>
+        </Form>
       </div>
       <footer className={classes.footer}>
         <img src={footerImg} alt="footer" />

@@ -14,13 +14,6 @@ declare module '@mui/material/styles' {
     tertiary: PaletteOptions['primary']
     surface: PaletteOptions['primary']
   }
-
-  interface PaletteColor {
-    onContainer?: string
-  }
-  interface SimplePaletteColorOptions {
-    onContainer?: string
-  }
 }
 
 const lightPalette = {
@@ -60,6 +53,7 @@ const lightPalette = {
     variant: '#dfe2eb',
     contrastText: '#43474e',
   },
+  action: { hoverOpacity: 0.9 },
 }
 
 // eslint-disable-next-line import/no-mutable-exports

@@ -3,8 +3,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Shabnam';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Shabnam";
   /* width: 1920px; */
   /* zoom: 80%; */
+/* -moz-transform: scale(0.6) */
 }
 
 .innerContainer {
