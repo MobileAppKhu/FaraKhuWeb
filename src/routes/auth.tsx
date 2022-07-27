@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import AboutUniversity from '../pages/aboutUniversity'
 
 import ForgetPassword from '../pages/forgetPassword'
 import ChangePassword from '../pages/forgetPassword/changePassword'
@@ -19,6 +20,7 @@ const AuthRouters = () => (
       <Route path="confirmCode" element={<ConfirmCode />} />
       <Route path="changePassword" element={<ChangePassword />} />
     </Route>
+    <Route path="/aboutUniversity" element={<AboutUniversity />} />
     <Route path="*" element={<div>404</div>} />
   </Routes>
 )

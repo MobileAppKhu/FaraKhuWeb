@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import Container from '@mui/material/Container'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import { Button, IconButton, Switch, Typography } from '@mui/material'
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import MenuIcon from '@mui/icons-material/Menu'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/images/logo.png'
 import khuLogo from '../../assets/images/KHU_logo.png'
 import useStyles from './styles/index.style'
 import { getTranslate } from '../../localization'
+import KhuContainer from '../KhuContainer'
 
 const SwitchContainer: React.FC<{ className: string }> = ({
   className,
@@ -46,9 +46,12 @@ const Header = () => {
     </>
   )
 
+  const navItemClassName = ({ isActive }: { isActive: boolean }) =>
+    isActive ? 'navItem active' : 'navItem'
+
   return (
-    <div className={classes.container}>
-      <Container maxWidth="xl">
+    <header className={classes.container}>
+      <KhuContainer>
         <div className={classes.root}>
           <div className={classes.menuIcon}>
             <IconButton
@@ -65,29 +68,39 @@ const Header = () => {
           <SwitchContainer className={classes.switchContainer}>
             {switchContainerContent}
           </SwitchContainer>
-          <div
+          <nav
             className={`${classes.buttonContainer} ${
               menuIcon && classes.openMenu
             }`}
           >
-            <Button variant="text">
-              <Typography variant="h3">{getTranslate('ویژگی‌ها')}</Typography>
-            </Button>
-            <Button variant="text">
-              <Typography variant="h3">
-                {getTranslate('درباره دانشگاه')}
-              </Typography>
-            </Button>
-            <Button variant="text">
-              <Typography variant="h3">
-                {getTranslate('نقشه دانشگاه')}
-              </Typography>
-            </Button>
-            <Button variant="text">
-              <Typography variant="h3">
-                {getTranslate('ارتباط با ما')}
-              </Typography>
-            </Button>
+            <NavLink to="/features" className={navItemClassName}>
+              <Button variant="text">
+                <Typography variant="h3" component="span">
+                  {getTranslate('ویژگی‌ها')}
+                </Typography>
+              </Button>
+            </NavLink>
+            <NavLink to="/aboutUniversity" className={navItemClassName}>
+              <Button variant="text">
+                <Typography variant="h3" component="span">
+                  {getTranslate('درباره دانشگاه')}
+                </Typography>
+              </Button>
+            </NavLink>
+            <NavLink to="/map" className={navItemClassName}>
+              <Button variant="text">
+                <Typography variant="h3" component="span">
+                  {getTranslate('نقشه دانشگاه')}
+                </Typography>
+              </Button>
+            </NavLink>
+            <NavLink to="/contactUs" className={navItemClassName}>
+              <Button variant="text">
+                <Typography variant="h3" component="span">
+                  {getTranslate('ارتباط با ما')}
+                </Typography>
+              </Button>
+            </NavLink>
             <Button
               variant="text"
               disableRipple
@@ -97,7 +110,7 @@ const Header = () => {
                 {switchContainerContent}
               </SwitchContainer>
             </Button>
-          </div>
+          </nav>
           <div className={classes.loginButtonContainer}>
             <IconButton size="large">
               <NotificationsNoneOutlinedIcon color="primary" fontSize="large" />
@@ -122,8 +135,8 @@ const Header = () => {
             </Button>
           </div>
         </div>
-      </Container>
-    </div>
+      </KhuContainer>
+    </header>
   )
 }
 export default Header

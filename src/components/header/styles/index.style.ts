@@ -5,19 +5,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     width: '100%',
     boxShadow: '0 3px 6px 0 rgba(0, 0, 0, 0.09)',
+    position: 'relative', // required for z-index to work
+    zIndex: 2, // in order for box-shadow to work between two divs
   },
   root: {
-    padding: '0 100px',
-    [theme.breakpoints.down('lg')]: {
-      padding: '0 50px',
-    },
-    [theme.breakpoints.down('md')]: {
-      padding: '0 0px',
-    },
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    height: 120,
+    height: 100,
     justifyContent: 'space-between',
   },
   menuIcon: {
@@ -71,6 +66,17 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     columnGap: 50,
+    '& .navItem': {
+      textDecoration: 'none',
+      WebkitTapHighlightColor: 'transparent !important', // disable blue highlight on click on links in chrome mobile
+
+      '&.active': {
+        '& span': {
+          fontWeight: 600,
+          color: theme.palette.primary.main,
+        },
+      },
+    },
     transition: 'top 0.45s, z-index 1s ,column-gap 0.45s',
 
     [theme.breakpoints.down(1312)]: {
@@ -94,7 +100,12 @@ const useStyles = makeStyles((theme) => ({
       top: -280,
       zIndex: -1,
 
-      '& > button': {
+      '& > .navItem': {
+        textAlign: 'center',
+        width: '100%',
+      },
+
+      '& button': {
         width: '100%',
         padding: '10px 0',
       },
@@ -105,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
   },
   openMenu: {
     zIndex: 1,
-    top: 125,
+    top: 110,
     transition: 'top 0.45s, z-index 0s, column-gap 0.45s',
   },
   switchContainerInsideMenu: {

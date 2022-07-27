@@ -23,6 +23,7 @@ const Login = () => {
 
   return (
     <div className={classes.outerContainer}>
+      <h1 className="sr-only">ورود</h1>
       <div className={classes.innerContainer}>
         <form className={classes.form}>
           <img src={KHULogo} alt="لوگوی خوارزمی" />
