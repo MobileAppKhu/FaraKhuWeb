@@ -49,6 +49,7 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'no-confusing-arrow': 'off',
     'implicit-arrow-linebreak': 'off',
+    'no-unused-vars': 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [
       2,
