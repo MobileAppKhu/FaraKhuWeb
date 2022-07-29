@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
         },
       },
     },
-    transition: 'top 0.45s, z-index 1s ,column-gap 0.45s',
+    transition: 'top 0.3s, z-index 1s ,column-gap 0.45s',
 
     [theme.breakpoints.down(1312)]: {
       columnGap: 24,
@@ -123,7 +123,7 @@ const useStyles = makeStyles((theme) => ({
   openMenu: {
     zIndex: 1,
     top: 110,
-    transition: 'top 0.45s, z-index 0s, column-gap 0.45s',
+    transition: 'top 0.3s, z-index 0s, column-gap 0.45s',
   },
   switchContainerInsideMenu: {
     display: 'none !important',
@@ -156,22 +156,31 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   subMenu: {
-    height: 70,
+    height: 0,
+    opacity: 0,
+    pointerEvents: 'none',
     columnGap: 30,
     display: 'flex',
     alignItems: 'stretch',
     justifyContent: 'space-between',
-    transition: 'all 0.3s',
+    transition: 'all 0.1s',
 
-    [theme.breakpoints.down(885)]: {
-      height: 95,
-      alignItems: 'center',
-      flexDirection: 'column',
-      paddingBottom: 5,
-    },
-    [theme.breakpoints.down(380)]: {
-      paddingTop: 8,
-      height: 145,
+    '&.open': {
+      height: 70,
+      opacity: 1,
+      pointerEvents: 'initial',
+      transition: 'all 0.3s',
+
+      [theme.breakpoints.down(885)]: {
+        height: 95,
+        alignItems: 'center',
+        flexDirection: 'column',
+        paddingBottom: 5,
+      },
+      [theme.breakpoints.down(380)]: {
+        paddingTop: 8,
+        height: 145,
+      },
     },
 
     '& > .right': {
@@ -262,7 +271,6 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.down(885)]: {
         height: 1.5,
         width: '30%',
-        // margin: '10px 0',
       },
     },
 
