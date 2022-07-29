@@ -14,6 +14,21 @@ declare module '@mui/material/styles' {
     tertiary: PaletteOptions['primary']
     surface: PaletteOptions['primary']
   }
+
+  interface PaletteColor {
+    onContainer?: string
+    default?: string
+    paper?: string
+    variant?: string
+    onVariant?: string
+  }
+  interface SimplePaletteColorOptions {
+    onContainer?: string
+    default?: string
+    paper?: string
+    variant?: string
+    onVariant?: string
+  }
 }
 
 const lightPalette = {
@@ -90,7 +105,7 @@ const LightTheme = createTheme({
       fontFamily: getFont(),
     },
     h3: {
-      fontSize: 25.9,
+      fontSize: 18,
       fontWeight: 'normal',
       color: lightPalette.secondary.main,
       fontFamily: getFont(),

@@ -61,6 +61,16 @@ const useStyles = makeStyles((theme) => ({
         borderBottom: `1px solid ${theme.palette.primary.main}`,
       },
     },
+    '& .left': {
+      '& .rememberMe': {
+        color: '#1b1b1b',
+        fontSize: 12,
+        fontWeight: 400,
+      },
+      '& label': {
+        marginLeft: 0,
+      },
+    },
   },
   submitBtn: {
     height: 40,

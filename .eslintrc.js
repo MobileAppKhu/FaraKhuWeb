@@ -42,8 +42,13 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'off',
     'react/require-default-props': 'off',
     'object-curly-newline': 'off',
+    'react/jsx-curly-newline': 'off',
     'react/jsx-wrap-multilines': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/tabindex-no-positive': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'no-confusing-arrow': 'off',
+    'implicit-arrow-linebreak': 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [
       2,
