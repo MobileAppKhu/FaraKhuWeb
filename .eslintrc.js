@@ -50,6 +50,7 @@ module.exports = {
     'no-confusing-arrow': 'off',
     'implicit-arrow-linebreak': 'off',
     'no-unused-vars': 'off',
+    'no-restricted-exports': 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [
       2,

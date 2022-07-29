@@ -7,6 +7,10 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import MenuIcon from '@mui/icons-material/Menu'
 import { NavLink, useNavigate } from 'react-router-dom'
 
+import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined'
+import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined'
+import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined'
+
 import logo from '../../assets/images/logo.png'
 import khuLogo from '../../assets/images/KHU_logo.png'
 import useStyles from './styles/index.style'
@@ -18,7 +22,11 @@ const SwitchContainer: React.FC<{ className: string }> = ({
   children,
 }) => <div className={className}>{children}</div>
 
-const Header = () => {
+interface HeaderProps {
+  subMenu?: boolean
+}
+
+const Header: React.FC<HeaderProps> = ({ subMenu = false }) => {
   const classes = useStyles()
   const [isLightMode, setisLightMode] = useState(false)
   const [menuIcon, setMenuIcon] = useState(false)
@@ -50,7 +58,7 @@ const Header = () => {
     isActive ? 'navItem active' : 'navItem'
 
   return (
-    <header className={classes.container}>
+    <header className={`${classes.container}${subMenu ? ' roundCorner' : ''}`}>
       <KhuContainer>
         <div className={classes.root}>
           <div className={classes.menuIcon}>
@@ -73,39 +81,33 @@ const Header = () => {
               menuIcon && classes.openMenu
             }`}
           >
-            <NavLink to="/features" className={navItemClassName}>
-              <Button variant="text">
-                <Typography variant="h3" component="span">
-                  {getTranslate('ویژگی‌ها')}
-                </Typography>
-              </Button>
-            </NavLink>
+            <Button className={`navItem${subMenu ? ' active' : ''}`}>
+              <Typography variant="h3" component="span">
+                {getTranslate('ویژگی‌ها')}
+              </Typography>
+            </Button>
             <NavLink to="/aboutUniversity" className={navItemClassName}>
-              <Button variant="text">
+              <Button>
                 <Typography variant="h3" component="span">
                   {getTranslate('درباره دانشگاه')}
                 </Typography>
               </Button>
             </NavLink>
             <NavLink to="/map" className={navItemClassName}>
-              <Button variant="text">
+              <Button>
                 <Typography variant="h3" component="span">
                   {getTranslate('نقشه دانشگاه')}
                 </Typography>
               </Button>
             </NavLink>
             <NavLink to="/contactUs" className={navItemClassName}>
-              <Button variant="text">
+              <Button>
                 <Typography variant="h3" component="span">
                   {getTranslate('ارتباط با ما')}
                 </Typography>
               </Button>
             </NavLink>
-            <Button
-              variant="text"
-              disableRipple
-              className={classes.switchContainerInsideMenu}
-            >
+            <Button disableRipple className={classes.switchContainerInsideMenu}>
               <SwitchContainer className={classes.switchContainerInsideMenu}>
                 {switchContainerContent}
               </SwitchContainer>
@@ -135,6 +137,82 @@ const Header = () => {
             </Button>
           </div>
         </div>
+        {subMenu && (
+          <div className={classes.subMenu}>
+            <div className="right">
+              <nav className="nav">
+                <NavLink to="/bookFinder" className={navItemClassName}>
+                  <Button>
+                    <Typography variant="h3" component="span">
+                      {getTranslate('کتاب یاب')}
+                    </Typography>
+                  </Button>
+                </NavLink>
+                <NavLink to="/myLessons" className={navItemClassName}>
+                  <Button>
+                    <Typography variant="h3" component="span">
+                      {getTranslate('درس‌های من')}
+                    </Typography>
+                  </Button>
+                </NavLink>
+                <NavLink to="/calender" className={navItemClassName}>
+                  <Button>
+                    <Typography variant="h3" component="span">
+                      {getTranslate('تقویم شخصی')}
+                    </Typography>
+                  </Button>
+                </NavLink>
+                <NavLink to="/declarations" className={navItemClassName}>
+                  <Button>
+                    <Typography variant="h3" component="span">
+                      {getTranslate('فراخوان‌ها')}
+                    </Typography>
+                  </Button>
+                </NavLink>
+                <NavLink to="/news" className={navItemClassName}>
+                  <Button>
+                    <Typography variant="h3" component="span">
+                      {getTranslate('اخبار دانشگاه')}
+                    </Typography>
+                  </Button>
+                </NavLink>
+              </nav>
+            </div>
+            <div className="verticalSeparator" />
+            <div className="left">
+              <Button
+                className="item"
+                href="http://my.khu.ac.ir"
+                target="_blank"
+              >
+                <VerifiedUserOutlinedIcon className="itemIcon" />
+                <Typography component="span" className="itemLabel">
+                  {getTranslate('احراز هویت')}
+                </Typography>
+              </Button>
+              <Button
+                className="item"
+                href="http://golestan.khu.ac.ir"
+                target="_blank"
+              >
+                <MenuBookOutlinedIcon className="itemIcon" />
+                <Typography component="span" className="itemLabel">
+                  {getTranslate('گلستان')}
+                </Typography>
+              </Button>
+              <Button
+                className="item"
+                href="https://efood.khu.ac.ir"
+                target="_blank"
+              >
+                <RestaurantOutlinedIcon className="itemIcon" />
+                <Typography component="span" className="itemLabel">
+                  {getTranslate('سلف و رزور غذا')}
+                </Typography>
+              </Button>
+            </div>
+          </div>
+        )}
       </KhuContainer>
     </header>
   )
