@@ -1,2 +1,4 @@
-export { default } from './BookAdsList'
+import BookAdsList from './BookAdsList'
+
 export * from './BookAdsList'
+export default BookAdsList

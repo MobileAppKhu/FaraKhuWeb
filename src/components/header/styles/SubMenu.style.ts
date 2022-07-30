@@ -185,16 +185,18 @@ const useStyles = makeStyles((theme) => ({
       position: 'absolute',
       top: '230%',
       background: theme.palette.primary.light,
-      width: 380,
+      width: 0, // in order not to mess up responsive layout
       display: 'flex',
       padding: 10,
+      transition: 'all 0s',
 
       '&.open': {
+        width: 380,
         height: 250,
         borderRadius: '20px 0 20px 20px',
         boxShadow: '3px 2px 6px 0 rgb(0 0 0 / 33%)',
         pointerEvents: 'initial',
-        transition: 'all 0.3s',
+        transition: 'height 0.3s, opacity 0.3s',
       },
 
       '& > .right': {
