@@ -7,7 +7,7 @@ const Landing = () => {
 
   return (
     <div className={classes.root}>
-      <Header />
+      <Header floatingSubMenu />
       Landing1234567890
     </div>
   )

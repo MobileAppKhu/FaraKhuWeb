@@ -4,7 +4,7 @@ import Header from '../../components/header'
 
 const BookFinder = () => (
   <>
-    <Header subMenu />
+    <Header />
     <Outlet />
   </>
 )

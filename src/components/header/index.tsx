@@ -21,14 +21,14 @@ const SwitchContainer: React.FC<{ className: string }> = ({
 }) => <div className={className}>{children}</div>
 
 interface HeaderProps {
-  subMenu?: boolean
+  floatingSubMenu?: boolean
 }
 
-const Header: React.FC<HeaderProps> = ({ subMenu = false }) => {
+const Header: React.FC<HeaderProps> = ({ floatingSubMenu = false }) => {
   const classes = useStyles()
   const [isLightMode, setisLightMode] = useState(false)
   const [menuIcon, setMenuIcon] = useState(false)
-  const [showSubMenu, setShowSubMenu] = useState(subMenu)
+  const [showSubMenu, setShowSubMenu] = useState(!floatingSubMenu)
 
   const navigate = useNavigate()
 
@@ -57,7 +57,11 @@ const Header: React.FC<HeaderProps> = ({ subMenu = false }) => {
     isActive ? 'navItem active' : 'navItem'
 
   return (
-    <header className={`${classes.container}${subMenu ? ' roundCorner' : ''}`}>
+    <header
+      className={`${classes.container}${
+        !floatingSubMenu ? ' roundCorner' : ''
+      }`}
+    >
       <KhuContainer>
         <div className={classes.root}>
           <div className={classes.menuIcon}>
@@ -78,17 +82,24 @@ const Header: React.FC<HeaderProps> = ({ subMenu = false }) => {
           </SwitchContainer>
           <nav
             className={`${classes.buttonContainer} ${
-              menuIcon && classes.openMenu
+              menuIcon ? classes.openMenu : ''
             }`}
           >
-            <Button
-              className={`navItem${showSubMenu ? ' active' : ''}`}
-              onClick={() => setShowSubMenu((state) => !state)}
-            >
-              <Typography variant="h3" component="span">
-                {getTranslate('ویژگی‌ها')}
-              </Typography>
-            </Button>
+            <span className={`features navItem${showSubMenu ? ' active' : ''}`}>
+              <Button onClick={() => setShowSubMenu((state) => !state)}>
+                <Typography variant="h3" component="span">
+                  {getTranslate('ویژگی‌ها')}
+                </Typography>
+              </Button>
+              {floatingSubMenu && (
+                <SubMenu
+                  navItemIcon
+                  className={`${floatingSubMenu ? ' floating' : ''}${
+                    showSubMenu ? ' open' : ''
+                  }`}
+                />
+              )}
+            </span>
             <NavLink to="/aboutUniversity" className={navItemClassName}>
               <Button>
                 <Typography variant="h3" component="span">
@@ -140,7 +151,9 @@ const Header: React.FC<HeaderProps> = ({ subMenu = false }) => {
             </Button>
           </div>
         </div>
-        <SubMenu className={`${showSubMenu ? ' open' : ''}`} />
+        {!floatingSubMenu && (
+          <SubMenu className={`${showSubMenu ? ' open' : ''}`} />
+        )}
       </KhuContainer>
     </header>
   )
