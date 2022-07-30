@@ -190,6 +190,15 @@ const useStyles = makeStyles((theme) => ({
       padding: 10,
       transition: 'all 0s',
 
+      [theme.breakpoints.down(1100)]: {
+        position: 'initial',
+        padding: 0,
+        flexDirection: 'column',
+        paddingBottom: '7px',
+        borderBottom: '1px solid #bcbcbc',
+        transition: 'height 0.3s',
+      },
+
       '&.open': {
         width: 380,
         height: 250,
@@ -197,16 +206,42 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '3px 2px 6px 0 rgb(0 0 0 / 33%)',
         pointerEvents: 'initial',
         transition: 'height 0.3s, opacity 0.3s',
+
+        [theme.breakpoints.down(1100)]: {
+          boxShadow: 'initial',
+          borderRadius: 0,
+          width: '100%',
+          height: 330,
+          flexDirection: 'column',
+          alignItems: 'center',
+        },
+        [theme.breakpoints.down(320)]: {
+          height: 380,
+        },
       },
 
       '& > .right': {
+        [theme.breakpoints.down(885)]: {
+          fontSize: 16,
+        },
+
         '& .nav': {
           flexDirection: 'column',
           alignItems: 'flex-start',
           rowGap: 10,
 
+          [theme.breakpoints.down(1100)]: {
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+          },
+
           '& .navItem': {
             width: '100%',
+
+            [theme.breakpoints.down(1100)]: {
+              width: '50%',
+            },
 
             '& span': {
               fontWeight: 'normal',
@@ -216,6 +251,10 @@ const useStyles = makeStyles((theme) => ({
               columnGap: 7,
               width: '100%',
               justifyContent: 'flex-start',
+
+              [theme.breakpoints.down(1100)]: {
+                justifyContent: 'center',
+              },
             },
 
             '& .svgContainer': {
@@ -259,10 +298,19 @@ const useStyles = makeStyles((theme) => ({
         '& .item': {
           width: '100%',
           justifyContent: 'flex-start',
+          [theme.breakpoints.down(1100)]: {
+            justifyContent: 'center',
+          },
         },
       },
       '& > .verticalSeparator': {
         display: 'none',
+
+        [theme.breakpoints.down(1100)]: {
+          display: 'block',
+          width: '30%',
+          height: 1.5,
+        },
       },
     },
   },
