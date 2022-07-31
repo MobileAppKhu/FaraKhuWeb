@@ -63,6 +63,7 @@ const BookAdsList = () => {
   return (
     <div className={classes.container}>
       <KhuContainer>
+        <h1 className="sr-only">کتاب یاب</h1>
         <div className="header">
           <div className="search">
             <div className="filterSwitchContainer">
