@@ -24,6 +24,10 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
   })
 
   const handleChange = (field: keyof typeof data) => (value: string) => {
+    if (field === 'price') {
+      setData({ ...data, [field]: value.replace(/\D+/g, '') })
+      return
+    }
     setData({ ...data, [field]: value })
   }
 
@@ -63,7 +67,8 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
             </div>
             <div className="dataInput">
               <KhuTextField
-                value={data.price}
+                inputMode="numeric"
+                value={data.price !== '' ? (+data.price).toLocaleString() : ''}
                 handleChange={handleChange('price')}
                 placeholder={getTranslate('مثال: 120/000')}
                 label={getTranslate('قیمت')}
