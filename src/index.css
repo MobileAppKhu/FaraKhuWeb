@@ -5,6 +5,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.MuiButton-contained:hover {
+  background-color: #1660a5 !important;
+}
+
 .clearfix:before,
 .clearfix:after {
   content: ' ';

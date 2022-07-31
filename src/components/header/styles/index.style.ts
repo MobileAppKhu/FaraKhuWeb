@@ -149,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
   loginButton: {
     width: 160,
     height: 45,
-    borderRadius: '13px !important',
+    borderRadius: '7px !important',
     '&:hover': {
       backgroundColor: '#1660a5 !important',
     },

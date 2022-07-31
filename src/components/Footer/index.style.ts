@@ -146,6 +146,7 @@ const useStyles = makeStyles((theme) => ({
           position: 'absolute',
           width: '100%',
           bottom: '110%',
+          zIndex: 1,
           background: theme.palette.primary.light,
           borderRadius: 5,
           transform: 'rotateX(90deg)',
