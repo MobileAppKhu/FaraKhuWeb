@@ -146,6 +146,7 @@ const useStyle = makeStyles((theme) => ({
           fontSize: '1em',
           fontWeight: 400,
           borderRadius: 6,
+          boxShadow: 'none',
         },
       },
     },

@@ -16,6 +16,7 @@ import BookAdItem from './components/BookAdItem'
 import { BookAd } from '../BookFinder'
 import { getTranslate } from '../../../localization'
 import useStyle from './index.style'
+import CreateAdModal from './components/CreateAdModal'
 
 interface BookAdsListProps {
   ads: BookAd[]
@@ -26,6 +27,7 @@ const BookAdsList: React.FC<BookAdsListProps> = ({ ads }) => {
   const [openFilterMenu, setOpenFilterMenu] = useState(false)
   const [filter, setFilter] = useState(getTranslate('فیلتر'))
   const [searchTerm, setSearchTerm] = useState('')
+  const [openCreateAdModal, setOpenCreateAdModal] = useState(false)
 
   const handleFilter = (filterOption: string) => {
     setOpenFilterMenu(false)
@@ -88,7 +90,12 @@ const BookAdsList: React.FC<BookAdsListProps> = ({ ads }) => {
           </div>
           <div className="buttons">
             <Button variant="outlined">{getTranslate('آگهی‌های من')}</Button>
-            <Button variant="contained">{getTranslate('ثبت آگهی')}</Button>
+            <Button
+              variant="contained"
+              onClick={() => setOpenCreateAdModal(true)}
+            >
+              {getTranslate('ثبت آگهی')}
+            </Button>
           </div>
         </div>
         <div className="content">
@@ -115,6 +122,10 @@ const BookAdsList: React.FC<BookAdsListProps> = ({ ads }) => {
             ))}
           </Grid>
         </div>
+        <CreateAdModal
+          open={openCreateAdModal}
+          handleClose={() => setOpenCreateAdModal(false)}
+        />
       </KhuContainer>
     </div>
   )

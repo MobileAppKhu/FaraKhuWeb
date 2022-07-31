@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 45,
     width: '100%',
     fontSize: 16,
-    border: '1.8px solid #DADCE0',
+    border: '1.5px solid #DADCE0',
     borderRadius: 4,
     paddingLeft: 8,
 
@@ -44,10 +44,11 @@ const useStyles = makeStyles((theme) => ({
     '& .input': {
       position: 'relative', // for z-index
       height: '100%',
-      width: '85%',
-      '&.fullWidth': {
-        width: '100%',
-      },
+      // width: '85%',
+      // '&.fullWidth': {
+      //   width: '100%',
+      // },
+      flex: 1,
       border: 0,
       padding: '0 13px',
       outline: 0,

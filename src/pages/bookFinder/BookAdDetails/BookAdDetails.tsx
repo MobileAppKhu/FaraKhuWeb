@@ -74,7 +74,6 @@ const BookAdDetails: React.FC<BookAdDetailsProps> = ({ ads }) => {
               </div>
             </div>
             <div className={`img${!imgUrl ? ' noImg' : ''}`}>
-              {/* <img src={imgUrl} alt="" /> */}
               {imgUrl && <img src={imgUrl} alt="" />}
               {!imgUrl && <NoPhotographyOutlinedIcon fontSize="large" />}
             </div>

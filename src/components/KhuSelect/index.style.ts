@@ -1,18 +1,24 @@
 import { makeStyles } from '@mui/styles'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   container: {
+    width: '100%',
     position: 'relative',
+    fontSize: 16,
   },
   selectContainer: {
     cursor: 'pointer',
     WebkitTapHighlightColor: 'transparent !important', // disable blue highlight on click on links in chrome mobile
     color: '#000',
 
+    '& *': {
+      fontSize: '1em',
+    },
+
     '& .input': {
       cursor: 'pointer',
       userSelect: 'none',
-      // pointerEvents: 'none',
+      pointerEvents: 'none',
     },
   },
   arrowDropDownIcon: {
@@ -31,7 +37,8 @@ const useStyles = makeStyles(() => ({
     borderRadius: 4,
     zIndex: 2,
     overflow: 'hidden',
-    boxShadow: '0 2px 5px 0 rgb(0 0 0 / 10%)',
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: '1px 2px 5px 0 rgb(0 0 0 / 18%)',
     pointerEvents: 'none',
     transformOrigin: 'top center',
     transform: 'rotateX(-90deg)',
@@ -50,6 +57,7 @@ const useStyles = makeStyles(() => ({
       '& li button': {
         width: '100%',
         borderRadius: 0,
+        fontSize: '1em',
       },
     },
   },

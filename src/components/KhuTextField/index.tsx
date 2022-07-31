@@ -80,6 +80,7 @@ const KhuTextField: React.FC<
           className={`input textarea${value !== '' ? ' hasValue' : ''}${
             !hasAdornment ? ' fullWidth' : ''
           }`}
+          style={{ height }}
           {...others}
         />
       )}
