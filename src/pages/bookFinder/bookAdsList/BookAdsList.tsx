@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import {
   Button,
   Grid,
@@ -11,12 +11,17 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import SearchIcon from '@mui/icons-material/Search'
 import KhuContainer from '../../../components/KhuContainer'
-import BookAdItem, { BookAdItemProps } from './components/BookAdItem'
+import BookAdItem from './components/BookAdItem'
 
+import { BookAd } from '../BookFinder'
 import { getTranslate } from '../../../localization'
 import useStyle from './index.style'
 
-const BookAdsList = () => {
+interface BookAdsListProps {
+  ads: BookAd[]
+}
+
+const BookAdsList: React.FC<BookAdsListProps> = ({ ads }) => {
   const classes = useStyle()
   const [openFilterMenu, setOpenFilterMenu] = useState(false)
   const [filter, setFilter] = useState(getTranslate('فیلتر'))
@@ -26,39 +31,6 @@ const BookAdsList = () => {
     setOpenFilterMenu(false)
     setFilter(getTranslate(filterOption))
   }
-
-  const ads: BookAdItemProps[] = [
-    {
-      title: 'کتاب ریاضی توماس جلد 1 و 2',
-      price: 120000,
-      imgUrl: 'https://s6.uupload.ir/files/samplead_ckcy.jpg',
-    },
-    {
-      title: 'کتاب ریاضی توماس جلد 1 و 2',
-      price: 'توافقی',
-    },
-    {
-      title: 'کتاب ریاضی توماس جلد 1 و 2',
-      price: 12000,
-      imgUrl: 'https://s6.uupload.ir/files/samplead_ckcy.jpg',
-    },
-    {
-      title: 'کتاب ریاضی توماس جلد 1 و 2',
-      price: 5000,
-      imgUrl: 'https://s6.uupload.ir/files/samplead_ckcy.jpg',
-    },
-    {
-      title: 'کتاب ریاضی توماس جلد 1 و 2',
-      price: 56000,
-      imgUrl: 'https://s6.uupload.ir/files/samplead_ckcy.jpg',
-    },
-    {
-      title: 'کتاب ریاضی توماس جلد 1 و 2',
-      price: 'توافقی',
-      imgUrl:
-        'https://www.ukrgate.com/eng/wp-content/uploads/2021/02/The-Ukrainian-Book-Institute-Purchases-380.9-Thousand-Books-for-Public-Libraries1.jpeg',
-    },
-  ]
 
   return (
     <div className={classes.container}>
@@ -136,7 +108,7 @@ const BookAdsList = () => {
                 md={4}
                 xl={3}
                 className="gridItem"
-                key={ad.title}
+                key={ad.id}
               >
                 <BookAdItem {...ad} />
               </Grid>

@@ -13,6 +13,7 @@ const useStyle = makeStyles((theme) => ({
     color: theme.palette.secondary.dark,
     cursor: 'pointer',
     overflow: 'hidden',
+    WebkitTapHighlightColor: 'transparent !important', // disable blue highlight on click on links in chrome mobile
     transition: 'all 0.3s',
 
     '&:hover, &:focus': {

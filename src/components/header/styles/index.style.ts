@@ -150,6 +150,7 @@ const useStyles = makeStyles((theme) => ({
     width: 160,
     height: 45,
     borderRadius: '7px !important',
+    boxShadow: 'none !important',
     '&:hover': {
       backgroundColor: '#1660a5 !important',
     },

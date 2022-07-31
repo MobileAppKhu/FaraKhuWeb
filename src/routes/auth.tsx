@@ -10,7 +10,6 @@ import Login from '../pages/login'
 import Profile from '../pages/profile'
 import AboutUniversity from '../pages/aboutUniversity'
 import BookFinder from '../pages/bookFinder'
-import BookAdsList from '../pages/bookFinder/bookAdsList'
 
 const AuthRouters = () => (
   <Routes>
@@ -23,9 +22,7 @@ const AuthRouters = () => (
       <Route path="changePassword" element={<ChangePassword />} />
     </Route>
     <Route path="/aboutUniversity" element={<AboutUniversity />} />
-    <Route path="/bookFinder" element={<BookFinder />}>
-      <Route index element={<BookAdsList />} />
-    </Route>
+    <Route path="/bookFinder/*" element={<BookFinder />} />
     <Route path="*" element={<div>404</div>} />
   </Routes>
 )

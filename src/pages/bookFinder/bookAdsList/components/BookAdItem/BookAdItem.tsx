@@ -1,21 +1,35 @@
 import React from 'react'
+import { Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import NoPhotographyOutlinedIcon from '@mui/icons-material/NoPhotographyOutlined'
 
-import { Typography } from '@mui/material'
 import useStyle from './BookAdItem.style'
+import { BookAd } from '../../../BookFinder'
 import { getTranslate } from '../../../../../localization'
 
-export interface BookAdItemProps {
+interface BookAdItemProps extends Partial<BookAd> {
+  id: number
   title: string
   price: number | 'توافقی'
   imgUrl?: string
 }
 
-const BookAdItem: React.FC<BookAdItemProps> = ({ imgUrl, title, price }) => {
+const BookAdItem: React.FC<BookAdItemProps> = ({
+  imgUrl,
+  title,
+  price,
+  id,
+}) => {
   const classes = useStyle()
+  const navigate = useNavigate()
 
   return (
-    <div className={classes.container} tabIndex={0} role="button">
+    <div
+      className={classes.container}
+      onClick={() => navigate(`/bookFinder/${id}`)}
+      tabIndex={0}
+      role="button"
+    >
       <div className="desc">
         <Typography component="span" className="title">
           {title}

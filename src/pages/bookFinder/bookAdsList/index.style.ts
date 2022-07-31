@@ -2,6 +2,7 @@ import { makeStyles } from '@mui/styles'
 
 const useStyle = makeStyles((theme) => ({
   container: {
+    flex: 1, // to fill the remaining height
     background: theme.palette.background.paper,
 
     '& .header': {
