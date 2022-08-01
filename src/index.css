@@ -5,6 +5,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* to fill the remaining height of page by the children of #root */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.MuiButton-contained:hover {
+  background-color: #1660a5 !important;
+}
+
 .clearfix:before,
 .clearfix:after {
   content: ' ';

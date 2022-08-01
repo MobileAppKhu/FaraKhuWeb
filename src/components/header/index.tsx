@@ -5,6 +5,7 @@ import { Button, IconButton, Switch, Typography } from '@mui/material'
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/images/logo.png'
@@ -12,16 +13,22 @@ import khuLogo from '../../assets/images/KHU_logo.png'
 import useStyles from './styles/index.style'
 import { getTranslate } from '../../localization'
 import KhuContainer from '../KhuContainer'
+import SubMenu from './SubMenu'
 
 const SwitchContainer: React.FC<{ className: string }> = ({
   className,
   children,
 }) => <div className={className}>{children}</div>
 
-const Header = () => {
+interface HeaderProps {
+  floatingSubMenu?: boolean
+}
+
+const Header: React.FC<HeaderProps> = ({ floatingSubMenu = false }) => {
   const classes = useStyles()
   const [isLightMode, setisLightMode] = useState(false)
   const [menuIcon, setMenuIcon] = useState(false)
+  const [showSubMenu, setShowSubMenu] = useState(!floatingSubMenu)
 
   const navigate = useNavigate()
 
@@ -50,7 +57,11 @@ const Header = () => {
     isActive ? 'navItem active' : 'navItem'
 
   return (
-    <header className={classes.container}>
+    <header
+      className={`${classes.container}${
+        !floatingSubMenu ? ' roundCorner' : ''
+      }`}
+    >
       <KhuContainer>
         <div className={classes.root}>
           <div className={classes.menuIcon}>
@@ -58,7 +69,8 @@ const Header = () => {
               size="large"
               onClick={() => setMenuIcon((state) => !state)}
             >
-              <MenuIcon fontSize="large" />
+              {!menuIcon && <MenuIcon fontSize="large" />}
+              {menuIcon && <CloseIcon fontSize="large" />}
             </IconButton>
             <img alt="logo" src={khuLogo} className={classes.khuLogo} />
           </div>
@@ -70,42 +82,46 @@ const Header = () => {
           </SwitchContainer>
           <nav
             className={`${classes.buttonContainer} ${
-              menuIcon && classes.openMenu
+              menuIcon ? classes.openMenu : ''
             }`}
           >
-            <NavLink to="/features" className={navItemClassName}>
-              <Button variant="text">
+            <span className={`features navItem${showSubMenu ? ' active' : ''}`}>
+              <Button onClick={() => setShowSubMenu((state) => !state)}>
                 <Typography variant="h3" component="span">
                   {getTranslate('ویژگی‌ها')}
                 </Typography>
               </Button>
-            </NavLink>
+              {floatingSubMenu && (
+                <SubMenu
+                  navItemIcon
+                  className={`${floatingSubMenu ? ' floating' : ''}${
+                    showSubMenu ? ' open' : ''
+                  }`}
+                />
+              )}
+            </span>
             <NavLink to="/aboutUniversity" className={navItemClassName}>
-              <Button variant="text">
+              <Button>
                 <Typography variant="h3" component="span">
                   {getTranslate('درباره دانشگاه')}
                 </Typography>
               </Button>
             </NavLink>
             <NavLink to="/map" className={navItemClassName}>
-              <Button variant="text">
+              <Button>
                 <Typography variant="h3" component="span">
                   {getTranslate('نقشه دانشگاه')}
                 </Typography>
               </Button>
             </NavLink>
             <NavLink to="/contactUs" className={navItemClassName}>
-              <Button variant="text">
+              <Button>
                 <Typography variant="h3" component="span">
                   {getTranslate('ارتباط با ما')}
                 </Typography>
               </Button>
             </NavLink>
-            <Button
-              variant="text"
-              disableRipple
-              className={classes.switchContainerInsideMenu}
-            >
+            <Button disableRipple className={classes.switchContainerInsideMenu}>
               <SwitchContainer className={classes.switchContainerInsideMenu}>
                 {switchContainerContent}
               </SwitchContainer>
@@ -135,6 +151,9 @@ const Header = () => {
             </Button>
           </div>
         </div>
+        {!floatingSubMenu && (
+          <SubMenu className={`${showSubMenu ? ' open' : ''}`} />
+        )}
       </KhuContainer>
     </header>
   )

@@ -18,7 +18,7 @@ interface ModalProps {
   handleClose: () => void
 }
 
-const Modal: React.VFC<ModalProps> = ({
+const KhuModal: React.VFC<ModalProps> = ({
   title,
   buttons,
   open,
@@ -54,6 +54,7 @@ const Modal: React.VFC<ModalProps> = ({
             >
               {buttons.map((b) => (
                 <Button
+                  key={b.buttonText + b.bgColor}
                   variant="outlined"
                   className={classes.modalBtn}
                   sx={{ bgcolor: b.bgColor }}
@@ -76,4 +77,4 @@ const Modal: React.VFC<ModalProps> = ({
   )
 }
 
-export default Modal
+export default KhuModal

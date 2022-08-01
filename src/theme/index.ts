@@ -36,26 +36,25 @@ const lightPalette = {
     main: '#1660a5',
     light: '#ffffff',
     dark: '#d3e4ff',
-    contrastText: '#001c3a',
+    onContainer: '#001c3a',
   },
   secondary: {
     main: '#545f70',
     light: '#ffffff',
-    dark: '#d7e3f8',
-    contrastText: '#111c2b',
+    dark: '#1d1d1d',
+    onContainer: '#111c2b',
   },
   tertiary: {
     main: '#6c5677',
     light: '#ffffff',
     dark: '#f5d9ff',
-    contrastText: '#261430',
+    onContainer: '#261430',
   },
   error: {
     main: '#ba1b1b',
     light: '#ffffff',
     dark: '#ffdad4',
-    contrastText: '#410001',
-
+    onContainer: '#410001',
   },
   background: {
     default: '#fdfcff',
@@ -66,7 +65,7 @@ const lightPalette = {
     main: '#fdfcff',
     light: '#1b1b1d',
     variant: '#dfe2eb',
-    contrastText: '#43474e',
+    onVariant: '#43474e',
   },
   action: { hoverOpacity: 0.9 },
 }
@@ -111,9 +110,9 @@ const LightTheme = createTheme({
       fontFamily: getFont(),
     },
     h2: {
-      fontSize: 41,
-      color: lightPalette.secondary.light,
-      fontWeight: 'normal',
+      fontSize: 28,
+      color: lightPalette.secondary.dark,
+      fontWeight: 600,
       fontFamily: getFont(),
     },
     h1: {
