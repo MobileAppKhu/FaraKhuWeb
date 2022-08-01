@@ -54,6 +54,7 @@ const KhuModal: React.VFC<ModalProps> = ({
             >
               {buttons.map((b) => (
                 <Button
+                  key={b.buttonText + b.bgColor}
                   variant="outlined"
                   className={classes.modalBtn}
                   sx={{ bgcolor: b.bgColor }}
