@@ -8,8 +8,6 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 
 // eslint-disable-next-line no-undef
 const RTL = ({ children }: { children: JSX.Element }) => (
-  <div dir="rtl">
-    <StylesProvider jss={jss}>{children}</StylesProvider>
-  </div>
+  <StylesProvider jss={jss}>{children}</StylesProvider>
 )
 export default RTL

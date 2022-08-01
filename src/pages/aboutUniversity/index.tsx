@@ -150,8 +150,8 @@ const AboutUniversity = () => {
   }, [])
 
   return (
-    <div>
-      <Header />
+    <>
+      <Header floatingSubMenu />
       <h1 className="sr-only">
         درباره دانشگاه خوارزمی - از دارالمعلمین مرکزی تا دانشگاه خوارزمی
       </h1>
@@ -228,7 +228,7 @@ const AboutUniversity = () => {
         </KhuContainer>
       </div>
       <Footer />
-    </div>
+    </>
   )
 }
 

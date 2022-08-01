@@ -41,7 +41,7 @@ const lightPalette = {
   secondary: {
     main: '#545f70',
     light: '#ffffff',
-    dark: '#d7e3f8',
+    dark: '#1d1d1d',
     onContainer: '#111c2b',
   },
   tertiary: {

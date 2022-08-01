@@ -12,16 +12,14 @@ declare module '@mui/styles/defaultTheme' {
 }
 
 const App = () => (
-  <div>
+  <RTL>
     <ThemeProvider theme={LightTheme}>
       <CssBaseline />
-      <RTL>
-        <BrowserRouter>
-          <Routers />
-        </BrowserRouter>
-      </RTL>
+      <BrowserRouter>
+        <Routers />
+      </BrowserRouter>
     </ThemeProvider>
-  </div>
+  </RTL>
 )
 
 export default App

@@ -10,7 +10,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material'
 
 import useStyles from './styles/index.styles'
 import { getTranslate } from '../../../localization'
-import Modal from '../../../components/Modal'
+import KhuModal from '../../../components/KhuModal'
 
 const ChangePassword = () => {
   const classes = useStyles()
@@ -80,7 +80,7 @@ const ChangePassword = () => {
         </Typography>
       </Button>
 
-      <Modal
+      <KhuModal
         title="رمز عبور شما با موفقیت تغییر یافت.
 در به خاطر سپردن آن کوشا باشید."
         buttons={[

@@ -126,6 +126,7 @@ const useStyles = makeStyles((theme) => ({
             paddingRight: 14,
             padding: '4px 14px 4px 16px',
             borderRight: '0.5px solid rgba(255,255,255,0.6)',
+            userSelect: 'none',
 
             '& span': {
               fontWeight: 300,
@@ -145,12 +146,13 @@ const useStyles = makeStyles((theme) => ({
           position: 'absolute',
           width: '100%',
           bottom: '110%',
+          zIndex: 1,
           background: theme.palette.primary.light,
           borderRadius: 5,
           transform: 'rotateX(90deg)',
           perspective: '500px',
-          perspectiveOrigin: '50% 100%',
-          transition: 'all 0.3s',
+          transformOrigin: 'bottom center',
+          transition: 'all 0.25s',
 
           '&.open': {
             transform: 'rotateX(0)',
