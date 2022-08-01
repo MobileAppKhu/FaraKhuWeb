@@ -67,7 +67,6 @@ const lightPalette = {
     variant: '#dfe2eb',
     onVariant: '#43474e',
   },
-  action: { hoverOpacity: 0.9 },
 }
 
 // eslint-disable-next-line import/no-mutable-exports
