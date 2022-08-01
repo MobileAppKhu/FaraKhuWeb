@@ -19,12 +19,33 @@ const useStyle = makeStyles((theme) => ({
     rowGap: 25,
     overflow: 'auto',
     fontSize: 18,
+    transition: 'all 0.3s !important',
+
+    [theme.breakpoints.down(1250)]: {
+      width: '70%',
+    },
+    [theme.breakpoints.down(600)]: {
+      width: '80%',
+    },
+    [theme.breakpoints.down(470)]: {
+      width: '90%',
+      padding: '30px 25px',
+    },
+    [theme.breakpoints.down(380)]: {
+      padding: '30px 15px',
+      fontSize: 16,
+    },
+    [theme.breakpoints.down(335)]: {
+      width: '95%',
+      fontSize: 14,
+    },
 
     '& .top': {
       width: '100%',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      marginBottom: 20,
 
       '& .modalTitle': {
         fontSize: '1.3em',
@@ -34,14 +55,39 @@ const useStyle = makeStyles((theme) => ({
     },
 
     '& .bottom': {
+      width: '100%',
       display: 'flex',
       flexWrap: 'wrap',
       rowGap: 50,
       justifyContent: 'space-between',
-      // columnGap: 10,
+      columnGap: 10,
+      fontSize: '0.888888em',
 
       '& > .dataInput': {
         width: '45%',
+        display: 'flex',
+        alignItems: 'center',
+        columnGap: 10,
+        transition: 'all 0.3s',
+
+        [theme.breakpoints.down(1250)]: {
+          width: '100%',
+        },
+
+        '& > .guideBtn': {
+          background: theme.palette.background.paper,
+          boxShadow: '1px 1px 3px 1px rgba(0, 0, 0, 0.1)',
+          fontSize: '1em',
+          cursor: 'auto',
+
+          '&.hidden': {
+            visibility: 'hidden',
+          },
+
+          '& *': {
+            fontSize: '0.8em',
+          },
+        },
 
         '&.textarea': {
           width: '100%',
@@ -60,6 +106,14 @@ const useStyle = makeStyles((theme) => ({
           borderRadius: 7,
           padding: '5px 20px',
           boxShadow: 'none',
+          transition: 'all 0.3s',
+
+          [theme.breakpoints.down(1000)]: {
+            width: '50%',
+          },
+          [theme.breakpoints.down(600)]: {
+            width: '70%',
+          },
         },
       },
     },

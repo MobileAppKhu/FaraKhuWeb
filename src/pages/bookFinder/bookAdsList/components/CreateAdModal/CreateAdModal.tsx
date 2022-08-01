@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
+import React, { HTMLAttributes, useState } from 'react'
 import { Box, Typography, Fade, IconButton, Button } from '@mui/material'
 import MuiModal from '@mui/material/Modal'
 import CloseIcon from '@mui/icons-material/Close'
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh'
 
 import KhuTextField from '../../../../../components/KhuTextField'
+import KhuSelect from '../../../../../components/KhuSelect'
 import useStyle from './CreateAdModal.style'
 import { getTranslate } from '../../../../../localization'
-import KhuSelect from '../../../../../components/KhuSelect'
+
+interface GuideBtnProps {
+  className?: string
+  hidden?: boolean
+}
+
+const GuideBtn = ({ className, hidden }: GuideBtnProps) => (
+  <IconButton
+    className={`guideBtn${hidden ? ' hidden' : ''} ${className || ''}`}
+    aria-hidden={hidden}
+    size="small"
+    disableRipple
+  >
+    <PriorityHighIcon fontSize="small" />
+  </IconButton>
+)
 
 interface ModalProps {
   open: boolean
@@ -56,6 +73,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
                 placeholder={getTranslate('مثال: 5 کتاب اصلی مهندسی کامپیوتر')}
                 label={getTranslate('عنوان آگهی *')}
               />
+              <GuideBtn />
             </div>
             <div className="dataInput">
               <KhuTextField
@@ -64,6 +82,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
                 placeholder={getTranslate('مثال: 09220000000')}
                 label={getTranslate('راه ارتباطی *')}
               />
+              <GuideBtn />
             </div>
             <div className="dataInput">
               <KhuTextField
@@ -74,6 +93,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
                 label={getTranslate('قیمت')}
                 adornmentText={getTranslate('تومان')}
               />
+              <GuideBtn hidden />
             </div>
             <div className="dataInput">
               <KhuSelect
@@ -92,6 +112,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
                   },
                 ]}
               />
+              <GuideBtn hidden />
             </div>
             <div className="dataInput textarea">
               <KhuTextField

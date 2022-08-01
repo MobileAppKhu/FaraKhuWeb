@@ -293,6 +293,7 @@ const useStyles = makeStyles((theme) => ({
           fontSize: '80%',
           color: '#73777f',
           marginBottom: 10,
+          userSelect: 'none',
         },
 
         '& .item': {

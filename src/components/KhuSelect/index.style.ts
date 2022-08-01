@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     width: '100%',
     position: 'relative',
-    fontSize: 16,
+    fontSize: '1em',
   },
   selectContainer: {
     cursor: 'pointer',

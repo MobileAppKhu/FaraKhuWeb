@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     minHeight: 45,
     width: '100%',
-    fontSize: 16,
+    fontSize: '1em',
     border: '1.5px solid #DADCE0',
     borderRadius: 4,
     paddingLeft: 8,
@@ -42,13 +42,13 @@ const useStyles = makeStyles((theme) => ({
     },
 
     '& .input': {
-      position: 'relative', // for z-index
+      position: 'relative', // for z-index to work
       height: '100%',
       // width: '85%',
       // '&.fullWidth': {
       //   width: '100%',
       // },
-      flex: 1,
+      flex: 6,
       border: 0,
       padding: '0 13px',
       outline: 0,
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
       },
       transform: 'translateY(-50%)',
       padding: '0 5px',
-      backgroundColor: '#fff',
+      backgroundColor: theme.palette.background.paper,
       color: '#aaa',
       transition: 'all 0.2s',
       zIndex: 0,
@@ -114,17 +114,23 @@ const useStyles = makeStyles((theme) => ({
     },
 
     '& .adornment': {
-      display: 'inline-block',
+      // display: 'inline-block',
+      // width: '15%',
+      flex: 1,
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
       fontWeight: 400,
-      width: '15%',
       overflow: 'hidden',
       textAlign: 'center',
+      overflowWrap: 'anywhere',
       userSelect: 'none',
 
       '& > span': {
         fontSize: '80%',
         fontWeight: 400,
         color: '#000',
+        paddingLeft: '3px',
       },
     },
   },
