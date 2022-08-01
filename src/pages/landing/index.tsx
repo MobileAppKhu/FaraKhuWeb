@@ -2,6 +2,7 @@ import React from 'react'
 import Footer from '../../components/Footer'
 import Header from '../../components/header'
 import LandingApplication from './LandingApplication'
+import LandingFeatures from './LandingFeatures'
 
 import useStyles from './styles/index.style'
 
@@ -12,6 +13,7 @@ const Landing = () => {
     <>
       <Header floatingSubMenu />
       <LandingApplication />
+      <LandingFeatures />
       <Footer />
     </>
   )

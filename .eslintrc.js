@@ -51,6 +51,7 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     'no-unused-vars': 'off',
     'no-restricted-exports': 'off',
+    indent: 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [
       2,
