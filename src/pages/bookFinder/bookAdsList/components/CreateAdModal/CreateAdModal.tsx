@@ -6,6 +6,7 @@ import PriorityHighIcon from '@mui/icons-material/PriorityHigh'
 
 import KhuTextField from '../../../../../components/KhuTextField'
 import KhuSelect from '../../../../../components/KhuSelect'
+import KhuModal from '../../../../../components/KhuModal'
 import useStyle from './CreateAdModal.style'
 import { getTranslate } from '../../../../../localization'
 
@@ -39,6 +40,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
     type: '',
     desc: '',
   })
+  const [openSuccessModal, setOpenSuccessModal] = useState(false)
 
   const handleChange = (field: keyof typeof data) => (value: string) => {
     if (field === 'price') {
@@ -49,92 +51,113 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
   }
 
   return (
-    <MuiModal open={open} onClose={handleClose}>
-      <Fade in={open}>
-        <Box className={classes.modalContainer}>
-          <div className="top">
-            <Typography
-              variant="h3"
-              component="h2"
-              color="black"
-              className="modalTitle"
-            >
-              {getTranslate('ایجاد آگهی جدید')}
-            </Typography>
-            <IconButton size="large" onClick={handleClose}>
-              <CloseIcon fontSize="large" />
-            </IconButton>
-          </div>
-          <div className="bottom">
-            <div className="dataInput">
-              <KhuTextField
-                value={data.title}
-                handleChange={handleChange('title')}
-                placeholder={getTranslate('مثال: 5 کتاب اصلی مهندسی کامپیوتر')}
-                label={getTranslate('عنوان آگهی *')}
-              />
-              <GuideBtn />
+    <>
+      <MuiModal open={open} onClose={handleClose}>
+        <Fade in={open}>
+          <Box className={classes.modalContainer}>
+            <div className="top">
+              <Typography
+                variant="h3"
+                component="h2"
+                color="black"
+                className="modalTitle"
+              >
+                {getTranslate('ایجاد آگهی جدید')}
+              </Typography>
+              <IconButton size="large" onClick={handleClose}>
+                <CloseIcon fontSize="large" />
+              </IconButton>
             </div>
-            <div className="dataInput">
-              <KhuTextField
-                value={data.contact}
-                handleChange={handleChange('contact')}
-                placeholder={getTranslate('مثال: 09220000000')}
-                label={getTranslate('راه ارتباطی *')}
-              />
-              <GuideBtn />
+            <div className="bottom">
+              <div className="dataInput">
+                <KhuTextField
+                  value={data.title}
+                  handleChange={handleChange('title')}
+                  placeholder={getTranslate(
+                    'مثال: 5 کتاب اصلی مهندسی کامپیوتر',
+                  )}
+                  label={getTranslate('عنوان آگهی *')}
+                />
+                <GuideBtn />
+              </div>
+              <div className="dataInput">
+                <KhuTextField
+                  value={data.contact}
+                  handleChange={handleChange('contact')}
+                  placeholder={getTranslate('مثال: 09220000000')}
+                  label={getTranslate('راه ارتباطی *')}
+                />
+                <GuideBtn />
+              </div>
+              <div className="dataInput">
+                <KhuTextField
+                  inputMode="numeric"
+                  value={
+                    data.price !== '' ? (+data.price).toLocaleString() : ''
+                  }
+                  handleChange={handleChange('price')}
+                  placeholder={getTranslate('مثال: 120/000')}
+                  label={getTranslate('قیمت')}
+                  adornmentText={getTranslate('تومان')}
+                />
+                <GuideBtn hidden />
+              </div>
+              <div className="dataInput">
+                <KhuSelect
+                  value={data.type}
+                  handleChange={handleChange('type')}
+                  placeholder={getTranslate('گزینه مورد نظر را انتخاب کنید')}
+                  label={getTranslate('نوع آگهی *')}
+                  selectOptions={[
+                    {
+                      label: getTranslate('خرید'),
+                      value: getTranslate('خرید'),
+                    },
+                    {
+                      label: getTranslate('فروش'),
+                      value: getTranslate('فروش'),
+                    },
+                  ]}
+                />
+                <GuideBtn hidden />
+              </div>
+              <div className="dataInput textarea">
+                <KhuTextField
+                  value={data.desc}
+                  handleChange={handleChange('desc')}
+                  placeholder={getTranslate(
+                    'مثال: من به تازگی از رشته مهندسی کامپیوتر فارغ التحصیل شدم و دیگه این کتاب ها به دردم نمیخورن، اما واقعا کتاب های خوب و شاخصی هستن و اگر ترم اولی هستید قطعا در آینده به این کتاب ها نیاز پیدا می کنید.',
+                  )}
+                  label={getTranslate('توضیحات آگهی *')}
+                  multiline
+                  height={150}
+                />
+              </div>
+              <div className="confirmBtn">
+                <Button variant="contained" size="large">
+                  {getTranslate('تایید')}
+                </Button>
+              </div>
             </div>
-            <div className="dataInput">
-              <KhuTextField
-                inputMode="numeric"
-                value={data.price !== '' ? (+data.price).toLocaleString() : ''}
-                handleChange={handleChange('price')}
-                placeholder={getTranslate('مثال: 120/000')}
-                label={getTranslate('قیمت')}
-                adornmentText={getTranslate('تومان')}
-              />
-              <GuideBtn hidden />
-            </div>
-            <div className="dataInput">
-              <KhuSelect
-                value={data.type}
-                handleChange={handleChange('type')}
-                placeholder={getTranslate('گزینه مورد نظر را انتخاب کنید')}
-                label={getTranslate('نوع آگهی *')}
-                selectOptions={[
-                  {
-                    label: getTranslate('خرید'),
-                    value: getTranslate('خرید'),
-                  },
-                  {
-                    label: getTranslate('فروش'),
-                    value: getTranslate('فروش'),
-                  },
-                ]}
-              />
-              <GuideBtn hidden />
-            </div>
-            <div className="dataInput textarea">
-              <KhuTextField
-                value={data.desc}
-                handleChange={handleChange('desc')}
-                placeholder={getTranslate(
-                  'مثال: من به تازگی از رشته مهندسی کامپیوتر فارغ التحصیل شدم و دیگه این کتاب ها به دردم نمیخورن، اما واقعا کتاب های خوب و شاخصی هستن و اگر ترم اولی هستید قطعا در آینده به این کتاب ها نیاز پیدا می کنید.',
-                )}
-                label={getTranslate('توضیحات آگهی *')}
-                multiline
-                height={150}
-              />
-            </div>
-            <div className="confirmBtn">
-              <Button variant="contained" size="large">
-                {getTranslate('تایید')}
-              </Button>
-            </div>
-          </div>
-        </Box>
-      </Fade>
-    </MuiModal>
+          </Box>
+        </Fade>
+      </MuiModal>
+      <KhuModal
+        title="آگهی مورد نظر با موفقیت ایجاد شد."
+        buttons={[
+          {
+            buttonText: 'باشه',
+            textColor: 'primary.main',
+            bgColor: 'transparent',
+            onClick: () => {
+              setOpenSuccessModal(false)
+            },
+          },
+        ]}
+        open={openSuccessModal}
+        handleClose={() => setOpenSuccessModal(false)}
+      />
+    </>
   )
 }
 
