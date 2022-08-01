@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
 import { CssBaseline } from '@mui/material'
 import { BrowserRouter } from 'react-router-dom'
 import { Theme, ThemeProvider } from '@mui/material/styles'

@@ -9,14 +9,17 @@ export default async function request(
   body?: any,
 ) {
   let status: number
-  return fetch(BASE_URL + endpoint, {
+  const reposnse = await fetch(BASE_URL + endpoint, {
     method,
-    mode: 'cors',
-    cache: 'no-cache',
-    credentials: 'same-origin',
+    mode: 'no-cors',
+
     headers: {
+      Accept: '*/*',
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${getToken()}`
+      Connection: 'keep-alive',
+      'sec-fetch-dest': 'empty',
+      'sec-fetch-mode': 'cors',
+      'sec-fetch-site': 'same-origin',
     },
     body: JSON.stringify(body),
   })
@@ -31,12 +34,8 @@ export default async function request(
       return { responseJSON, status }
     })
     .catch((res) => {
-      sessionStorage.clear()
-      localStorage.clear()
-      // const dispatch = useDispatch()
-      // dispatch(logOut())
-      window.location.reload()
       toast.error('Please log in')
       return { responseJSON: res, status }
     })
+  return reposnse
 }
