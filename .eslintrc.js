@@ -20,7 +20,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     ],
-    'max-len': ['error', { code: 120 }],
+    'max-len': ['error', { code: 200 }],
     'import/extensions': [
       'error',
       'ignorePackages',
