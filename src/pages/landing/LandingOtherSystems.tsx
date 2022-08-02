@@ -94,7 +94,7 @@ const LandingOtherSystems = () => {
               mouseTracking
               touchTracking
               autoPlay
-              autoPlayInterval={2000}
+              autoPlayInterval={5000}
               paddingLeft={50}
               items={sliderItems.map((item) => (
                 <div className="sliderItem" key={item.href}>
