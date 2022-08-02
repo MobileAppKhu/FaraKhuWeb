@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material'
 
-import { Form } from 'formik'
+import { FormatColorResetOutlined } from '@mui/icons-material'
 import useStyles from './styles/index.style'
 import KHULogo from '../../assets/images/KHU_logo.png'
 import footerImg from '../../assets/images/footer.svg'
@@ -31,7 +31,7 @@ const Login = () => {
     <div className={classes.outerContainer}>
       <h1 className="sr-only">ورود</h1>
       <div className={classes.innerContainer}>
-        <Form className={classes.form}>
+        <form className={classes.form}>
           <img src={KHULogo} alt="لوگوی خوارزمی" />
           <Typography variant="h1" className={classes.title}>
             {getTranslate('سامانه دانشگاهی فراخو')}
@@ -91,7 +91,7 @@ const Login = () => {
           <Link to="#" className={classes.supportLink}>
             {getTranslate('پشتیبانی')}
           </Link>
-        </Form>
+        </form>
       </div>
       <footer className={classes.footer}>
         <img src={footerImg} alt="footer" />
