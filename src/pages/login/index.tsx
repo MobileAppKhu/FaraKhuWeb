@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Button,
@@ -14,6 +14,7 @@ import useStyles from './styles/index.style'
 import KHULogo from '../../assets/images/KHU_logo.png'
 import footerImg from '../../assets/images/footer.svg'
 import { getTranslate } from '../../localization'
+import request from '../../heplers/request'
 
 const Login = () => {
   const classes = useStyles()
@@ -21,7 +22,11 @@ const Login = () => {
   useEffect(() => {
     document.title = 'فراخو - ورود'
   }, [])
-
+  const [password, setpassword] = useState<string>('')
+  const [email, setemail] = useState<string>('')
+  const loginHandler = async () => {
+    await request('Account/SignIn', 'POST', { logon: email, password })
+  }
   return (
     <div className={classes.outerContainer}>
       <h1 className="sr-only">ورود</h1>
@@ -41,6 +46,8 @@ const Login = () => {
               fullWidth
               className={classes.textField}
               label={getTranslate('ایمیل دانشگاهی')}
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
             />
           </div>
           <div className={classes.formControl}>
@@ -51,6 +58,8 @@ const Login = () => {
               size="small"
               type="password"
               fullWidth
+              value={password}
+              onChange={(e) => setpassword(e.target.value)}
             />
             <div className={classes.helperText}>
               <div className="right">
@@ -74,7 +83,7 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <Button variant="contained" className={classes.submitBtn} fullWidth type="submit">
+          <Button variant="contained" className={classes.submitBtn} onClick={loginHandler}>
             <Typography variant="h4" color="white">
               {getTranslate('تایید')}
             </Typography>
