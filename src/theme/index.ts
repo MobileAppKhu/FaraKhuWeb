@@ -122,7 +122,7 @@ const LightTheme = createTheme({
     },
     body1: {
       fontSize: 16,
-      fontWeight: 600,
+      fontWeight: 'normal',
       color: lightPalette.secondary.light,
       fontFamily: getFont(),
     },

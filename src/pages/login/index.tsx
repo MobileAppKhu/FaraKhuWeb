@@ -9,6 +9,7 @@ import {
   Typography,
 } from '@mui/material'
 
+import { FormatColorResetOutlined } from '@mui/icons-material'
 import useStyles from './styles/index.style'
 import KHULogo from '../../assets/images/KHU_logo.png'
 import footerImg from '../../assets/images/footer.svg'
@@ -36,13 +37,15 @@ const Login = () => {
             {getTranslate('سامانه دانشگاهی فراخو')}
           </Typography>
           <div className={classes.formControl}>
-            <div className={classes.inputLable}>
+            {/* <div className={classes.inputLable}>
               {getTranslate('ایمیل دانشگاهی')}
-            </div>
+            </div> */}
             <TextField
               variant="outlined"
               size="small"
+              fullWidth
               className={classes.textField}
+              label={getTranslate('ایمیل دانشگاهی')}
               value={email}
               onChange={(e) => setemail(e.target.value)}
             />
@@ -54,6 +57,7 @@ const Login = () => {
               variant="outlined"
               size="small"
               type="password"
+              fullWidth
               value={password}
               onChange={(e) => setpassword(e.target.value)}
             />
@@ -84,9 +88,9 @@ const Login = () => {
               {getTranslate('تایید')}
             </Typography>
           </Button>
-          <a href="#" className={classes.supportLink}>
+          <Link to="#" className={classes.supportLink}>
             {getTranslate('پشتیبانی')}
-          </a>
+          </Link>
         </form>
       </div>
       <footer className={classes.footer}>
