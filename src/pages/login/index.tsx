@@ -37,15 +37,16 @@ const Login = () => {
             {getTranslate('سامانه دانشگاهی فراخو')}
           </Typography>
           <div className={classes.formControl}>
-            {/* <div className={classes.inputLable}>
+            <div className={classes.inputLable}>
               {getTranslate('ایمیل دانشگاهی')}
-            </div> */}
+            </div>
             <TextField
               variant="outlined"
               size="small"
               fullWidth
               className={classes.textField}
-              label={getTranslate('ایمیل دانشگاهی')}
+              color="primary"
+              // label={getTranslate('ایمیل دانشگاهی')}
               value={email}
               onChange={(e) => setemail(e.target.value)}
             />
@@ -83,7 +84,7 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <Button variant="contained" className={classes.submitBtn} onClick={loginHandler}>
+          <Button variant="contained" className={classes.submitBtn} fullWidth onClick={loginHandler}>
             <Typography variant="h4" color="white">
               {getTranslate('تایید')}
             </Typography>

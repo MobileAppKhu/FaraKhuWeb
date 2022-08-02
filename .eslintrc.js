@@ -31,7 +31,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    'import/imports-first': ['error', 'absolute-first'],
+    'import/imports-first': ['error'],
     'import/newline-after-import': 'error',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
@@ -52,6 +52,7 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     'no-unused-vars': 'off',
     'no-restricted-exports': 'off',
+    'import/no-unresolved': 'off',
     indent: 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [

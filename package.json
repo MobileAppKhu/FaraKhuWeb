@@ -17,6 +17,7 @@
     "jss": "^10.9.0",
     "jss-rtl": "^0.3.0",
     "react": "^18.1.0",
+    "react-alice-carousel": "^2.6.4",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-alice-carousel": "^1.15.3",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "eslint": "^8.16.0",

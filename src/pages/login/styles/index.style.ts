@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '16px !important',
     marginBottom: '5px !important',
     fontWeight: 'normal',
-    color: theme.palette.primary.contrastText,
+    color: theme.palette.primary.onContainer,
   },
   textField: {
     // width: '100%',
@@ -79,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: '#1660a5 !important',
     },
+    // width: '100%',
   },
   supportLink: {
     display: 'inline-block',

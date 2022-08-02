@@ -93,7 +93,7 @@ const LandingFeatures = () => {
           <div className="left">
             <div className="features">
               {features.map(({ to, title, icon, desc, iconSize }) => (
-                <Link to={to} className="featureItem">
+                <Link to={to} className="featureItem" key={title}>
                   <div className="featureTitle">
                     <FeautureIcon src={icon} size={iconSize} />
                     <Typography variant="h3" className="title">

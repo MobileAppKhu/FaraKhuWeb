@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL
-
+// const BASE_URL = 'google.com'
 export default async function request(
   endpoint: string,
   // eslint-disable-next-line default-param-last
@@ -11,15 +11,11 @@ export default async function request(
   let status: number
   const reposnse = await fetch(BASE_URL + endpoint, {
     method,
-    mode: 'no-cors',
-
+    // mode: 'no-cors',
     headers: {
-      Accept: '*/*',
+      // Accept: '*/*',
       'Content-Type': 'application/json',
-      Connection: 'keep-alive',
-      'sec-fetch-dest': 'empty',
-      'sec-fetch-mode': 'cors',
-      'sec-fetch-site': 'same-origin',
+
     },
     body: JSON.stringify(body),
   })
