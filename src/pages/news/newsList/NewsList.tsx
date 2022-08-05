@@ -1,11 +1,14 @@
 import React from 'react'
-import { Grid, Pagination, useMediaQuery } from '@mui/material'
+import { Button, Grid, Pagination, useMediaQuery } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 
 import { NewsProps } from '../News'
 import KhuContainer from '../../../components/KhuContainer'
 import NewsItem from './components'
 
 import useStyle from './NewsList.style'
+import { getTranslate } from '../../../localization'
 
 interface NewsListProps {
   newsList: NewsProps[]
@@ -16,11 +19,28 @@ const NewsList: React.FC<NewsListProps> = ({ newsList }) => {
   const matches770 = useMediaQuery('(max-width:770px)')
   const matches400 = useMediaQuery('(max-width:400px)')
 
+  const navigate = useNavigate()
+  // temp
+  const isAdmin = true
+
   return (
     <div className={classes.background}>
       <KhuContainer>
         <div className="container">
           <h1 className="sr-only">اخبار دانشگاه</h1>
+
+          {isAdmin && (
+            <Button
+              className="createNews"
+              onClick={() => navigate('create')}
+              variant="contained"
+              disableElevation
+            >
+              <EditOutlinedIcon />
+              {getTranslate('ایجاد خبر جدید')}
+            </Button>
+          )}
+
           <Grid className="news" container columnSpacing={3} rowSpacing={3}>
             <Grid className="right" item xs={!matches770 ? 4.5 : 12}>
               <NewsItem {...newsList[0]} variant="large" />

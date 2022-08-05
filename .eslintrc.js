@@ -48,6 +48,8 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
     'jsx-a11y/tabindex-no-positive': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'prefer-destructuring': 'off',
     'no-confusing-arrow': 'off',
     'implicit-arrow-linebreak': 'off',
     'no-unused-vars': 'off',

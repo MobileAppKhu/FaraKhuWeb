@@ -11,6 +11,14 @@ const useStyle = makeStyles((theme) => ({
       rowGap: 50,
       padding: '60px 0',
 
+      '& .createNews': {
+        display: 'flex',
+        columnGap: 10,
+        alignSelf: 'flex-start',
+        fontSize: '1.2em',
+        fontWeight: 400,
+      },
+
       '& .news': {
         display: 'flex',
 
