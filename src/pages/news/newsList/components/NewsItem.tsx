@@ -1,14 +1,12 @@
-import { Button, Typography } from '@mui/material'
 import React from 'react'
+import { Button, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+
 import { getTranslate } from '../../../../localization'
+import { NewsProps } from '../../News'
 import useStyle from './NewsItem.style'
 
-interface NewsItemProps {
-  author: string
-  authorImg: string
-  title: string
-  desc?: string
-  newsImg?: string
+interface NewsItemProps extends NewsProps {
   hideDesc?: boolean
   hideImg?: boolean
   variant?: 'small' | 'medium' | 'large'
@@ -16,17 +14,19 @@ interface NewsItemProps {
 }
 
 const NewsItem: React.FC<NewsItemProps> = ({
+  id,
   author,
   authorImg,
   title,
   desc,
-  newsImg,
+  newsImgs,
   hideDesc = false,
   hideImg = false,
   variant = 'small',
   bgColor,
 }) => {
   const classes = useStyle()
+  const navigate = useNavigate()
 
   return (
     <div
@@ -51,13 +51,17 @@ const NewsItem: React.FC<NewsItemProps> = ({
           variant === 'medium' ? ' medium' : ''
         }`}
       >
-        {newsImg && !hideImg && (
+        {newsImgs && !hideImg && (
           <div className="newsImg">
-            <img src={newsImg} alt={getTranslate('تصویر خبر')} />
+            <img src={newsImgs[0]} alt={getTranslate('تصویر خبر')} />
           </div>
         )}
 
-        <Typography className="title" variant="h2">
+        <Typography
+          className="title"
+          variant="h2"
+          onClick={() => navigate(`${id}`)}
+        >
           {title}
         </Typography>
 
@@ -68,7 +72,9 @@ const NewsItem: React.FC<NewsItemProps> = ({
         )}
 
         <div className="readMore">
-          <Button>{getTranslate('بیشتر بخوانید')}</Button>
+          <Button onClick={() => navigate(`${id}`)}>
+            {getTranslate('بیشتر بخوانید')}
+          </Button>
         </div>
       </div>
     </div>

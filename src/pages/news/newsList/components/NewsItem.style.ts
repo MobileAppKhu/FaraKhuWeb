@@ -77,6 +77,7 @@ const useStyle = makeStyles((theme) => ({
         fontSize: '1em',
         lineHeight: 1.5,
         color: theme.palette.primary.onContainer,
+        cursor: 'pointer',
       },
 
       '& .desc': {

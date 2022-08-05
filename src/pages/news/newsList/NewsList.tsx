@@ -1,14 +1,14 @@
 import React from 'react'
 import { Grid, Pagination, useMediaQuery } from '@mui/material'
 
-import { News } from '../News'
+import { NewsProps } from '../News'
 import KhuContainer from '../../../components/KhuContainer'
-
-import useStyle from './NewsList.style'
 import NewsItem from './components'
 
+import useStyle from './NewsList.style'
+
 interface NewsListProps {
-  newsList: News[]
+  newsList: NewsProps[]
 }
 
 const NewsList: React.FC<NewsListProps> = ({ newsList }) => {
