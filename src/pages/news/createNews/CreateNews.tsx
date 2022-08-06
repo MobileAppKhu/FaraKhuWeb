@@ -5,6 +5,7 @@ import { Editor } from 'react-draft-wysiwyg'
 import AddIcon from '@mui/icons-material/Add'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 
+import KhuModal from '../../../components/KhuModal'
 import KhuContainer from '../../../components/KhuContainer'
 import { getTranslate } from '../../../localization'
 import { editorToolbarOptions } from './editorToolbarOptions'
@@ -19,6 +20,7 @@ interface ImagePicker {
 
 const CreateNews = () => {
   const classes = useStyle()
+
   const [newsTitle, setNewsTitle] = useState('')
   const [images, setImages] = useState<ImagePicker[]>([
     { id: 0, file: undefined },
@@ -26,6 +28,7 @@ const CreateNews = () => {
     { id: 2, file: undefined },
   ])
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
+  const [openSuccessModal, setOpenSuccessModal] = useState(false)
 
   function handleChange(index: number) {
     return (e: ChangeEvent<HTMLInputElement>) => {
@@ -113,15 +116,32 @@ const CreateNews = () => {
               )}
             />
           </div>
-          <Button
-            className="confirmButton"
-            variant="contained"
-            disableElevation
-          >
-            {getTranslate('تایید')}
-          </Button>
+          <div className="controlButtons">
+            <Button
+              className="confirmButton"
+              variant="contained"
+              disableElevation
+            >
+              {getTranslate('تایید')}
+            </Button>
+          </div>
         </div>
       </KhuContainer>
+      <KhuModal
+        title={getTranslate('خبر مورد نظر با موفقیت ایجاد شد.')}
+        buttons={[
+          {
+            buttonText: 'باشه',
+            textColor: 'primary.main',
+            bgColor: 'transparent',
+            onClick: () => {
+              setOpenSuccessModal(false)
+            },
+          },
+        ]}
+        open={openSuccessModal}
+        handleClose={() => setOpenSuccessModal(false)}
+      />
     </div>
   )
 }

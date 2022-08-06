@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import Header from '../../components/header'
 import CreateNews from './createNews'
+import EditNews from './createNews/editNews'
 import NewsDetails from './newsDetails'
 import NewsList from './newsList'
 
@@ -85,6 +86,7 @@ const News = () => (
       <Route index element={<NewsList newsList={news} />} />
       <Route path=":id" element={<NewsDetails newsList={news} />} />
       <Route path="/create" element={<CreateNews />} />
+      <Route path="/edit/:id" element={<EditNews newsList={news} />} />
     </Routes>
   </>
 )

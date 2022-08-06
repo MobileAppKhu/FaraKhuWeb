@@ -55,6 +55,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-restricted-exports': 'off',
     'import/no-unresolved': 'off',
+    'no-param-reassign': ['warn', { props: false }],
     indent: 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [

@@ -148,16 +148,23 @@ const useStyle = makeStyles((theme) => ({
         },
       },
 
-      '& .confirmButton': {
+      '& .controlButtons': {
         width: 300,
-        fontSize: '1em',
-        fontWeight: 400,
-        borderRadius: 7,
+        display: 'flex',
         alignSelf: 'center',
+        alignItems: 'stretch',
+        flexDirection: 'column',
+        rowGap: 10,
         transition: 'width 0.3s',
 
         [theme.breakpoints.down(450)]: {
           width: '80%',
+        },
+
+        '& .confirmButton, .deleteButton': {
+          fontSize: '1em',
+          fontWeight: 400,
+          borderRadius: 7,
         },
       },
     },
