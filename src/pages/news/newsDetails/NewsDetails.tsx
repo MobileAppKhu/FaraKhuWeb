@@ -1,8 +1,9 @@
 import React from 'react'
-import { IconButton, Typography } from '@mui/material'
+import { Button, IconButton, Typography } from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'
-import { useParams } from 'react-router-dom'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
+import { useNavigate, useParams } from 'react-router-dom'
 import AliceCarousel from 'react-alice-carousel'
 
 import KhuContainer from '../../../components/KhuContainer'
@@ -34,6 +35,7 @@ const renderPrevButton = () => (
 
 const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
   const classes = useStyle()
+  const navigate = useNavigate()
 
   const { id } = useParams<{ id: string }>()
   const selectedNews = newsList.find((news) => news.id === id!)
@@ -49,12 +51,27 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
         onDragStart={(e) => e.preventDefault()}
       />
     ))
+
+    // temp
     const date = '21 اردیبهشت 1400'
+    const isAdmin = true
 
     return (
       <div className={classes.background}>
         <KhuContainer>
           <div className="container">
+            {isAdmin && (
+              <Button
+                className="editNews"
+                onClick={() => navigate(`/news/edit/${id}`)}
+                variant="outlined"
+                disableElevation
+              >
+                <EditOutlinedIcon fontSize="small" />
+                {getTranslate('ویرایش')}
+              </Button>
+            )}
+
             <Typography className="title" variant="h1">
               {title}
             </Typography>

@@ -12,6 +12,15 @@ const useStyle = makeStyles((theme) => ({
       padding: '60px 0',
       fontSize: 18,
 
+      '& .editNews': {
+        display: 'flex',
+        alignSelf: 'flex-start',
+        fontSize: '0.8em',
+        columnGap: 5,
+        borderRadius: 10,
+        marginBottom: 15,
+      },
+
       '& .title': {
         color: theme.palette.surface.light,
         textAlign: 'center',
