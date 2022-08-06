@@ -1,12 +1,16 @@
-import React, { useState, ChangeEvent, MouseEvent } from 'react'
-import { Grid, IconButton, TextField, Typography } from '@mui/material'
+import { useState, ChangeEvent, MouseEvent } from 'react'
+import { Button, Grid, IconButton, TextField, Typography } from '@mui/material'
+import { EditorState } from 'draft-js'
+import { Editor } from 'react-draft-wysiwyg'
 import AddIcon from '@mui/icons-material/Add'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 
 import KhuContainer from '../../../components/KhuContainer'
 import { getTranslate } from '../../../localization'
+import { editorToolbarOptions } from './editorToolbarOptions'
 
 import useStyle from './CreateNews.style'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 interface ImagePicker {
   id: number
@@ -15,11 +19,13 @@ interface ImagePicker {
 
 const CreateNews = () => {
   const classes = useStyle()
+  const [newsTitle, setNewsTitle] = useState('')
   const [images, setImages] = useState<ImagePicker[]>([
     { id: 0, file: undefined },
     { id: 1, file: undefined },
     { id: 2, file: undefined },
   ])
+  const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
   function handleChange(index: number) {
     return (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,6 +34,7 @@ const CreateNews = () => {
       setImages(newImages)
     }
   }
+
   function handleDelete(index: number) {
     return (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
       e.preventDefault()
@@ -47,6 +54,8 @@ const CreateNews = () => {
             </Typography>
             <TextField
               className="input"
+              value={newsTitle}
+              onChange={(e) => setNewsTitle(e.target.value)}
               placeholder={getTranslate(
                 'مثال: اختتامیه اولین مسابقه ملی ایده‌های زیست فناورانه',
               )}
@@ -87,6 +96,30 @@ const CreateNews = () => {
               ))}
             </Grid>
           </div>
+          <div className="inputContainer description">
+            <Typography className="title" component="span">
+              {getTranslate('توضیحات:')}
+            </Typography>
+            <Editor
+              editorState={editorState}
+              wrapperClassName="textEditorWrapper"
+              toolbarClassName="textEditorToolbar"
+              editorClassName="textEditorContent"
+              onEditorStateChange={(newState) => setEditorState(newState)}
+              toolbar={editorToolbarOptions}
+              textAlignment="right"
+              placeholder={getTranslate(
+                'مثال: انجمن علمی بیوتکنولوژی دانشگاه خوارزمی اولین مسابقه ملی ایده های زیست فناورانه را برگزار کرد دانشجویان زیست فناوری در اولین مسابقه  ملی ایده های زیست فناورانه درخشیدند.',
+              )}
+            />
+          </div>
+          <Button
+            className="confirmButton"
+            variant="contained"
+            disableElevation
+          >
+            {getTranslate('تایید')}
+          </Button>
         </div>
       </KhuContainer>
     </div>

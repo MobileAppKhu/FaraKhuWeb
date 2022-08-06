@@ -12,6 +12,10 @@ body {
   min-height: 100vh;
 }
 
+input:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
 .MuiButton-contained:hover {
   background-color: #1660a5 !important;
 }

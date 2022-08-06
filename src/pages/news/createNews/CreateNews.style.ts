@@ -11,12 +11,29 @@ const useStyle = makeStyles((theme) => ({
       rowGap: 80,
       padding: '60px 10%',
       fontSize: 18,
+      transition: 'all 0.3s',
+
+      [theme.breakpoints.down(770)]: {
+        padding: '60px 3%',
+      },
+      [theme.breakpoints.down(450)]: {
+        rowGap: 50,
+        fontSize: 16,
+      },
 
       '& .inputContainer': {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
         columnGap: 30,
+        fontSize: '1em',
+        transition: 'all 0.3s',
+
+        [theme.breakpoints.down(450)]: {
+          flexDirection: 'column',
+          alignItems: 'stretch',
+          rowGap: 10,
+        },
 
         '& > .title': {
           color: theme.palette.primary.main,
@@ -27,11 +44,16 @@ const useStyle = makeStyles((theme) => ({
         '& .input': {
           flex: 1,
 
+          '& > *': {
+            fontSize: '0.88889em',
+          },
+
           '& fieldset': {
             borderRadius: 7,
           },
 
           '& input': {
+            fontSize: '1em',
             padding: '10px 15px',
           },
         },
@@ -49,6 +71,7 @@ const useStyle = makeStyles((theme) => ({
             cursor: 'pointer',
             position: 'relative',
             fontSize: '1em',
+            WebkitTapHighlightColor: 'transparent',
 
             '& input': {
               display: 'none',
@@ -60,6 +83,9 @@ const useStyle = makeStyles((theme) => ({
 
               [theme.breakpoints.down(1000)]: {
                 fontSize: '3em',
+              },
+              [theme.breakpoints.down(400)]: {
+                fontSize: '2em',
               },
             },
 
@@ -93,6 +119,45 @@ const useStyle = makeStyles((theme) => ({
               },
             },
           },
+        },
+
+        '&.description': {
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          rowGap: 10,
+
+          '& .textEditorWrapper': {
+            border: '1px solid #c4c4c4',
+            color: '#000',
+          },
+
+          '& .textEditorToolbar': {
+            borderBottom: '1px solid #c4c4c4',
+            direction: 'ltr',
+
+            '& .toolbar_blockType, .toolbar_fontFamily': {
+              fontFamily: 'Roboto',
+            },
+          },
+
+          '& .textEditorContent': {
+            padding: '0 10px',
+            minHeight: 200,
+            maxHeight: 550,
+          },
+        },
+      },
+
+      '& .confirmButton': {
+        width: 300,
+        fontSize: '1em',
+        fontWeight: 400,
+        borderRadius: 7,
+        alignSelf: 'center',
+        transition: 'width 0.3s',
+
+        [theme.breakpoints.down(450)]: {
+          width: '80%',
         },
       },
     },
