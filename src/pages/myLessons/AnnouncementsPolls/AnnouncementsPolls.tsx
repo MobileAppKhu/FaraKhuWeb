@@ -5,6 +5,7 @@ import AddIcon from '@mui/icons-material/Add'
 import KhuContainer from '../../../components/KhuContainer'
 import KhuSelect from '../../../components/KhuSelect'
 import AnnouncementItem from './components/AnnouncementItem'
+import ChooseModal from './components/ChooseModal'
 
 import { getTranslate } from '../../../localization'
 import useStyle from './AnnouncementsPolls.style'
@@ -96,6 +97,7 @@ const AnnouncementsPolls = () => {
 
   const [lesson, setLesson] = useState('')
   const [type, setType] = useState('announcement')
+  const [chooseModal, setChooseModal] = useState(false)
 
   // temp
   const lessons = [
@@ -199,11 +201,12 @@ const AnnouncementsPolls = () => {
               </div>
             )}
           </div>
-          {isProf && (
+          {isProf && !chooseModal && (
             <div className="addButton">
               <IconButton
                 size="large"
                 title={getTranslate('ایجاد اطلاعیه/نظرسنجی جدید')}
+                onClick={() => setChooseModal(true)}
               >
                 <AddIcon fontSize="large" />
               </IconButton>
@@ -211,6 +214,10 @@ const AnnouncementsPolls = () => {
           )}
         </div>
       </KhuContainer>
+      <ChooseModal
+        open={chooseModal}
+        handleClose={() => setChooseModal(false)}
+      />
     </div>
   )
 }
