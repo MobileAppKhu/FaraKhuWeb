@@ -88,13 +88,10 @@ const ads: BookAd[] = [
 ]
 
 const BookFinder = () => (
-  <>
-    <Header />
-    <Routes>
-      <Route index element={<BookAdsList ads={ads} />} />
-      <Route path=":id" element={<BookAdDetails ads={ads} />} />
-    </Routes>
-  </>
+  <Routes>
+    <Route index element={<BookAdsList ads={ads} />} />
+    <Route path=":id" element={<BookAdDetails ads={ads} />} />
+  </Routes>
 )
 
 export default BookFinder

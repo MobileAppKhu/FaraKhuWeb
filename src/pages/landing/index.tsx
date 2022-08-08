@@ -6,11 +6,9 @@ import LandingOtherSystems from './LandingOtherSystems'
 
 const Landing = () => (
   <>
-    <Header floatingSubMenu />
     <LandingApplication />
     <LandingFeatures />
     <LandingOtherSystems />
-    <Footer />
   </>
 )
 export default Landing
