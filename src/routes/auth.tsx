@@ -1,4 +1,3 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AboutUniversity from '../pages/aboutUniversity'
 
@@ -9,19 +8,21 @@ import EnterEmail from '../pages/forgetPassword/enterEmail'
 import Landing from '../pages/landing'
 import Login from '../pages/login'
 import Profile from '../pages/profile'
+import MyLesson from '../pages/myLesson'
 
 const AuthRouters = () => (
   <Routes>
     <Route index element={<Landing />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/profile" element={<Profile />} />
-    <Route path="/forgetPassword" element={<ForgetPassword />}>
+    <Route path='/myLesson' element={<MyLesson />} />
+    <Route path='/login' element={<Login />} />
+    <Route path='/profile' element={<Profile />} />
+    <Route path='/forgetPassword' element={<ForgetPassword />}>
       <Route index element={<EnterEmail />} />
-      <Route path="confirmCode" element={<ConfirmCode />} />
-      <Route path="changePassword" element={<ChangePassword />} />
+      <Route path='confirmCode' element={<ConfirmCode />} />
+      <Route path='changePassword' element={<ChangePassword />} />
     </Route>
-    <Route path="/aboutUniversity" element={<AboutUniversity />} />
-    <Route path="*" element={<div>404</div>} />
+    <Route path='/aboutUniversity' element={<AboutUniversity />} />
+    <Route path='*' element={<div>404</div>} />
   </Routes>
 )
 export default AuthRouters
