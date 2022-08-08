@@ -9,6 +9,7 @@ export default async function request(
   body?: any,
 ) {
   let status: number
+  let header:Headers
   const reposnse = await fetch(BASE_URL + endpoint, {
     method,
     // mode: 'no-cors',
@@ -21,13 +22,14 @@ export default async function request(
   })
     .then((response) => {
       status = response.status
+      header = response.headers
       return response.json()
     })
     .then((responseJSON) => {
-      if (status >= 200 && status < 300) return { responseJSON, status }
+      if (status >= 200 && status < 300) return { responseJSON, status, header }
 
       toast.error(responseJSON.message)
-      return { responseJSON, status }
+      return { responseJSON, status, header }
     })
     .catch((res) => {
       toast.error('Please log in')

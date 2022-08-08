@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import Header from '../../components/header'
-import BookAdDetails from './bookAdDetails'
+import BookAdDetails from './BookAdDetails'
 import BookAdsList from './bookAdsList'
 
 export interface BookAd {

@@ -9,7 +9,6 @@ import {
   Typography,
 } from '@mui/material'
 
-import { FormatColorResetOutlined } from '@mui/icons-material'
 import useStyles from './styles/index.style'
 import KHULogo from '../../assets/images/KHU_logo.png'
 import footerImg from '../../assets/images/footer.svg'
@@ -25,7 +24,8 @@ const Login = () => {
   const [password, setpassword] = useState<string>('')
   const [email, setemail] = useState<string>('')
   const loginHandler = async () => {
-    await request('Account/SignIn', 'POST', { logon: email, password })
+  const login = await request('Account/SignIn', 'POST', { logon: email, password })
+    // document.cookie = login.
   }
   return (
     <div className={classes.outerContainer}>
