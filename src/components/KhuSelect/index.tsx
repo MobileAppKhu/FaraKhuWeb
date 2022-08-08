@@ -9,6 +9,8 @@ import useStyles from './index.style'
 interface KhuSelectProps extends KhuTextFieldProps {
   selectOptions: { label: string; value: string }[]
   optionClassName?: string
+  textAlign?: 'start' | 'end'
+  maxHeight?: number | string
 }
 
 const KhuSelect = ({
@@ -17,6 +19,8 @@ const KhuSelect = ({
   selectOptions,
   handleChange,
   optionClassName,
+  textAlign,
+  maxHeight,
   ...others
 }: KhuSelectProps) => {
   const [open, setOpen] = useState(false)
@@ -57,6 +61,7 @@ const KhuSelect = ({
           adornmentIconButton={
             <IconButton
               className={`${classes.arrowDropDownIcon}${open ? ' open' : ''}`}
+              disableRipple
             >
               <ArrowDropDownIcon fontSize="small" />
             </IconButton>
@@ -64,12 +69,17 @@ const KhuSelect = ({
           {...others}
         />
       </div>
-      <div className={`${classes.optionsContainer}${open ? ' open' : ''}`}>
+      <div
+        className={`${classes.optionsContainer}${open ? ' open' : ''}`}
+        style={{ maxHeight }}
+      >
         <ul>
           {selectOptions.map((option) => (
             <li key={option.label}>
               <Button
-                className={optionClassName}
+                className={`${optionClassName}${
+                  textAlign ? ` ${textAlign}` : ''
+                }`}
                 onClick={() => {
                   handleChange(option.value)
                   setOpen(false)
