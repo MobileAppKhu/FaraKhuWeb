@@ -1,0 +1,55 @@
+export const editorToolbarOptions = {
+  options: [
+    'fontFamily',
+    'blockType',
+    'fontSize',
+    'inline',
+    'colorPicker',
+    'list',
+    'textAlign',
+    'link',
+    'image',
+  ],
+  inline: {
+    inDropdown: false,
+    className: undefined,
+    component: undefined,
+    dropdownClassName: undefined,
+    options: [
+      'bold',
+      'italic',
+      'underline',
+      'strikethrough',
+      'superscript',
+      'subscript',
+    ],
+  },
+  fontFamily: {
+    options: [
+      'Roboto',
+      'Shabnam',
+      'Arial',
+      'Georgia',
+      'Impact',
+      'Tahoma',
+      'Times New Roman',
+      'Verdana',
+    ],
+    className: 'toolbar_fontFamily',
+  },
+  blockType: {
+    inDropdown: true,
+    className: 'toolbar_blockType',
+  },
+  image: {
+    urlEnabled: true,
+    uploadEnabled: true,
+    alignmentEnabled: true,
+    inputAccept: 'image/gif,image/jpeg,image/jpg,image/png,image/svg',
+    alt: { present: false, mandatory: false },
+    defaultSize: {
+      height: 'auto',
+      width: '100%',
+    },
+  },
+}

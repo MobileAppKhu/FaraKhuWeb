@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import DataLesson from './component'
-import img1 from '../../../../src/assets/images/user_avatar.jpg'
+// import img1 from '../../../../src/assets/images/user_avatar.jpg'
+// import img2 from '../../assets/images/khu_env_min.jpg'
+import img1 from '../../assets/images/user_avatar.jpg'
 import img2 from '../../assets/images/khu_env_min.jpg'
+
 import useStyles from './styles/index.style'
 
-export default function myLesson() {
+const MyLesson = () => {
   const classes = useStyles()
   const [lesson, setlesson] = useState([])
   return (
@@ -19,6 +22,9 @@ export default function myLesson() {
             lessonImage={item.lessonImage}
           />
         ))}
+      </div>
+      <div>
+        asdasdasdasdadasd
       </div>
     </div>
   )
@@ -47,3 +53,4 @@ const data = [
     teacherImage: img2,
   },
 ]
+export default MyLesson

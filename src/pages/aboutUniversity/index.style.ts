@@ -40,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
           '& .year > img': {
             width: 350,
             transition: 'all 0.3s',
+            userSelect: 'none',
+            pointerEvents: 'none',
 
             [theme.breakpoints.down(1110)]: {
               width: '250px !important',

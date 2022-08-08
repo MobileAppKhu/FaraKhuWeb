@@ -1,15 +1,16 @@
-import React from 'react'
+import Footer from '../../components/Footer'
 import Header from '../../components/header'
-import useStyles from './styles/index.style'
+import LandingApplication from './LandingApplication'
+import LandingFeatures from './LandingFeatures'
+import LandingOtherSystems from './LandingOtherSystems'
 
-const Landing = () => {
-  const classes = useStyles()
-
-  return (
-    <div className={classes.root}>
-      <Header />
-      Landing1234567890
-    </div>
-  )
-}
+const Landing = () => (
+  <>
+    <Header floatingSubMenu />
+    <LandingApplication />
+    <LandingFeatures />
+    <LandingOtherSystems />
+    <Footer />
+  </>
+)
 export default Landing

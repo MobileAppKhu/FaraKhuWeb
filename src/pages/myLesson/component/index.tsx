@@ -15,10 +15,13 @@ const DataLesson: React.FC<DataLessonProps> = ({ title, teacherName, lessonImage
   const classes = useStyles()
   const rootClasses = makeStyles(() => ({
     root: {
-      backgroundImage: 'url(' + 'https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350' + ')',
+      // backgroundImage: `url('${lessonImage}')`,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
+      width: 320,
+      height: 320,
+      borderRadius: 15,
     },
   }))()
   return (
@@ -36,6 +39,7 @@ const DataLesson: React.FC<DataLessonProps> = ({ title, teacherName, lessonImage
       <div className={classes.lessonImage}>
         <img
           src={img1}
+          alt="lesson"
         />
       </div>
 

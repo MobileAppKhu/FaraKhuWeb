@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
   },
   formControl: {
-    marginTop: '20px',
+    marginTop: 20,
     width: '100%',
   },
   inputLable: {
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.onContainer,
   },
   textField: {
-    width: '100%',
+    // width: '100%',
     backgroundColor: '#dfe2eb',
     borderRadius: '5px',
   },
@@ -47,15 +47,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    fontSize: '12px',
+    fontSize: 12,
     fontWeight: 'normal',
-    marginTop: '5px',
+    marginTop: 5,
     '& .right': {
       '& span': {
         color: '#73777f',
       },
       '& a': {
-        marginRight: '5px',
+        marginRight: 5,
         color: theme.palette.primary.main,
         textDecoration: 'none',
         borderBottom: `1px solid ${theme.palette.primary.main}`,
@@ -73,22 +73,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   submitBtn: {
-    width: '100%',
-    height: '40px',
+    height: 40,
     marginTop: '30px !important',
     borderRadius: '10px',
     '&:hover': {
       backgroundColor: '#1660a5 !important',
     },
+    // width: '100%',
   },
   supportLink: {
     display: 'inline-block',
-    marginTop: '10px',
-    fontSize: '12px',
+    marginTop: 10,
+    fontSize: 12,
     fontWeight: 'normal',
-    color: theme.palette.primary.onContainer,
+    color: theme.palette.primary.contrastText,
     textDecoration: 'none',
-    borderBottom: `1px solid ${theme.palette.primary.onContainer}`,
+    borderBottom: `1px solid ${theme.palette.primary.contrastText}`,
   },
   footer: {
     width: '100%',
