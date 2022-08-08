@@ -1,0 +1,23 @@
+.outer-container{
+  width: 100%;
+}
+.table-container{
+  width: 80%;
+  margin: 10px auto 0 auto;
+  border: solid 0.6px #6c5677;
+  
+}
+h2{
+  font-family: Shabnam;
+  font-size: 24.1px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #1b1b1d;
+}
+*{
+  color: #1b1b1d;
+}
