@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHref, useNavigate } from 'react-router-dom'
 import {
   Button,
   Checkbox,
@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import useStyles from './styles/index.style'
 import KHULogo from '../../assets/images/KHU_logo.png'
 import footerImg from '../../assets/images/footer.svg'
@@ -24,15 +25,13 @@ const Login = () => {
   }, [])
   const [password, setpassword] = useState<string>('')
   const [email, setemail] = useState<string>('')
+  const navigate = useNavigate()
   const loginHandler = async () => {
   const login = await request('Account/SignIn', 'POST', { logon: email, password })
-    // document.cookie = login.
     if (login.status === 200) {
-      window.location.reload()
-      window.location.href = '/'
-      // dispatch(saveUser(login.responseJSON.profileDto))
+      navigate('/')
       localStorage.setItem('token', JSON.stringify(login.responseJSON.profileDto))
-      console.log(login.responseJSON.profileDto)
+      toast.success('ورود با موفقیت انجام شد')
     }
   }
   return (
