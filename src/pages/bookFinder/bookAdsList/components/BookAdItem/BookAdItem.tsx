@@ -26,7 +26,7 @@ const BookAdItem: React.FC<BookAdItemProps> = ({
   return (
     <div
       className={classes.container}
-      onClick={() => navigate(`/bookFinder/${id}`)}
+      onClick={() => navigate(`${id}`)}
       tabIndex={0}
       role="button"
     >

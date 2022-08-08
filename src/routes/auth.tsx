@@ -10,6 +10,7 @@ import Login from '../pages/login'
 import Profile from '../pages/profile'
 import AboutUniversity from '../pages/aboutUniversity'
 import BookFinder from '../pages/bookFinder'
+import News from '../pages/news'
 
 const AuthRouters = () => (
   <Routes>
@@ -23,6 +24,7 @@ const AuthRouters = () => (
     </Route>
     <Route path="/aboutUniversity" element={<AboutUniversity />} />
     <Route path="/bookFinder/*" element={<BookFinder />} />
+    <Route path="/news/*" element={<News />} />
     <Route path="*" element={<div>404</div>} />
   </Routes>
 )
