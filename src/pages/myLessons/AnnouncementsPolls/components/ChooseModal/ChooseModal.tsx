@@ -10,16 +10,27 @@ import { getTranslate } from '../../../../../localization'
 interface ChooseModalProps {
   open: boolean
   handleClose: () => void
+  openCreateAnnouncementModal: () => void
 }
 
-const ChooseModal: React.FC<ChooseModalProps> = ({ open, handleClose }) => {
+const ChooseModal: React.FC<ChooseModalProps> = ({
+  open,
+  handleClose,
+  openCreateAnnouncementModal,
+}) => {
   const classes = useStyle()
 
   return (
     <Modal open={open} onClose={handleClose}>
       <Fade in={open}>
         <Box className={classes.chooseModalContainer}>
-          <Button className="item">
+          <Button
+            className="item"
+            onClick={() => {
+              handleClose()
+              openCreateAnnouncementModal()
+            }}
+          >
             <Icon className="svgContainer">
               <img src={announcementSvg} alt="" className="svg" />
             </Icon>
@@ -27,7 +38,9 @@ const ChooseModal: React.FC<ChooseModalProps> = ({ open, handleClose }) => {
               {getTranslate('ایجاد اطلاعیه')}
             </Typography>
           </Button>
+
           <div className="divider" />
+
           <Button className="item">
             <Icon className="svgContainer">
               <img src={pollSvg} alt="" className="svg" />
