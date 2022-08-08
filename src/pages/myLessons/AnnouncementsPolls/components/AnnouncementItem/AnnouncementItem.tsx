@@ -39,9 +39,9 @@ const AnnouncementItem: React.FC<AnnouncementItemProps> = ({
                 ? getTranslate('نظرسنجی:')
                 : getTranslate('اطلاعیه:')}
             </Typography>
-            <div className="title">
-              <Typography component="span">{title}</Typography>
-            </div>
+            <Typography className="title" title={title} component="span">
+              {title}
+            </Typography>
           </div>
           <div className="dateDetails">
             <Typography className="date">{`${date}،`}</Typography>
@@ -63,8 +63,7 @@ const AnnouncementItem: React.FC<AnnouncementItemProps> = ({
         </div>
       </div>
       <Typography className={`desc${showDesc ? ' open' : ''}`} component="p">
-        {getTranslate('توضیحات:')}
-        <br />
+        <span>{getTranslate('توضیحات:')}</span>
         {desc}
       </Typography>
     </div>

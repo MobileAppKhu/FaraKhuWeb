@@ -11,15 +11,24 @@ const useStyle = makeStyles((theme) => ({
       rowGap: 20,
       margin: '80px 20%',
       padding: 20,
+      position: 'relative',
       borderRadius: 5,
       boxShadow: '0 1px 3px 1px rgba(0, 0, 0, 0.15)',
       fontSize: 18,
+      transition: 'all 0.3s',
 
+      [theme.breakpoints.down(1250)]: {
+        margin: '80px 10%',
+      },
       [theme.breakpoints.down(800)]: {
         margin: '80px 5%',
       },
+      [theme.breakpoints.down(700)]: {
+        margin: '80px 0%',
+      },
       [theme.breakpoints.down(450)]: {
-        margin: '80px 0',
+        padding: '20px 15px',
+        fontSize: 16,
       },
 
       '& > .tabs': {
@@ -29,10 +38,19 @@ const useStyle = makeStyles((theme) => ({
         columnGap: '5%',
         padding: '0 5%',
 
+        [theme.breakpoints.down(450)]: {
+          padding: 0,
+        },
+
         '& .tabTitle': {
           flex: 1,
           fontSize: '1.5em',
           borderRadius: 10,
+          transition: 'all 0.3s',
+
+          [theme.breakpoints.down(450)]: {
+            fontSize: '1.2em',
+          },
 
           '&.active': {
             fontWeight: 400,
@@ -48,14 +66,57 @@ const useStyle = makeStyles((theme) => ({
       },
 
       '& > .items': {
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gridTemplateRows: 180,
-        gridAutoRows: 180,
-        gap: '15px 20px',
+        display: 'flex',
+        columnGap: 20,
 
-        '& .coloredItem': {
-          background: theme.palette.surface.variant,
+        '& .left, .right, .center': {
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          rowGap: 15,
+        },
+      },
+    },
+
+    '& .addButton': {
+      width: 80,
+      aspectRatio: 1,
+      position: 'fixed',
+      left: '15%',
+      bottom: 30,
+      borderRadius: '100%',
+      background: theme.palette.primary.main,
+      boxShadow: '0px 1px 3px 2px rgba(0, 0, 0, 0.35)',
+      transition: 'all 0.3s',
+
+      [theme.breakpoints.down(1250)]: {
+        left: '3%',
+      },
+
+      [theme.breakpoints.down(960)]: {
+        width: 70,
+        left: 15,
+        top: 5,
+        position: 'absolute',
+        transform: 'translate(-50%, -50%)',
+      },
+
+      [theme.breakpoints.down(580)]: {
+        width: 50,
+        left: '50%',
+        top: -5,
+      },
+
+      '& button': {
+        width: '100%',
+        height: '100%',
+        color: '#fff',
+
+        '& svg': {
+          fontSize: '1.5em',
+          [theme.breakpoints.down(580)]: {
+            fontSize: '1.2em',
+          },
         },
       },
     },
