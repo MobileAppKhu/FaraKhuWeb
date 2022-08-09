@@ -10,6 +10,7 @@ export default function authReducer(state:any = INIT_STATE, action: any) {
       return {
         ...state,
         role: action.payload.roles[0],
+        userId: action.payload.userId,
       }
     case 'LOG_OUT':
       return {
