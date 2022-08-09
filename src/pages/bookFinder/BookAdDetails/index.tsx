@@ -20,7 +20,7 @@ const BookAdDetails: React.FC<BookAdDetailsProps> = ({ ads }) => {
 
   const render = () => {
     if (!selectedBookAd) return <div>404</div>
-    const { title, price, imgUrl, desc, type } = selectedBookAd
+    const { title, price, imgUrl, description, offerType } = selectedBookAd
 
     return (
       <div className={classes.background}>
@@ -32,7 +32,7 @@ const BookAdDetails: React.FC<BookAdDetailsProps> = ({ ads }) => {
                   {title}
                 </Typography>
                 <div className="type">
-                  <span>{getTranslate(type)}</span>
+                  <span>{getTranslate(offerType === 1 ? 'خرید' : 'فروش')}</span>
                 </div>
                 <div className="contactInfo">
                   <Button variant="contained">
@@ -66,9 +66,9 @@ const BookAdDetails: React.FC<BookAdDetailsProps> = ({ ads }) => {
                 <Typography component="span" className="sectionTitle">
                   {getTranslate('توضیحات')}
                 </Typography>
-                {desc && (
+                {description && (
                   <Typography component="p" className="desc">
-                    {desc}
+                    {description}
                   </Typography>
                 )}
               </div>
