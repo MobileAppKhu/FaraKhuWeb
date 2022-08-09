@@ -6,6 +6,7 @@ import MuiModal from '@mui/material/Modal'
 import useStyles from './styles/index.style'
 import confirmLogo from '../../assets/images/modal_logo1.png'
 import errorLogo from '../../assets/images/modal_logo2.png'
+import { getTranslate } from '../../localization'
 
 interface ModalProps {
   title: string
@@ -51,7 +52,7 @@ const KhuModal: React.VFC<ModalProps> = ({
               color="black"
               className="modalTitle"
             >
-              {title}
+              {getTranslate(title)}
             </Typography>
             <div className="modalButtons">
               {buttons.map((b) => (
@@ -70,7 +71,7 @@ const KhuModal: React.VFC<ModalProps> = ({
                   }}
                   onClick={b.onClick}
                 >
-                  {b.buttonText}
+                  {getTranslate(b.buttonText)}
                 </Button>
               ))}
             </div>

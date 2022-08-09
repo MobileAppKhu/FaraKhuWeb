@@ -1,4 +1,3 @@
-import React from 'react'
 import { Outlet, Route, Routes } from 'react-router-dom'
 
 import ForgetPassword from '../pages/forgetPassword'
@@ -11,37 +10,50 @@ import Profile from '../pages/profile'
 import AboutUniversity from '../pages/aboutUniversity'
 import BookFinder from '../pages/bookFinder'
 import News from '../pages/news'
-import Header from '../components/header'
-import Footer from '../components/Footer'
+import MyLessons from '../pages/myLessons'
 import AnnoucementPage from '../pages/annoucement'
+
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
+interface LayoutProps {
+  header?: boolean
+  footer?: boolean
+}
+
+const Layout = ({ header, footer }: LayoutProps) => (
+  <>
+    {header && <Header />}
+    <Outlet />
+    {footer && <Footer />}
+  </>
+)
 
 const AuthRouters = () => (
   <Routes>
-    <Route
-      path="/"
-      element={
-        <>
-          <Header />
-          <Outlet />
-          <Footer />
-        </>}
-    >
-      <Route index element={<Landing />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/declarations" element={<AnnoucementPage />} />
-      <Route path="/bookFinder/*" element={<BookFinder />} />
+    <Route element={<Layout header footer />}>
+      <Route path="/" element={<Landing />} />
+      <Route path="/aboutUniversity" element={<AboutUniversity />} />
+    </Route>
 
+    <Route element={<Layout />}>
+      <Route path="/login" element={<Login />} />
       <Route path="/forgetPassword" element={<ForgetPassword />}>
         <Route index element={<EnterEmail />} />
         <Route path="confirmCode" element={<ConfirmCode />} />
         <Route path="changePassword" element={<ChangePassword />} />
       </Route>
-      <Route path="/aboutUniversity" element={<AboutUniversity />} />
-      <Route path="/news/*" element={<News />} />
-      <Route path="*" element={<div>404</div>} />
     </Route>
 
+    <Route element={<Layout header />}>
+      <Route path="/news/*" element={<News />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/myLessons/*" element={<MyLessons />} />
+      <Route path="/bookFinder/*" element={<BookFinder />} />
+      <Route path="/declarations" element={<AnnoucementPage />} />
+    </Route>
+
+    <Route path="*" element={<div>404</div>} />
   </Routes>
 )
 export default AuthRouters
