@@ -3,7 +3,7 @@ import { Button, Divider, IconButton, useMediaQuery } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 
 import KhuContainer from '../../../components/KhuContainer'
-import KhuSelect from '../../../components/KhuSelect'
+import KhuSelect, { KhuSelectProps } from '../../../components/KhuSelect'
 import AnnouncementItem from './components/AnnouncementItem'
 import ChooseModal from './components/ChooseModal'
 import CreateModal from './components/CreateModal'
@@ -96,22 +96,22 @@ const AnnouncementsPolls = () => {
   const classes = useStyle()
   const matches640 = useMediaQuery('(max-width:640px)')
 
-  const [lesson, setLesson] = useState('')
+  const [lesson, setLesson] = useState<string | number>('')
   const [type, setType] = useState('announcement')
   const [chooseModal, setChooseModal] = useState(false)
   const [createAnnouncementModal, setCreateAnnouncementModal] = useState(false)
   const [createPollModal, setCreatePollModal] = useState(false)
 
   // temp
-  const lessons = [
-    { label: 'سیستم عامل', value: 'سیستم عامل' },
-    { label: 'سیگنال و سیستم', value: 'سیگنال و سیستم' },
-    { label: 'ساختمان داده', value: 'ساختمان داده' },
+  const lessons: KhuSelectProps['selectOptions'] = [
+    { label: 'سیستم عامل', value: 1 },
+    { label: 'سیگنال و سیستم', value: 2 },
+    { label: 'ساختمان داده', value: 3 },
     {
       label: 'هوش مصنوعی و سیستم های خبره',
-      value: 'هوش مصنوعی و سیستم های خبره',
+      value: 4,
     },
-    { label: 'تعامل انسان و کامپیوتر', value: 'تعامل انسان و کامپیوتر' },
+    { label: 'تعامل انسان و کامپیوتر', value: 5 },
   ]
   const isProf = true
 
