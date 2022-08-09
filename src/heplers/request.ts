@@ -27,7 +27,9 @@ export default async function request(
     })
     .then((responseJSON) => {
       if (status >= 200 && status < 300) return { responseJSON, status, header }
-      toast.error(responseJSON.message)
+      responseJSON.errors.forEach((element:any) => {
+        toast.error(element.message)
+      })
       return { responseJSON, status, header }
     })
     .catch((res) => {
