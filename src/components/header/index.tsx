@@ -31,9 +31,9 @@ const Header = () => {
   const userData = useSelector((state: any) => state.authReducer)
   const navigate = useNavigate()
   useEffect(() => {
-      setShowSubMenu(!!localStorage.getItem('token'))
-      setfloatingSubMenu(!localStorage.getItem('token'))
-  }, [])
+      setShowSubMenu(!!userData.role)
+      setfloatingSubMenu(!userData.role)
+  }, [userData])
 
   const switchContainerContent = (
     <>
