@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Button,
   Grid,
   InputAdornment,
+  Menu,
+  MenuItem,
   OutlinedInput,
   Typography,
 } from '@mui/material'
@@ -17,23 +19,54 @@ import CreateAdModal from './components/CreateAdModal'
 import { BookAd } from '../BookFinder'
 import { getTranslate } from '../../../localization'
 import useStyle from './index.style'
+import request from '../../../heplers/request'
 
-interface BookAdsListProps {
-  ads: BookAd[]
+export type OfferType = {
+      offerId: string,
+      userId: string,
+      userFullName: string,
+      title:string,
+      description: string,
+      offerType: 1|2|3,
+      price: number|'توافقی',
+      avatarId: string,
+      createdDate: string
+
 }
-
-const BookAdsList: React.FC<BookAdsListProps> = ({ ads }) => {
+const BookAdsList = () => {
   const classes = useStyle()
   const [openFilterMenu, setOpenFilterMenu] = useState(false)
   const [filter, setFilter] = useState(getTranslate('فیلتر'))
   const [searchTerm, setSearchTerm] = useState('')
   const [openCreateAdModal, setOpenCreateAdModal] = useState(false)
+  const [ads, setads] = useState<OfferType[]>([])
+   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
   const handleFilter = (filterOption: string) => {
     setOpenFilterMenu(false)
     setFilter(getTranslate(filterOption))
   }
+  const getData = async () => {
+    const response = await request('Offer/SearchOffers', 'POST', {
+        start: 0,
+        step: 10,
+        offerColumn: 1,
+        orderDirection: true,
+    })
+    console.log(response.responseJSON.offer)
 
+    if (response.status === 200) { setads(response.responseJSON.offer) }
+  }
+  useEffect(() => {
+    getData()
+  }, [])
   return (
     <div className={classes.container}>
       <KhuContainer>
@@ -41,7 +74,7 @@ const BookAdsList: React.FC<BookAdsListProps> = ({ ads }) => {
         <div className="header">
           <div className="search">
             <div className="filterSwitchContainer">
-              <div
+              {/* <div
                 className="filterSwitchBtn"
                 role="button"
                 tabIndex={0}
@@ -61,8 +94,8 @@ const BookAdsList: React.FC<BookAdsListProps> = ({ ads }) => {
                   )}
                 </div>
               </div>
-              <div className={`filterMenu${openFilterMenu ? ' open' : ''}`}>
-                <Button onClick={() => handleFilter('فیلتر')}>
+              <div className={`filterMenu${openFilterMenu ? ' open' : ''}`}> */}
+              {/* <Button onClick={() => handleFilter('فیلتر')}>
                   {getTranslate('همه موارد')}
                 </Button>
                 <Button onClick={() => handleFilter('خرید')}>
@@ -70,8 +103,58 @@ const BookAdsList: React.FC<BookAdsListProps> = ({ ads }) => {
                 </Button>
                 <Button onClick={() => handleFilter('فروش')}>
                   {getTranslate('فروش')}
-                </Button>
-              </div>
+                </Button> */}
+              <Button
+                id="demo-positioned-button"
+                onClick={handleClick}
+                color="secondary"
+                className="filterSwitchBtn"
+              >
+                <div className="filterIcon">
+                  <FilterListIcon />
+                </div>
+                <div className="currentFilter">
+                  <Typography component="span">{filter}</Typography>
+                </div>
+                <div className="menuArrow">
+                  {!openFilterMenu ? (
+                    <ArrowDropDownIcon />
+                  ) : (
+                    <ArrowDropUpIcon />
+                  )}
+                </div>
+              </Button>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                  }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                  }}
+              >
+                <MenuItem onClick={handleClose}>
+                  <Button onClick={() => handleFilter('فیلتر')}>
+                    {getTranslate('همه موارد')}
+                  </Button>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Button onClick={() => handleFilter('خرید')}>
+                    {getTranslate('خرید')}
+                  </Button>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Button onClick={() => handleFilter('فروش')}>
+                    {getTranslate('فروش')}
+                  </Button>
+                </MenuItem>
+              </Menu>
+
+              {/* </div> */}
             </div>
             <div className="searchBox">
               <OutlinedInput
@@ -115,7 +198,7 @@ const BookAdsList: React.FC<BookAdsListProps> = ({ ads }) => {
                 md={4}
                 xl={3}
                 className="gridItem"
-                key={ad.id}
+                key={ad.offerId}
               >
                 <BookAdItem {...ad} />
               </Grid>

@@ -89,7 +89,7 @@ const ads: BookAd[] = [
 
 const BookFinder = () => (
   <Routes>
-    <Route index element={<BookAdsList ads={ads} />} />
+    <Route index element={<BookAdsList />} />
     <Route path=":id" element={<BookAdDetails ads={ads} />} />
   </Routes>
 )
