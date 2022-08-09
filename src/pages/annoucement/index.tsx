@@ -21,6 +21,7 @@ const AnnoucementPage = () => {
           page={pagination}
           onChange={(event, page) => setpagination(page)}
           size="large"
+          dir="ltr"
         />
       </div>
     </div>)

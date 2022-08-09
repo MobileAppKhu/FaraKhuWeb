@@ -44,7 +44,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
     description: '',
   })
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
-
+  const [loading, setloading] = useState(false)
   const handleChange = (field: keyof typeof data) => (value: string|number) => {
     if (field === 'price') {
       setData({ ...data, [field]: value.toString().replace(/\D+/g, '') })
@@ -53,6 +53,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
     setData({ ...data, [field]: value })
   }
   const addOffer = async () => {
+    setloading(true)
     const requestData = { title: data.title,
       avatarId: 'smiley.png',
     price: data.price,
@@ -62,6 +63,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
     if (response.status === 200) {
       toast.success('آگهی شما با موفقیت ارسال شد')
     }
+    setloading(false)
   }
 
   return (
@@ -148,7 +150,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
                 />
               </div>
               <div className="confirmBtn">
-                <Button variant="contained" size="large" onClick={addOffer}>
+                <Button variant="contained" size="large" onClick={addOffer} disabled={loading}>
                   {getTranslate('تایید')}
                 </Button>
               </div>

@@ -12,7 +12,7 @@ import useStyles from './index.style'
 export interface KhuTextFieldProps {
   label: string
   placeholder?: string
-  value: string|number
+  value: string|number|undefined
   handleChange: (newValue: string|number) => void
   type?: 'email' | 'number' | 'password' | 'text' | 'url'
   multiline?: boolean
