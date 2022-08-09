@@ -80,15 +80,12 @@ const news: NewsProps[] = [
 ]
 
 const News = () => (
-  <>
-    <Header />
-    <Routes>
-      <Route index element={<NewsList newsList={news} />} />
-      <Route path=":id" element={<NewsDetails newsList={news} />} />
-      <Route path="/create" element={<CreateNews />} />
-      <Route path="/edit/:id" element={<EditNews newsList={news} />} />
-    </Routes>
-  </>
+  <Routes>
+    <Route index element={<NewsList newsList={news} />} />
+    <Route path=":id" element={<NewsDetails newsList={news} />} />
+    <Route path="/create" element={<CreateNews />} />
+    <Route path="/edit/:id" element={<EditNews newsList={news} />} />
+  </Routes>
 )
 
 export default News

@@ -36,7 +36,6 @@ const Profile = () => {
 
   return (
     <div className={classes.outerContainer}>
-      <Header />
       <Container maxWidth="xl" sx={{ p: 0 }}>
         <div className={classes.innerContainer}>
           <div className={classes.infoCardContainer}>
