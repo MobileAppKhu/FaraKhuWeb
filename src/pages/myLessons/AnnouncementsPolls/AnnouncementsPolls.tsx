@@ -6,7 +6,7 @@ import KhuContainer from '../../../components/KhuContainer'
 import KhuSelect from '../../../components/KhuSelect'
 import AnnouncementItem from './components/AnnouncementItem'
 import ChooseModal from './components/ChooseModal'
-import CreateAnnouncementModal from './components/CreateAnnouncementModal'
+import CreateModal from './components/CreateModal'
 
 import { getTranslate } from '../../../localization'
 import useStyle from './AnnouncementsPolls.style'
@@ -100,6 +100,7 @@ const AnnouncementsPolls = () => {
   const [type, setType] = useState('announcement')
   const [chooseModal, setChooseModal] = useState(false)
   const [createAnnouncementModal, setCreateAnnouncementModal] = useState(false)
+  const [createPollModal, setCreatePollModal] = useState(false)
 
   // temp
   const lessons = [
@@ -219,11 +220,23 @@ const AnnouncementsPolls = () => {
       <ChooseModal
         open={chooseModal}
         handleClose={() => setChooseModal(false)}
-        openCreateAnnouncementModal={() => setCreateAnnouncementModal(true)}
+        openCreateModal={(variant: 'poll' | 'announcement') => {
+          if (variant === 'announcement') {
+            setCreateAnnouncementModal(true)
+          } else {
+            setCreatePollModal(true)
+          }
+        }}
       />
-      <CreateAnnouncementModal
+      <CreateModal
         open={createAnnouncementModal}
+        variant="announcement"
         handleClose={() => setCreateAnnouncementModal(false)}
+      />
+      <CreateModal
+        open={createPollModal}
+        variant="poll"
+        handleClose={() => setCreatePollModal(false)}
       />
     </div>
   )

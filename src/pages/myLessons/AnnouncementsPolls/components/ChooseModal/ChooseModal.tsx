@@ -10,13 +10,13 @@ import { getTranslate } from '../../../../../localization'
 interface ChooseModalProps {
   open: boolean
   handleClose: () => void
-  openCreateAnnouncementModal: () => void
+  openCreateModal: (variant: 'poll' | 'announcement') => void
 }
 
 const ChooseModal: React.FC<ChooseModalProps> = ({
   open,
   handleClose,
-  openCreateAnnouncementModal,
+  openCreateModal,
 }) => {
   const classes = useStyle()
 
@@ -28,7 +28,7 @@ const ChooseModal: React.FC<ChooseModalProps> = ({
             className="item"
             onClick={() => {
               handleClose()
-              openCreateAnnouncementModal()
+              openCreateModal('announcement')
             }}
           >
             <Icon className="svgContainer">
@@ -41,7 +41,13 @@ const ChooseModal: React.FC<ChooseModalProps> = ({
 
           <div className="divider" />
 
-          <Button className="item">
+          <Button
+            className="item"
+            onClick={() => {
+              handleClose()
+              openCreateModal('poll')
+            }}
+          >
             <Icon className="svgContainer">
               <img src={pollSvg} alt="" className="svg" />
             </Icon>

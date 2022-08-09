@@ -89,8 +89,31 @@ const useStyle = makeStyles((theme) => ({
           },
         },
 
+        '& .deleteOptionBtn': {
+          fontSize: '1em',
+          color: theme.palette.error.main,
+          padding: 2,
+
+          '& *': {
+            fontSize: '1.2em',
+          },
+        },
+
         '&.textarea': {
           width: '100%',
+        },
+      },
+
+      '& .addPollItemBtn': {
+        width: '100%',
+        margin: '-20px 0 100px 0',
+
+        '& > button': {
+          display: 'flex',
+          alignItems: 'center',
+          columnGap: 5,
+          fontSize: '1em',
+          fontWeight: 300,
         },
       },
 
@@ -105,7 +128,6 @@ const useStyle = makeStyles((theme) => ({
           fontWeight: 300,
           borderRadius: 7,
           padding: '5px 20px',
-          boxShadow: 'none',
           transition: 'all 0.3s',
 
           [theme.breakpoints.down(1000)]: {
