@@ -42,7 +42,7 @@ const BookAdItem: React.FC<OfferType> = ({
         </div>
       </div>
       <div className={`img${!avatarId ? ' noImg' : ''}`}>
-        {avatarId && <img src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${avatarId}`} alt="" />}
+        {avatarId && <img src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${avatarId}`} alt="book" />}
         {!avatarId && <NoPhotographyOutlinedIcon fontSize="large" />}
       </div>
     </div>
