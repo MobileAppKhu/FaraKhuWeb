@@ -4,21 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import NoPhotographyOutlinedIcon from '@mui/icons-material/NoPhotographyOutlined'
 
 import useStyle from './BookAdItem.style'
-import { BookAd } from '../../../BookFinder'
 import { getTranslate } from '../../../../../localization'
+import { OfferType } from '../../BookAdsList'
 
-interface BookAdItemProps extends Partial<BookAd> {
-  id: number
-  title: string
-  price: number | 'توافقی'
-  imgUrl?: string
-}
-
-const BookAdItem: React.FC<BookAdItemProps> = ({
-  imgUrl,
+const BookAdItem: React.FC<OfferType> = ({
+  avatarId,
   title,
   price,
-  id,
+  offerId,
 }) => {
   const classes = useStyle()
   const navigate = useNavigate()
@@ -26,7 +19,7 @@ const BookAdItem: React.FC<BookAdItemProps> = ({
   return (
     <div
       className={classes.container}
-      onClick={() => navigate(`${id}`)}
+      onClick={() => navigate(`${offerId}`)}
       tabIndex={0}
       role="button"
     >
@@ -48,9 +41,9 @@ const BookAdItem: React.FC<BookAdItemProps> = ({
           )}
         </div>
       </div>
-      <div className={`img${!imgUrl ? ' noImg' : ''}`}>
-        {imgUrl && <img src={imgUrl} alt="" />}
-        {!imgUrl && <NoPhotographyOutlinedIcon fontSize="large" />}
+      <div className={`img${!avatarId ? ' noImg' : ''}`}>
+        {avatarId && <img src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${avatarId}`} alt="book" />}
+        {!avatarId && <NoPhotographyOutlinedIcon fontSize="large" />}
       </div>
     </div>
   )

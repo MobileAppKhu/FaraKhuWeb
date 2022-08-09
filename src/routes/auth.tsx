@@ -18,13 +18,12 @@ import Footer from '../components/Footer'
 
 interface LayoutProps {
   header?: boolean
-  floatingSubMenu?: boolean
   footer?: boolean
 }
 
-const Layout = ({ header, footer, floatingSubMenu }: LayoutProps) => (
+const Layout = ({ header, footer }: LayoutProps) => (
   <>
-    {header && <Header floatingSubMenu={floatingSubMenu} />}
+    {header && <Header />}
     <Outlet />
     {footer && <Footer />}
   </>
@@ -32,7 +31,7 @@ const Layout = ({ header, footer, floatingSubMenu }: LayoutProps) => (
 
 const AuthRouters = () => (
   <Routes>
-    <Route element={<Layout header footer floatingSubMenu />}>
+    <Route element={<Layout header footer />}>
       <Route path="/" element={<Landing />} />
       <Route path="/aboutUniversity" element={<AboutUniversity />} />
     </Route>

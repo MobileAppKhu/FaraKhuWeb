@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Button, Container, IconButton, Typography } from '@mui/material'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GoogleIcon from '@mui/icons-material/Google'
@@ -6,8 +7,6 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import EditIcon from '@mui/icons-material/Edit'
 
 import { getTranslate } from '../../localization'
-
-import avatar from '../../assets/images/user_avatar.jpg'
 import useStyles from './index.style'
 
 const Profile = () => {
@@ -17,21 +16,17 @@ const Profile = () => {
     document.title = getTranslate('فراخو - پروفایل')
   }, [])
 
-  // temp
-  const role = 'دانشجو'
-  const name = 'امیرحسین هدایتی'
-  const id = '982023031'
-  const email = 'hedayati@khu.ac.ir'
-  const favorites = [
-    'یادگیری ماشین',
-    'محاسبات ابری',
-    'داده کاوی',
-    'لینوکس',
-    'یادگیری ماشین',
-    'محاسبات ابری',
-    'داده کاوی',
-    'لینوکس',
-  ]
+  const {
+    role,
+    firstName,
+    lastName,
+    id,
+    email,
+    favourites,
+    avatarId,
+    linkedIn,
+    googleScholar,
+  } = useSelector((state: any) => state.authReducer)
 
   return (
     <div className={classes.outerContainer}>
@@ -50,15 +45,18 @@ const Profile = () => {
               <div className="right">
                 <div className="rightContent">
                   <div className="imageName">
-                    <img src={avatar} alt="تصویر پروفایل کاربر" />
+                    <img
+                      src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${avatarId}`}
+                      alt="تصویر پروفایل کاربر"
+                    />
                     <Typography variant="h3" className="name">
-                      {name}
+                      {`${firstName} ${lastName}`}
                     </Typography>
                   </div>
-                  <Typography variant="body1" className="aboutMe">
+                  {/* <Typography variant="body1" className="aboutMe">
                     طراح UI/UX طراح UI/UX طراح UI/UX طراح UI/UX طراح UI/UX طراح
                     UI/UX
-                  </Typography>
+                  </Typography> */}
                 </div>
               </div>
               <div className="left">
@@ -88,7 +86,7 @@ const Profile = () => {
                     {getTranslate('علاقه‌مندی‌ها:')}
                   </Typography>
                   <ul>
-                    {favorites.map((favorite) => (
+                    {favourites?.map((favorite: string) => (
                       <li>
                         <span className="itemBullet" />
                         <Typography
@@ -106,10 +104,24 @@ const Profile = () => {
             </div>
             <div className="bottom">
               <div className="socialMedia">
-                <IconButton>
+                <IconButton
+                  onClick={() =>
+                    window.open(
+                      `https://www.linkedin.com/in/${linkedIn}`,
+                      '_blank',
+                    )
+                  }
+                >
                   <LinkedInIcon className="icon" />
                 </IconButton>
-                <IconButton>
+                <IconButton
+                  onClick={() =>
+                    window.open(
+                      `https://scholar.google.com/citations?hl=en&user=${googleScholar}`,
+                      '_blank',
+                    )
+                  }
+                >
                   <GoogleIcon className="icon" />
                 </IconButton>
               </div>

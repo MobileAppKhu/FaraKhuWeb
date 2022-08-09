@@ -7,7 +7,7 @@ import KhuTextField, { KhuTextFieldProps } from '../KhuTextField'
 import useStyles from './index.style'
 
 interface KhuSelectProps extends KhuTextFieldProps {
-  selectOptions: { label: string; value: string }[]
+  selectOptions: { label: string; value: number }[]
   optionClassName?: string
   textAlign?: 'start' | 'end'
   maxHeight?: number | string
@@ -55,7 +55,7 @@ const KhuSelect = ({
       >
         <KhuTextField
           label={label}
-          value={value}
+          value={selectOptions.find((option) => option.value === value)?.label || ''}
           handleChange={handleChange}
           className={`${focuesd ? 'focused' : ''}`}
           adornmentIconButton={
