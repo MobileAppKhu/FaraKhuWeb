@@ -16,6 +16,7 @@ import KHULogo from '../../assets/images/KHU_logo.png'
 import footerImg from '../../assets/images/footer.svg'
 import { getTranslate } from '../../localization'
 import request from '../../heplers/request'
+import { saveUser } from '../../redux/auth/action'
 
 const Login = () => {
   const classes = useStyles()
@@ -25,14 +26,19 @@ const Login = () => {
   }, [])
   const [password, setpassword] = useState<string>('')
   const [email, setemail] = useState<string>('')
+  const [rememberMe, setrememberMe] = useState(false)
   const [loading, setloading] = useState<boolean>(false)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const loginHandler = async () => {
     setloading(true)
   const login = await request('Account/SignIn', 'POST', { logon: email, password })
     if (login.status === 200) {
+      if (rememberMe) {
+        localStorage.setItem('token', JSON.stringify(login.responseJSON.profileDto))
+      } else { sessionStorage.setItem('token', JSON.stringify(login.responseJSON.profileDto)) }
+      dispatch(saveUser(login.responseJSON.profileDto))
       navigate('/')
-      localStorage.setItem('token', JSON.stringify(login.responseJSON.profileDto))
       toast.success('ورود با موفقیت انجام شد')
     }
     setloading(false)
