@@ -38,8 +38,6 @@ export type OfferType = {
 const BookAdsList = () => {
   const classes = useStyle()
   const userData = useSelector((state:any) => state.authReducer)
-  console.log(userData)
-
   const [openFilterMenu, setOpenFilterMenu] = useState(false)
   const [showMyOffers, setshowMyOffers] = useState(false)
   const [filter, setFilter] = useState<0|1|2>(0)

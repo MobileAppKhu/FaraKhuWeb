@@ -4,11 +4,14 @@ import MuiModal from '@mui/material/Modal'
 import CloseIcon from '@mui/icons-material/Close'
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh'
 
+import { Description } from '@mui/icons-material'
+import { toast } from 'react-toastify'
 import KhuTextField from '../../../../../components/KhuTextField'
 import KhuSelect from '../../../../../components/KhuSelect'
 import KhuModal from '../../../../../components/KhuModal'
 import useStyle from './CreateAdModal.style'
 import { getTranslate } from '../../../../../localization'
+import request from '../../../../../heplers/request'
 
 interface GuideBtnProps {
   className?: string
@@ -37,17 +40,28 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
     title: '',
     contact: '',
     price: '',
-    type: '',
-    desc: '',
+    offerType: 0,
+    description: '',
   })
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
 
-  const handleChange = (field: keyof typeof data) => (value: string) => {
+  const handleChange = (field: keyof typeof data) => (value: string|number) => {
     if (field === 'price') {
-      setData({ ...data, [field]: value.replace(/\D+/g, '') })
+      setData({ ...data, [field]: value.toString().replace(/\D+/g, '') })
       return
     }
     setData({ ...data, [field]: value })
+  }
+  const addOffer = async () => {
+    const requestData = { title: data.title,
+      avatarId: 'smiley.png',
+    price: data.price,
+    offerType: data.offerType,
+    description: `${data.description}\n\n${data.contact}` }
+    const response = await request('Offer/AddOffer', 'POST', requestData)
+    if (response.status === 200) {
+      toast.success('آگهی شما با موفقیت ارسال شد')
+    }
   }
 
   return (
@@ -104,18 +118,18 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
               </div>
               <div className="dataInput">
                 <KhuSelect
-                  value={data.type}
-                  handleChange={handleChange('type')}
+                  value={data.offerType}
+                  handleChange={handleChange('offerType')}
                   placeholder={getTranslate('گزینه مورد نظر را انتخاب کنید')}
                   label={getTranslate('نوع آگهی *')}
                   selectOptions={[
                     {
                       label: getTranslate('خرید'),
-                      value: getTranslate('خرید'),
+                      value: 1,
                     },
                     {
                       label: getTranslate('فروش'),
-                      value: getTranslate('فروش'),
+                      value: 2,
                     },
                   ]}
                 />
@@ -123,8 +137,8 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
               </div>
               <div className="dataInput textarea">
                 <KhuTextField
-                  value={data.desc}
-                  handleChange={handleChange('desc')}
+                  value={data.description}
+                  handleChange={handleChange('description')}
                   placeholder={getTranslate(
                     'مثال: من به تازگی از رشته مهندسی کامپیوتر فارغ التحصیل شدم و دیگه این کتاب ها به دردم نمیخورن، اما واقعا کتاب های خوب و شاخصی هستن و اگر ترم اولی هستید قطعا در آینده به این کتاب ها نیاز پیدا می کنید.',
                   )}
@@ -134,7 +148,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
                 />
               </div>
               <div className="confirmBtn">
-                <Button variant="contained" size="large">
+                <Button variant="contained" size="large" onClick={addOffer}>
                   {getTranslate('تایید')}
                 </Button>
               </div>
