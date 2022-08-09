@@ -33,17 +33,15 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
   const render = () => {
     if (!selectedNews) return <div>404</div>
 
-    const { title, description: desc, newsImgs } = selectedNews
+    const { title, description, fileId } = selectedNews
     const [newsTitle, setNewsTitle] = useState(title)
 
     const initialImages: ImagePicker[] = [
       { id: 0, file: undefined },
-      { id: 1, file: undefined },
-      { id: 2, file: undefined },
     ]
     initialImages.forEach((image, index) => {
-      if (newsImgs?.[index]) {
-        image.file = newsImgs[index]
+      if (fileId) {
+        image.file = fileId
       }
     })
 

@@ -19,7 +19,7 @@ const NewsItem: React.FC<NewsItemProps> = ({
   authorImg,
   title,
   description: desc,
-  newsImgs,
+  fileId,
   hideDesc = false,
   hideImg = false,
   variant = 'small',
@@ -51,9 +51,9 @@ const NewsItem: React.FC<NewsItemProps> = ({
           variant === 'medium' ? ' medium' : ''
         }`}
       >
-        {newsImgs && !hideImg && (
+        {fileId && !hideImg && (
           <div className="newsImg">
-            <img src={newsImgs[0]} alt={getTranslate('تصویر خبر')} />
+            <img src={fileId} alt={getTranslate('تصویر خبر')} />
           </div>
         )}
 

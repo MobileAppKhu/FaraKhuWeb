@@ -6,10 +6,8 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import EditIcon from '@mui/icons-material/Edit'
 
 import { useSelector } from 'react-redux'
-import Header from '../../components/header'
 import { getTranslate } from '../../localization'
 
-import avatar from '../../assets/images/user_avatar.jpg'
 import useStyles from './index.style'
 
 const Profile = () => {
@@ -18,22 +16,6 @@ const Profile = () => {
   useEffect(() => {
     document.title = getTranslate('فراخو - پروفایل')
   }, [])
-
-  // temp
-  // const role = 'دانشجو'
-  // const name = 'امیرحسین هدایتی'
-  // const id = '982023031'
-  // const email = 'hedayati@khu.ac.ir'
-  // const favorites = [
-  //   'یادگیری ماشین',
-  //   'محاسبات ابری',
-  //   'داده کاوی',
-  //   'لینوکس',
-  //   'یادگیری ماشین',
-  //   'محاسبات ابری',
-  //   'داده کاوی',
-  //   'لینوکس',
-  // ]
   const { role, firstName, lastName, id, email, favourites, avatarId, linkedIn, googleScholar } = useSelector((state:any) => state.authReducer)
   return (
     <div className={classes.outerContainer}>

@@ -43,14 +43,14 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
   const render = () => {
     if (!selectedNews) return <div>404</div>
 
-    const { title, description: desc, newsImgs } = selectedNews
-    const imgItems = newsImgs?.map((img) => (
+    const { title, description, fileId } = selectedNews
+    const imgItems = () => (
       <img
-        src={img}
+        src={fileId}
         alt={getTranslate('تصویر خبر')}
         onDragStart={(e) => e.preventDefault()}
       />
-    ))
+    )
 
     // temp
     const date = '21 اردیبهشت 1400'
@@ -88,7 +88,7 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
                 responsive={{
                   0: { items: 1 },
                 }}
-                items={imgItems}
+                items={[imgItems]}
                 renderNextButton={renderNextButton}
                 renderPrevButton={renderPrevButton}
                 touchTracking
@@ -96,7 +96,7 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
             </div>
 
             <Typography className="desc" component="p">
-              {desc}
+              {description}
             </Typography>
 
             <div className="separator gray" />
