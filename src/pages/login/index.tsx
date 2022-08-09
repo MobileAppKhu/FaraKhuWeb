@@ -25,14 +25,17 @@ const Login = () => {
   }, [])
   const [password, setpassword] = useState<string>('')
   const [email, setemail] = useState<string>('')
+  const [loading, setloading] = useState<boolean>(false)
   const navigate = useNavigate()
   const loginHandler = async () => {
+    setloading(true)
   const login = await request('Account/SignIn', 'POST', { logon: email, password })
     if (login.status === 200) {
       navigate('/')
       localStorage.setItem('token', JSON.stringify(login.responseJSON.profileDto))
       toast.success('ورود با موفقیت انجام شد')
     }
+    setloading(false)
   }
   return (
     <div className={classes.outerContainer}>
@@ -91,7 +94,7 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <Button variant="contained" className={classes.submitBtn} fullWidth onClick={loginHandler}>
+          <Button variant="contained" className={classes.submitBtn} fullWidth onClick={loginHandler} disabled={loading}>
             <Typography variant="h4" color="white">
               {getTranslate('تایید')}
             </Typography>
