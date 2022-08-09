@@ -6,6 +6,7 @@ import AboutUniversity from '../pages/aboutUniversity'
 import AnnoucementPage from '../pages/annoucement'
 import BookFinder from '../pages/bookFinder'
 import Landing from '../pages/landing'
+import MyLessonEdit from '../pages/myLessonEdit'
 import News from '../pages/news'
 import Profile from '../pages/profile'
 
@@ -27,6 +28,7 @@ const MainRouters = () => (
       <Route path="/profile" element={<Profile />} />
       <Route path="/aboutUniversity" element={<AboutUniversity />} />
       <Route path="/news/*" element={<News />} />
+      <Route path="/myLessonsEdit" element={<MyLessonEdit />} />
       <Route path="*" element={<div>404</div>} />
 
     </Route>

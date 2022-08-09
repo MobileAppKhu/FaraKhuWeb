@@ -1,0 +1,22 @@
+.class-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    width: 70%;
+    
+}
+
+.class-time,.exam-time{
+    display: inline-block;
+}
+.exam-location{
+    display: block;
+}
+.info{
+    width: 300px;
+    margin-left: 100px;
+}
+.icon{
+    float: right;
+    margin: 0 20px 0 20px;
+}

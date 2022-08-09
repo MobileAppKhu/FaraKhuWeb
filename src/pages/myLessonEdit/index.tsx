@@ -1,6 +1,11 @@
+import { useState } from 'react'
 import { getTranslate } from '../../localization'
+// import KhuModal from '../../../components/KhuModal'
+import LessonInfo from './LessonInfo'
 import StudentsTable from './StudentsTable'
 import './styles/myLessonEdit.css'
+import lessonPhoto from './myLessonIcons/ai.jpg'
+import teacherPhoto from './myLessonIcons/pedram.jpg'
 
 const lessonsData = [{
   examLoc: 'Bellgrove',
@@ -48,14 +53,23 @@ const MyLessonEdit = () => {
     return (
 
       <div className="outer-container">
-        {lessonsData.map((lesson) => (
-          <div className="class-info">
-            <div className="class-time">{lesson.classTime}</div>
-            <div className="exam-time">{lesson.examTime}</div>
-            <div className="exam-location">{lesson.examLoc}</div>
-          </div>
-        ))}
+        <div className="lesson-image-container">
+          <img className="lesson-image" src={lessonPhoto} alt="" />
+          <div className="transparent-image-info">
+            <span className="Course-name">
+              هوش مصنوعی و سیستم‌های خبره
+            </span>
+            <div className="Teacher">
+              <img className="teacher-photo" src={teacherPhoto} alt="" />
+              <span className="Title">
+                دکتر میرمحسن پدرام
+              </span>
+            </div>
 
+          </div>
+        </div>
+
+        <LessonInfo lessons={lessonsData} />
         <div className="table-container">
           <h2>{getTranslate(':لیست دانشجویان')}</h2>
           <StudentsTable />
