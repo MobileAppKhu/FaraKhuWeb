@@ -54,6 +54,26 @@ const useStyle = makeStyles((theme) => ({
       },
     },
 
+    '& .pollConfig': {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      userSelect: 'none',
+      marginTop: -20,
+
+      '& .config': {
+        display: 'flex',
+        flexDirection: 'row-reverse',
+        margin: 0,
+
+        '& .configTitle': {
+          fontSize: '0.83em',
+          color: '#000',
+        },
+      },
+    },
+
     '& .bottom': {
       width: '100%',
       display: 'flex',
@@ -106,7 +126,7 @@ const useStyle = makeStyles((theme) => ({
 
       '& .addPollItemBtn': {
         width: '100%',
-        margin: '-20px 0 100px 0',
+        margin: '-20px 0 70px 0',
 
         '& > button': {
           display: 'flex',

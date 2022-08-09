@@ -1,5 +1,13 @@
 import React, { useState } from 'react'
-import { Box, Typography, Fade, IconButton, Button } from '@mui/material'
+import {
+  Box,
+  Typography,
+  Fade,
+  IconButton,
+  Button,
+  Checkbox,
+  FormControlLabel,
+} from '@mui/material'
 import MuiModal from '@mui/material/Modal'
 import CloseIcon from '@mui/icons-material/Close'
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh'
@@ -55,6 +63,10 @@ const CreateModal: React.FC<ModalProps> = ({ open, variant, handleClose }) => {
       { id: 1, value: '' },
     ],
   })
+
+  const [multipleAnswers, setMultipleAnswers] = useState(true)
+  const [showPollResultBeforeAnswer, setShowPollResultBeforeAnswer] =
+    useState(false)
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
 
   const annHandleChange = (field: keyof typeof annData) => (value: string) => {
@@ -116,6 +128,41 @@ const CreateModal: React.FC<ModalProps> = ({ open, variant, handleClose }) => {
                 <CloseIcon fontSize="large" />
               </IconButton>
             </div>
+
+            {variant === 'poll' && (
+              <div className="pollConfig">
+                <FormControlLabel
+                  className="config"
+                  control={
+                    <Checkbox
+                      checked={multipleAnswers}
+                      onClick={() => setMultipleAnswers((ps) => !ps)}
+                      size="small"
+                    />
+                  }
+                  label={
+                    <Typography className="configTitle" component="span">
+                      {getTranslate('امکان انتخاب چند گزینه')}
+                    </Typography>
+                  }
+                />
+                <FormControlLabel
+                  className="config"
+                  control={
+                    <Checkbox
+                      checked={showPollResultBeforeAnswer}
+                      onClick={() => setShowPollResultBeforeAnswer((ps) => !ps)}
+                      size="small"
+                    />
+                  }
+                  label={
+                    <Typography className="configTitle" component="span">
+                      {getTranslate('نمایش نتایج لحظه ای قبل از پاسخ دهی')}
+                    </Typography>
+                  }
+                />
+              </div>
+            )}
 
             <div className="bottom">
               <div className="dataInput">
