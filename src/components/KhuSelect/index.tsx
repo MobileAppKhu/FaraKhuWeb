@@ -51,7 +51,7 @@ const KhuSelect = ({
       >
         <KhuTextField
           label={label}
-          value={selectOptions.find((option) => option.value === value)?.label}
+          value={selectOptions.find((option) => option.value === value)!.label}
           handleChange={handleChange}
           className={`${focuesd ? 'focused' : ''}`}
           adornmentIconButton={
