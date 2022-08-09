@@ -14,11 +14,11 @@ interface NewsItemProps extends NewsProps {
 }
 
 const NewsItem: React.FC<NewsItemProps> = ({
-  id,
+  newsId: id,
   author,
   authorImg,
   title,
-  desc,
+  description: desc,
   newsImgs,
   hideDesc = false,
   hideImg = false,

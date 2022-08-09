@@ -55,7 +55,7 @@ const NewsList: React.FC<NewsListProps> = ({ newsList }) => {
                 rowSpacing={2}
               >
                 {newsList.slice(1, 4).map((news) => (
-                  <Grid item xs={!matches770 ? 4 : 12} key={news.id}>
+                  <Grid item xs={!matches770 ? 4 : 12} key={news.newsId}>
                     <NewsItem {...news} variant="small" hideImg={!matches770} />
                   </Grid>
                 ))}
@@ -69,7 +69,7 @@ const NewsList: React.FC<NewsListProps> = ({ newsList }) => {
                 rowSpacing={2}
               >
                 {newsList.slice(4, 6).map((news) => (
-                  <Grid item xs={12} sm={6} key={news.id}>
+                  <Grid item xs={12} sm={6} key={news.newsId}>
                     <NewsItem
                       {...news}
                       variant="medium"

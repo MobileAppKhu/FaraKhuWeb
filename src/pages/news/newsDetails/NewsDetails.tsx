@@ -38,12 +38,12 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
   const navigate = useNavigate()
 
   const { id } = useParams<{ id: string }>()
-  const selectedNews = newsList.find((news) => news.id === id!)
+  const selectedNews = newsList.find((news) => news.newsId === id!)
 
   const render = () => {
     if (!selectedNews) return <div>404</div>
 
-    const { title, desc, newsImgs } = selectedNews
+    const { title, description: desc, newsImgs } = selectedNews
     const imgItems = newsImgs?.map((img) => (
       <img
         src={img}
