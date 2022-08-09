@@ -16,7 +16,7 @@ import News from '../pages/news'
 const AuthRouters = () => (
   <Routes>
     <Route index element={<Landing />} />
-    <Route path="/myLesson" element={<div>sdsdf</div>} />
+    <Route path="/myLesson" element={<MyLesson />} />
     <Route path="/login" element={<Login />} />
     <Route path="/profile" element={<Profile />} />
     <Route path="/forgetPassword" element={<ForgetPassword />}>

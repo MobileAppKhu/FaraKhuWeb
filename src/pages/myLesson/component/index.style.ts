@@ -1,26 +1,45 @@
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles(() => ({
+  root: {
+flexDirection: 'row',
+
+  },
   titleLesson: {
     justifyContent: 'space-between',
-    width: '100%',
+    marginRight: '52',
+    fontSize: 32,
+    fontWeight: 'bold',
     alignItems: 'center',
     flexDirection: 'row-reverse',
+    paddingRight: 15,
+  },
+  cardDes: {
+    flexDirection: 'row-reverse',
+    display: 'flex',
+  },
+  cardLesson: {
+    backdropFilter: 'blur(4px)',
+    width: 320,
+    height: 100,
   },
   teacherName: {
-    flex: 2,
+    fontSize: 16,
     alignItems: 'flex-end',
-    justifyContent: 'space-between',
+    textAlign: 'left',
+    paddingLeft: 15,
   },
   lessonImage: {
-    alignItems: 'center',
-    flex: 1,
-    marginLeft: 8,
+    width: 320,
+    height: 320,
+
   },
-  teacherImage: {
-    alignItems: 'center',
-    flex: 1,
-    marginLeft: 8,
+  teacherImagestyle: {
+    width: 24,
+    alignItems: 'flex-end',
+backgroundColor: 'red',
+    height: 24,
+    borderRadius: 45,
   },
 }))
 export default useStyles
