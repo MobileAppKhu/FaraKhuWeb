@@ -169,6 +169,17 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  profilePhotoImage: {
+    width: 82,
+    height: 82,
+    borderRadius: 41,
+  },
+  profile: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    columnGap: 32,
+  },
 }))
 
 export default useStyles

@@ -4,7 +4,8 @@ import { Button, Box, Typography, Fade } from '@mui/material'
 import MuiModal from '@mui/material/Modal'
 
 import useStyles from './styles/index.style'
-import modalLogo from '../../assets/images/modal_logo1.png'
+import confirmLogo from '../../assets/images/modal_logo1.png'
+import errorLogo from '../../assets/images/modal_logo2.png'
 
 interface ModalProps {
   title: string
@@ -12,10 +13,13 @@ interface ModalProps {
     buttonText: string
     bgColor: string
     textColor: string
+    hoverColor?: string
+    borderColor?: string
     onClick: () => void
   }[]
   open: boolean
   handleClose: () => void
+  variant?: 'confirm' | 'error'
 }
 
 const KhuModal: React.VFC<ModalProps> = ({
@@ -23,6 +27,7 @@ const KhuModal: React.VFC<ModalProps> = ({
   buttons,
   open,
   handleClose,
+  variant = 'confirm',
 }) => {
   const classes = useStyles()
 
@@ -30,43 +35,42 @@ const KhuModal: React.VFC<ModalProps> = ({
     <div>
       <MuiModal open={open} onClose={handleClose}>
         <Fade in={open}>
-          <Box className={classes.modalContainer}>
+          <Box
+            className={`${classes.modalContainer}${
+              variant === 'error' ? ' error' : ''
+            }`}
+          >
             <img
-              src={modalLogo}
+              src={variant === 'confirm' ? confirmLogo : errorLogo}
               alt="modal logo"
-              className={classes.modalLogo}
+              className="modalLogo"
             />
             <Typography
               variant="h3"
               component="h2"
               color="black"
-              className={classes.modalTitle}
+              className="modalTitle"
             >
               {title}
             </Typography>
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                columnGap: 10,
-              }}
-            >
+            <div className="modalButtons">
               {buttons.map((b) => (
                 <Button
                   key={b.buttonText + b.bgColor}
                   variant="outlined"
-                  className={classes.modalBtn}
-                  sx={{ bgcolor: b.bgColor }}
+                  className="modalBtn"
+                  sx={{
+                    bgcolor: b.bgColor,
+                    borderColor: b.borderColor,
+                    color: b.textColor,
+                    '&:hover': {
+                      bgcolor: b.hoverColor,
+                      borderColor: b.borderColor,
+                    },
+                  }}
                   onClick={b.onClick}
                 >
-                  <Typography
-                    variant="h4"
-                    className={classes.btnTextColor}
-                    sx={{ color: b.textColor }}
-                  >
-                    {b.buttonText}
-                  </Typography>
+                  {b.buttonText}
                 </Button>
               ))}
             </div>
