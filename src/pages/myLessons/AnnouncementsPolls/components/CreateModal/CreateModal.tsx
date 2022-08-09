@@ -45,6 +45,12 @@ interface ModalProps {
   handleClose: () => void
 }
 
+interface PollData {
+  title: string
+  category: string
+  options: { id: number; value: string | number }[]
+}
+
 const CreateModal: React.FC<ModalProps> = ({ open, variant, handleClose }) => {
   const classes = useStyle()
 
@@ -55,7 +61,7 @@ const CreateModal: React.FC<ModalProps> = ({ open, variant, handleClose }) => {
     time: '',
     desc: '',
   })
-  const [pollData, setPollData] = useState({
+  const [pollData, setPollData] = useState<PollData>({
     title: '',
     category: '',
     options: [
@@ -69,13 +75,14 @@ const CreateModal: React.FC<ModalProps> = ({ open, variant, handleClose }) => {
     useState(false)
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
 
-  const annHandleChange = (field: keyof typeof annData) => (value: string) => {
-    setAnnData({ ...annData, [field]: value })
-  }
+  const annHandleChange =
+    (field: keyof typeof annData) => (value: string | number) => {
+      setAnnData({ ...annData, [field]: value })
+    }
 
   const pollHandleChange =
     (field: keyof typeof pollData, pollOptionId?: number) =>
-    (value: string) => {
+    (value: string | number) => {
       if (pollOptionId !== undefined) {
         const newOptions = [...pollData.options]
         const selectedIndex = newOptions.findIndex(

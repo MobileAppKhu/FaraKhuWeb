@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import ForgetPassword from '../pages/forgetPassword'
 import ChangePassword from '../pages/forgetPassword/changePassword'
@@ -6,28 +6,12 @@ import ConfirmCode from '../pages/forgetPassword/confirmCode'
 import EnterEmail from '../pages/forgetPassword/enterEmail'
 import Landing from '../pages/landing'
 import Login from '../pages/login'
-import Profile from '../pages/profile'
 import AboutUniversity from '../pages/aboutUniversity'
 import BookFinder from '../pages/bookFinder'
 import News from '../pages/news'
-import MyLessons from '../pages/myLessons'
 import AnnoucementPage from '../pages/annoucement'
 
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-
-interface LayoutProps {
-  header?: boolean
-  footer?: boolean
-}
-
-const Layout = ({ header, footer }: LayoutProps) => (
-  <>
-    {header && <Header />}
-    <Outlet />
-    {footer && <Footer />}
-  </>
-)
+import Layout from '../components/Layout'
 
 const AuthRouters = () => (
   <Routes>
@@ -47,8 +31,8 @@ const AuthRouters = () => (
 
     <Route element={<Layout header />}>
       <Route path="/news/*" element={<News />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/myLessons/*" element={<MyLessons />} />
+      <Route path="/profile" element={<Navigate to="/login" replace />} />
+      <Route path="/myLessons/*" element={<Navigate to="/login" replace />} />
       <Route path="/bookFinder/*" element={<BookFinder />} />
       <Route path="/declarations" element={<AnnoucementPage />} />
     </Route>

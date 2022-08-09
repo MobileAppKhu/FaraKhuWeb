@@ -18,61 +18,65 @@ import KhuContainer from '../../../components/KhuContainer'
 import BookAdItem from './components/BookAdItem'
 import CreateAdModal from './components/CreateAdModal'
 
-import { BookAd } from '../BookFinder'
 import { getTranslate } from '../../../localization'
 import useStyle from './index.style'
 import request from '../../../heplers/request'
 
 export type OfferType = {
-      offerId: string,
-      userId: string,
-      userFullName: string,
-      title:string,
-      description: string,
-      offerType: 1|2|3,
-      price: number|'توافقی',
-      avatarId: string,
-      createdDate: string
-
+  offerId: string
+  userId: string
+  userFullName: string
+  title: string
+  description: string
+  offerType: 1 | 2 | 3
+  price: number | 'توافقی'
+  avatarId: string
+  createdDate: string
 }
 const BookAdsList = () => {
   const classes = useStyle()
-  const userData = useSelector((state:any) => state.authReducer)
+  const userData = useSelector((state: any) => state.authReducer)
+
   const [openFilterMenu, setOpenFilterMenu] = useState(false)
   const [showMyOffers, setshowMyOffers] = useState(false)
-  const [filter, setFilter] = useState<0|1|2>(0)
+  const [filter, setFilter] = useState<0 | 1 | 2>(0)
   const [searchTerm, setSearchTerm] = useState('')
   const [openCreateAdModal, setOpenCreateAdModal] = useState(false)
   const [data, setData] = useState<OfferType[]>([])
   const [filterData, setfilterData] = useState<OfferType[]>([])
-   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
+
   const handleClose = () => {
     setAnchorEl(null)
   }
 
-  const handleFilter = (filterOption: 0|1|2) => {
+  const handleFilter = (filterOption: 0 | 1 | 2) => {
     setOpenFilterMenu(false)
     setFilter(filterOption)
   }
+
   const getData = async () => {
     const response = await request('Offer/SearchOffers', 'POST', {
-        start: 0,
-        step: 10,
-        offerColumn: 1,
-        orderDirection: true,
+      start: 0,
+      step: 10,
+      offerColumn: 1,
+      orderDirection: true,
     })
     if (response.status === 200) {
-    setData(response.responseJSON.offer)
-    setfilterData(response.responseJSON.offer)
-}
+      setData(response.responseJSON.offer)
+      setfilterData(response.responseJSON.offer)
+    }
   }
+
   useEffect(() => {
     getData()
   }, [])
+
   useEffect(() => {
     let newData = data
     if (filter !== 0) {
@@ -80,9 +84,15 @@ const BookAdsList = () => {
     } else {
       newData = data
     }
+
     if (searchTerm) {
-      newData = newData.filter((item) => item.title.includes(searchTerm) || item.description.includes(searchTerm))
+      newData = newData.filter(
+        (item) =>
+          item.title.includes(searchTerm) ||
+          item.description.includes(searchTerm),
+      )
     }
+
     if (showMyOffers) {
       newData = newData.filter((item) => item.userId === userData.userId)
     }
@@ -107,7 +117,13 @@ const BookAdsList = () => {
                   <FilterListIcon />
                 </div>
                 <div className="currentFilter">
-                  <Typography component="span">{filter === 0 ? 'فیلتر' : filter === 1 ? 'خرید' : 'فروش'}</Typography>
+                  <Typography component="span">
+                    {filter === 0
+                      ? getTranslate('فیلتر')
+                      : filter === 1
+                      ? getTranslate('خرید')
+                      : getTranslate('فروش')}
+                  </Typography>
                 </div>
                 <div className="menuArrow">
                   {!openFilterMenu ? (
@@ -118,17 +134,19 @@ const BookAdsList = () => {
                 </div>
               </Button>
               <Menu
+                className={classes.filterMenu}
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
+                elevation={3}
                 anchorOrigin={{
-                  vertical: 'top',
+                  vertical: 45,
                   horizontal: 'left',
-                  }}
+                }}
                 transformOrigin={{
                   vertical: 'top',
                   horizontal: 'left',
-                  }}
+                }}
               >
                 <MenuItem onClick={handleClose}>
                   <Button onClick={() => handleFilter(0)}>
@@ -163,7 +181,16 @@ const BookAdsList = () => {
             </div>
           </div>
           <div className="buttons">
-            <Button variant="outlined" onClick={() => { setshowMyOffers(!showMyOffers) }}>{showMyOffers ? getTranslate('نمایش تمام اگهی ها') : getTranslate('آگهی‌های من')}</Button>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                setshowMyOffers(!showMyOffers)
+              }}
+            >
+              {showMyOffers
+                ? getTranslate('نمایش تمام اگهی ها')
+                : getTranslate('آگهی‌های من')}
+            </Button>
             <Button
               variant="contained"
               onClick={() => setOpenCreateAdModal(true)}
