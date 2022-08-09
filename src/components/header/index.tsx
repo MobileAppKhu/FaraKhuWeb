@@ -7,7 +7,9 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import { NavLink, useNavigate } from 'react-router-dom'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 
+import { useSelector } from 'react-redux'
 import logo from '../../assets/images/logo.png'
 import khuLogo from '../../assets/images/KHU_logo.png'
 import useStyles from './styles/index.style'
@@ -26,7 +28,7 @@ const Header = () => {
   const [menuIcon, setMenuIcon] = useState<boolean>(false)
   const [showSubMenu, setShowSubMenu] = useState<boolean>(false)
   const [floatingSubMenu, setfloatingSubMenu] = useState<boolean>()
-
+  const userData = useSelector((state: any) => state.authReducer)
   const navigate = useNavigate()
   useEffect(() => {
       setShowSubMenu(!!localStorage.getItem('token'))
@@ -154,8 +156,11 @@ const Header = () => {
                   </Button>
                 </div>
               ) : (
-                <div>
-                  Profile
+                <div className={classes.profile}>
+                  <img src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${userData.avatarId}`} alt="profile" className={classes.profilePhotoImage} />
+                  <IconButton size="large">
+                    <NotificationsNoneIcon fontSize="large" />
+                  </IconButton>
                 </div>)
             }
         </div>
