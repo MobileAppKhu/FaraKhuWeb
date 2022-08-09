@@ -10,6 +10,8 @@ const Routers = () => {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       dispath(saveUser(JSON.parse(localStorage.getItem('token')!)))
+    } else if (sessionStorage.getItem('token')) {
+      dispath(saveUser(JSON.parse(sessionStorage.getItem('token')!)))
     }
   }, [])
   return user.role ? <MainRouters /> : <AuthRouters />
