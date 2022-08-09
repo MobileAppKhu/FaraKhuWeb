@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import Header from '../../components/header'
 import BookAdDetails from './bookAdDetails'
 import BookAdsList from './bookAdsList'
 

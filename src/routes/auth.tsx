@@ -13,7 +13,7 @@ import News from '../pages/news'
 import MyLessons from '../pages/myLessons'
 import AnnoucementPage from '../pages/annoucement'
 
-import Header from '../components/header'
+import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 interface LayoutProps {
@@ -32,16 +32,18 @@ const Layout = ({ header, footer, floatingSubMenu }: LayoutProps) => (
 
 const AuthRouters = () => (
   <Routes>
-    <Route path="/login" element={<Login />} />
-    <Route path="/forgetPassword" element={<ForgetPassword />}>
-      <Route index element={<EnterEmail />} />
-      <Route path="confirmCode" element={<ConfirmCode />} />
-      <Route path="changePassword" element={<ChangePassword />} />
-    </Route>
-
     <Route element={<Layout header footer floatingSubMenu />}>
       <Route path="/" element={<Landing />} />
       <Route path="/aboutUniversity" element={<AboutUniversity />} />
+    </Route>
+
+    <Route element={<Layout />}>
+      <Route path="/login" element={<Login />} />
+      <Route path="/forgetPassword" element={<ForgetPassword />}>
+        <Route index element={<EnterEmail />} />
+        <Route path="confirmCode" element={<ConfirmCode />} />
+        <Route path="changePassword" element={<ChangePassword />} />
+      </Route>
     </Route>
 
     <Route element={<Layout header />}>

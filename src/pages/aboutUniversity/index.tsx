@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Typography } from '@mui/material'
 
-import Header from '../../components/header'
 import KhuContainer from '../../components/KhuContainer'
 import { getTranslate } from '../../localization'
 
@@ -24,7 +23,6 @@ import enayat from '../../assets/images/about_university/Enayat.jpg'
 import mojtabyani from '../../assets/images/about_university/Mojtabyani.jpg'
 import tavassoli from '../../assets/images/about_university/Tavassoli.jpg'
 import sarookhani from '../../assets/images/about_university/Sarookhani.jpg'
-import Footer from '../../components/Footer'
 
 const timelineItems = [
   {

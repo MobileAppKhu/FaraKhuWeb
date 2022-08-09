@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import Header from '../../components/header'
 import CreateNews from './createNews'
 import EditNews from './createNews/editNews'
 import NewsDetails from './newsDetails'
