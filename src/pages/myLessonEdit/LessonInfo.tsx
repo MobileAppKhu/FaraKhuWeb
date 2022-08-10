@@ -4,6 +4,7 @@ import calenderLogo from './myLessonIcons/icon_calendar_simple.png'
 import locationLogo from './myLessonIcons/location.png'
 
 import './styles/lessonInfo.css'
+import { getTranslate } from '../../localization'
 
 interface LessonInfoProps {
     lessons: {examLoc:string, classTime:string, examTime:string, className:string}[]
@@ -49,6 +50,7 @@ const LessonInfo:React.FC<LessonInfoProps> = ({ lessons }) => {
             </div>
           </div>
                 ))}
+        <button className="anouncement-button" type="button">اطلاعیه ها/نظر سنجی</button>
       </div>)
 }
 export default LessonInfo
