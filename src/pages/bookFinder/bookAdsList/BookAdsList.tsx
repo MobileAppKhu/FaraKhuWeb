@@ -88,8 +88,7 @@ const BookAdsList = () => {
     if (searchTerm) {
       newData = newData.filter(
         (item) =>
-          item.title.includes(searchTerm) ||
-          item.description.includes(searchTerm),
+          item.title.includes(searchTerm) || item.description.includes(searchTerm),
       )
     }
 

@@ -47,8 +47,7 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
   const [loading, setloading] = useState(false)
 
-  const handleChange =
-    (field: keyof typeof data) => (value: string | number) => {
+  const handleChange = (field: keyof typeof data) => (value: string | number) => {
       if (field === 'price') {
         setData({ ...data, [field]: value.toString().replace(/\D+/g, '') })
         return

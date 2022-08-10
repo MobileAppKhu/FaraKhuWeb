@@ -39,7 +39,6 @@ const AuthRouters = () => (
       <Route path="/profile" element={<Navigate to="/login" replace />} />
       <Route path="/myLessons/*" element={<Navigate to="/login" replace />} />
       <Route path="/bookFinder/*" element={<BookFinder />} />
-      <Route path="/myLessonsEdit" element={<MyLessonEdit />} />
       <Route path="/declarations" element={<AnnoucementPage />} />
     </Route>
 

@@ -71,17 +71,14 @@ const CreateModal: React.FC<ModalProps> = ({ open, variant, handleClose }) => {
   })
 
   const [multipleAnswers, setMultipleAnswers] = useState(true)
-  const [showPollResultBeforeAnswer, setShowPollResultBeforeAnswer] =
-    useState(false)
+  const [showPollResultBeforeAnswer, setShowPollResultBeforeAnswer] = useState(false)
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
 
-  const annHandleChange =
-    (field: keyof typeof annData) => (value: string | number) => {
+  const annHandleChange = (field: keyof typeof annData) => (value: string | number) => {
       setAnnData({ ...annData, [field]: value })
     }
 
-  const pollHandleChange =
-    (field: keyof typeof pollData, pollOptionId?: number) =>
+  const pollHandleChange = (field: keyof typeof pollData, pollOptionId?: number) =>
     (value: string | number) => {
       if (pollOptionId !== undefined) {
         const newOptions = [...pollData.options]
@@ -264,23 +261,22 @@ const CreateModal: React.FC<ModalProps> = ({ open, variant, handleClose }) => {
                 <GuideBtn hidden />
               </div>
 
-              {variant === 'poll' &&
-                pollData.options.slice(2).map((opt, index) => (
-                  <div className="dataInput" key={opt.id}>
-                    <KhuTextField
-                      value={opt.value}
-                      handleChange={pollHandleChange('options', opt.id)}
-                      label={getTranslate(`گزینه ${index + 3} نظرسنجی *`)}
-                    />
-                    <IconButton
-                      className="deleteOptionBtn"
-                      size="small"
-                      title={getTranslate('حذف گزینه')}
-                      onClick={() => deletePollOption(opt.id)}
-                    >
-                      <RemoveCircleOutlineIcon fontSize="small" />
-                    </IconButton>
-                  </div>
+              {variant === 'poll' && pollData.options.slice(2).map((opt, index) => (
+                <div className="dataInput" key={opt.id}>
+                  <KhuTextField
+                    value={opt.value}
+                    handleChange={pollHandleChange('options', opt.id)}
+                    label={getTranslate(`گزینه ${index + 3} نظرسنجی *`)}
+                  />
+                  <IconButton
+                    className="deleteOptionBtn"
+                    size="small"
+                    title={getTranslate('حذف گزینه')}
+                    onClick={() => deletePollOption(opt.id)}
+                  >
+                    <RemoveCircleOutlineIcon fontSize="small" />
+                  </IconButton>
+                </div>
                 ))}
 
               {variant === 'announcement' && (

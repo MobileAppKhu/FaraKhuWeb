@@ -21,7 +21,6 @@ const MainRouters = () => (
     <Route element={<Layout header footer />}>
       <Route path="/" element={<Landing />} />
       <Route path="/aboutUniversity" element={<AboutUniversity />} />
-      <Route path="/myLessonsEdit" element={<MyLessonEdit />} />
     </Route>
 
     <Route element={<Layout />}>

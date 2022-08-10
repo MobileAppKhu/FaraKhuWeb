@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { Fade, IconButton, Modal } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
 import { getTranslate } from '../../localization'
-import LessonInfo from './LessonInfo'
-import StudentsTable from './StudentsTable'
 import './styles/myLessonEdit.css'
 import lessonPhoto from './myLessonIcons/ai.jpg'
 import teacherPhoto from './myLessonIcons/pedram.jpg'
+import LessonInfo from './LessonInfo'
+import StudentsTable from './StudentsTable'
+
 // import MuiModal from '@mui/material/Modal'
 
 const lessonsData = [{
@@ -48,34 +51,49 @@ const lessonsData = [{
   examTime: '10/19/2021',
   className: 'Bogan-Bosco',
 }]
-const MyLessonEdit = () => {
+interface MyLessonEditProps{
+  isOpen:boolean,
+  onClose:()=>void
+}
+const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose }) => {
     console.log('Hi1')
     return (
+      <Modal open={isOpen} onClose={onClose} className="modal">
+        <Fade in={isOpen}>
+          <div className="outer-container">
+            <div className="lesson-image-container">
+              <img className="lesson-image" src={lessonPhoto} alt="" />
+              <div className="transparent-image-info">
+                <span className="Course-name">
+                  هوش مصنوعی و سیستم‌های خبره
+                </span>
+                <div className="Teacher">
+                  <img className="teacher-photo" src={teacherPhoto} alt="" />
+                  <span className="Title">
+                    دکتر میرمحسن پدرام
+                  </span>
+                </div>
 
-      <div className="outer-container">
+              </div>
+              <div className="close-logo">
+                <IconButton onClick={onClose}>
+                  <CloseIcon fontSize="large" />
+                </IconButton>
+              </div>
 
-        <div className="lesson-image-container">
-          <img className="lesson-image" src={lessonPhoto} alt="" />
-          <div className="transparent-image-info">
-            <span className="Course-name">
-              هوش مصنوعی و سیستم‌های خبره
-            </span>
-            <div className="Teacher">
-              <img className="teacher-photo" src={teacherPhoto} alt="" />
-              <span className="Title">
-                دکتر میرمحسن پدرام
-              </span>
+            </div>
+            <div className="lesson-info">
+              <LessonInfo lessons={lessonsData} />
             </div>
 
+            <div className="table-container">
+              <h2>{getTranslate('لیست دانشجویان')}</h2>
+              <StudentsTable />
+            </div>
           </div>
-        </div>
+        </Fade>
 
-        <LessonInfo lessons={lessonsData} />
-        <div className="table-container">
-          <h2>{getTranslate(':لیست دانشجویان')}</h2>
-          <StudentsTable />
-        </div>
-      </div>
+      </Modal>
 
     )
 }

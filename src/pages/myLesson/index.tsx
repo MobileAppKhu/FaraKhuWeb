@@ -3,6 +3,7 @@ import DataLesson from './component'
 import img1 from '../../assets/images/user_avatar.jpg'
 
 import useStyles from './styles/index.style'
+import MyLessonEdit from '../myLessonEdit/MyLessonEdit'
 
 const data = [
   {
@@ -38,7 +39,7 @@ const MyLessons = () => {
   useEffect(() => {
    setlesson(data)
   }, [])
-
+  const [modalIsOpen, setmodalIsOpen] = useState<boolean>(false)
   return (
     <div className={classes.root}>
       <div className={classes.root2}>
@@ -50,10 +51,11 @@ const MyLessons = () => {
             teacherName={item.teacherName}
             teacherImage={item.teacherImage}
             lessonImage={item.lessonImage}
-            onClick={() => {}}
+            onClick={() => { setmodalIsOpen(true) }}
           />
         ))}
       </div>
+      <MyLessonEdit isOpen={modalIsOpen} onClose={() => setmodalIsOpen(false)} />
     </div>
 
   )
