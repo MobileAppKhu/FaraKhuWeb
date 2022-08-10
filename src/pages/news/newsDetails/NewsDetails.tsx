@@ -38,19 +38,19 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
   const navigate = useNavigate()
 
   const { id } = useParams<{ id: string }>()
-  const selectedNews = newsList.find((news) => news.id === id!)
+  const selectedNews = newsList.find((news) => news.newsId === id!)
 
   const render = () => {
     if (!selectedNews) return <div>404</div>
 
-    const { title, desc, newsImgs } = selectedNews
-    const imgItems = newsImgs?.map((img) => (
+    const { title, description, fileId } = selectedNews
+    const imgItems = () => (
       <img
-        src={img}
+        src={fileId}
         alt={getTranslate('تصویر خبر')}
         onDragStart={(e) => e.preventDefault()}
       />
-    ))
+    )
 
     // temp
     const date = '21 اردیبهشت 1400'
@@ -88,7 +88,7 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
                 responsive={{
                   0: { items: 1 },
                 }}
-                items={imgItems}
+                items={[imgItems]}
                 renderNextButton={renderNextButton}
                 renderPrevButton={renderPrevButton}
                 touchTracking
@@ -96,7 +96,7 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
             </div>
 
             <Typography className="desc" component="p">
-              {desc}
+              {description}
             </Typography>
 
             <div className="separator gray" />
