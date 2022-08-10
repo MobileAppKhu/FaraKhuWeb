@@ -1,0 +1,42 @@
+.class-info-container{
+    display: flex;
+}
+.class-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    width: 70%;
+    
+}
+
+.class-time,.exam-time{
+    display: inline-block;
+}
+.exam-location{
+    display: block;
+}
+.info{
+    width: 300px;
+    margin-left: 100px;
+}
+.icon{
+    float: right;
+    margin: 0 20px 0 20px;
+}
+.anouncement-button{
+  width: 200.6px;
+  height: 54px;
+  display: inline;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 91px 13.5px 26px 65px;
+  padding: 12.6px 30.1px 12.6px 20.1px;
+  border-radius: 8.8px;
+  box-shadow: 0 1.3px 3.8px 1.3px rgba(0, 0, 0, 0.15), 0 1.3px 2.5px 0 rgba(0, 0, 0, 0.3);
+  color: white;
+  background-color: #1660a5;
+  font-family: Shabnam;
+}
