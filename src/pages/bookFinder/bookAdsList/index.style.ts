@@ -161,6 +161,25 @@ const useStyle = makeStyles((theme) => ({
       },
     },
   },
+
+  filterMenu: {
+    '& ul': {
+      display: 'flex',
+      flexDirection: 'column',
+      padding: 0,
+
+      '& li': {
+        padding: 0,
+
+        '& button': {
+          width: '100%',
+          borderRadius: 0,
+          padding: '10px 20px ',
+          fontSize: '0.9em',
+        },
+      },
+    },
+  },
 }))
 
 export default useStyle

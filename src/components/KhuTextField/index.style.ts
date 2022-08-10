@@ -44,10 +44,6 @@ const useStyles = makeStyles((theme) => ({
     '& .input': {
       position: 'relative', // for z-index to work
       height: '100%',
-      // width: '85%',
-      // '&.fullWidth': {
-      //   width: '100%',
-      // },
       flex: 6,
       border: 0,
       padding: '0 13px',
@@ -56,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
       fontFamily: getFont(),
       background: 'transparent',
       fontSize: 'inherit',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
 
       '&::placeholder': {
         color: '#aaa',
@@ -114,8 +112,6 @@ const useStyles = makeStyles((theme) => ({
     },
 
     '& .adornment': {
-      // display: 'inline-block',
-      // width: '15%',
       flex: 1,
       display: 'flex',
       justifyContent: 'flex-end',

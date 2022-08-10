@@ -12,8 +12,8 @@ import useStyles from './index.style'
 export interface KhuTextFieldProps {
   label: string
   placeholder?: string
-  value: string|number|undefined
-  handleChange: (newValue: string|number) => void
+  value: string | number | undefined
+  handleChange: (newValue: string | number) => void
   type?: 'email' | 'number' | 'password' | 'text' | 'url'
   multiline?: boolean
   height?: number
@@ -80,7 +80,7 @@ const KhuTextField: React.FC<
           className={`input textarea${value !== '' ? ' hasValue' : ''}${
             !hasAdornment ? ' fullWidth' : ''
           }`}
-          style={{ height }}
+          style={{ height, minHeight: height }}
           {...others}
         />
       )}

@@ -6,9 +6,11 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import KhuTextField, { KhuTextFieldProps } from '../KhuTextField'
 import useStyles from './index.style'
 
-interface KhuSelectProps extends KhuTextFieldProps {
-  selectOptions: { label: string; value: number }[]
+export interface KhuSelectProps extends KhuTextFieldProps {
+  selectOptions: { label: string; value: number | string }[]
   optionClassName?: string
+  textAlign?: 'start' | 'end'
+  maxHeight?: number | string
 }
 
 const KhuSelect = ({
@@ -17,6 +19,8 @@ const KhuSelect = ({
   selectOptions,
   handleChange,
   optionClassName,
+  textAlign,
+  maxHeight,
   ...others
 }: KhuSelectProps) => {
   const [open, setOpen] = useState(false)
@@ -51,12 +55,15 @@ const KhuSelect = ({
       >
         <KhuTextField
           label={label}
-          value={selectOptions.find((option) => option.value === value)?.label || ''}
+          value={
+            selectOptions.find((option) => option.value === value)?.label || ''
+          }
           handleChange={handleChange}
           className={`${focuesd ? 'focused' : ''}`}
           adornmentIconButton={
             <IconButton
               className={`${classes.arrowDropDownIcon}${open ? ' open' : ''}`}
+              disableRipple
             >
               <ArrowDropDownIcon fontSize="small" />
             </IconButton>
@@ -64,12 +71,17 @@ const KhuSelect = ({
           {...others}
         />
       </div>
-      <div className={`${classes.optionsContainer}${open ? ' open' : ''}`}>
+      <div
+        className={`${classes.optionsContainer}${open ? ' open' : ''}`}
+        style={{ maxHeight }}
+      >
         <ul>
           {selectOptions.map((option) => (
             <li key={option.label}>
               <Button
-                className={optionClassName}
+                className={`${optionClassName}${
+                  textAlign ? ` ${textAlign}` : ''
+                }`}
                 onClick={() => {
                   handleChange(option.value)
                   setOpen(false)

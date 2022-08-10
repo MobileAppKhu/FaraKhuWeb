@@ -1,13 +1,12 @@
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Button, Container, IconButton, Typography } from '@mui/material'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GoogleIcon from '@mui/icons-material/Google'
 import LogoutIcon from '@mui/icons-material/Logout'
 import EditIcon from '@mui/icons-material/Edit'
 
-import { useSelector } from 'react-redux'
 import { getTranslate } from '../../localization'
-
 import useStyles from './index.style'
 
 const Profile = () => {
@@ -16,7 +15,19 @@ const Profile = () => {
   useEffect(() => {
     document.title = getTranslate('فراخو - پروفایل')
   }, [])
-  const { role, firstName, lastName, id, email, favourites, avatarId, linkedIn, googleScholar } = useSelector((state:any) => state.authReducer)
+
+  const {
+    role,
+    firstName,
+    lastName,
+    id,
+    email,
+    favourites,
+    avatarId,
+    linkedIn,
+    googleScholar,
+  } = useSelector((state: any) => state.authReducer)
+
   return (
     <div className={classes.outerContainer}>
       <Container maxWidth="xl" sx={{ p: 0 }}>
@@ -34,7 +45,10 @@ const Profile = () => {
               <div className="right">
                 <div className="rightContent">
                   <div className="imageName">
-                    <img src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${avatarId}`} alt="تصویر پروفایل کاربر" />
+                    <img
+                      src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${avatarId}`}
+                      alt="تصویر پروفایل کاربر"
+                    />
                     <Typography variant="h3" className="name">
                       {`${firstName} ${lastName}`}
                     </Typography>
@@ -72,7 +86,7 @@ const Profile = () => {
                     {getTranslate('علاقه‌مندی‌ها:')}
                   </Typography>
                   <ul>
-                    {favourites?.map((favorite:string) => (
+                    {favourites?.map((favorite: string) => (
                       <li>
                         <span className="itemBullet" />
                         <Typography
@@ -90,10 +104,24 @@ const Profile = () => {
             </div>
             <div className="bottom">
               <div className="socialMedia">
-                <IconButton onClick={() => window.open(`https://www.linkedin.com/in/${linkedIn}`, '_blank')}>
+                <IconButton
+                  onClick={() =>
+                    window.open(
+                      `https://www.linkedin.com/in/${linkedIn}`,
+                      '_blank',
+                    )
+                  }
+                >
                   <LinkedInIcon className="icon" />
                 </IconButton>
-                <IconButton onClick={() => window.open(`https://scholar.google.com/citations?hl=en&user=${googleScholar}`, '_blank')}>
+                <IconButton
+                  onClick={() =>
+                    window.open(
+                      `https://scholar.google.com/citations?hl=en&user=${googleScholar}`,
+                      '_blank',
+                    )
+                  }
+                >
                   <GoogleIcon className="icon" />
                 </IconButton>
               </div>

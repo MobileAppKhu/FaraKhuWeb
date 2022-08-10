@@ -1,16 +1,16 @@
-import React, { HTMLAttributes, useState } from 'react'
+import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 import { Box, Typography, Fade, IconButton, Button } from '@mui/material'
 import MuiModal from '@mui/material/Modal'
 import CloseIcon from '@mui/icons-material/Close'
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh'
 
-import { Description } from '@mui/icons-material'
-import { toast } from 'react-toastify'
 import KhuTextField from '../../../../../components/KhuTextField'
 import KhuSelect from '../../../../../components/KhuSelect'
 import KhuModal from '../../../../../components/KhuModal'
-import useStyle from './CreateAdModal.style'
+
 import { getTranslate } from '../../../../../localization'
+import useStyle from './CreateAdModal.style'
 import request from '../../../../../heplers/request'
 
 interface GuideBtnProps {
@@ -36,6 +36,7 @@ interface ModalProps {
 
 const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
   const classes = useStyle()
+
   const [data, setData] = useState({
     title: '',
     contact: '',
@@ -45,20 +46,27 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
   })
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
   const [loading, setloading] = useState(false)
-  const handleChange = (field: keyof typeof data) => (value: string|number) => {
-    if (field === 'price') {
-      setData({ ...data, [field]: value.toString().replace(/\D+/g, '') })
-      return
+
+  const handleChange =
+    (field: keyof typeof data) => (value: string | number) => {
+      if (field === 'price') {
+        setData({ ...data, [field]: value.toString().replace(/\D+/g, '') })
+        return
+      }
+      setData({ ...data, [field]: value })
     }
-    setData({ ...data, [field]: value })
-  }
+
   const addOffer = async () => {
     setloading(true)
-    const requestData = { title: data.title,
+
+    const requestData = {
+      title: data.title,
       avatarId: 'smiley.png',
-    price: data.price,
-    offerType: data.offerType,
-    description: `${data.description}\n\n${data.contact}` }
+      price: data.price,
+      offerType: data.offerType,
+      description: `${data.description}\n\n${data.contact}`,
+    }
+
     const response = await request('Offer/AddOffer', 'POST', requestData)
     if (response.status === 200) {
       toast.success('آگهی شما با موفقیت ارسال شد')
@@ -150,7 +158,12 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
                 />
               </div>
               <div className="confirmBtn">
-                <Button variant="contained" size="large" onClick={addOffer} disabled={loading}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={addOffer}
+                  disabled={loading}
+                >
                   {getTranslate('تایید')}
                 </Button>
               </div>

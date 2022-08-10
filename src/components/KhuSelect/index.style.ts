@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 4,
     zIndex: 2,
     overflow: 'hidden',
+    overflowY: 'auto',
     backgroundColor: theme.palette.background.paper,
     boxShadow: '1px 2px 5px 0 rgb(0 0 0 / 18%)',
     pointerEvents: 'none',
@@ -57,7 +58,20 @@ const useStyles = makeStyles((theme) => ({
       '& li button': {
         width: '100%',
         borderRadius: 0,
-        fontSize: '1em',
+        fontSize: '0.88em',
+        color: theme.palette.primary.onContainer,
+
+        '&.start': {
+          justifyContent: 'flex-start',
+          padding: '8px 20px',
+          textAlign: 'start',
+        },
+
+        '&.end': {
+          justifyContent: 'flex-end',
+          padding: '8px 20px',
+          textAlign: 'end',
+        },
       },
     },
   },
