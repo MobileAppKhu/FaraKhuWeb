@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { getTranslate } from '../../localization'
-// import KhuModal from '../../../components/KhuModal'
 import LessonInfo from './LessonInfo'
 import StudentsTable from './StudentsTable'
 import './styles/myLessonEdit.css'
 import lessonPhoto from './myLessonIcons/ai.jpg'
 import teacherPhoto from './myLessonIcons/pedram.jpg'
+// import MuiModal from '@mui/material/Modal'
 
 const lessonsData = [{
   examLoc: 'Bellgrove',
@@ -53,6 +53,7 @@ const MyLessonEdit = () => {
     return (
 
       <div className="outer-container">
+
         <div className="lesson-image-container">
           <img className="lesson-image" src={lessonPhoto} alt="" />
           <div className="transparent-image-info">
@@ -75,6 +76,7 @@ const MyLessonEdit = () => {
           <StudentsTable />
         </div>
       </div>
+
     )
 }
 export default MyLessonEdit
