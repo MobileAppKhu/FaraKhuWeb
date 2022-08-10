@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import request from '../../heplers/request'
+
 import CreateNews from './createNews'
 import EditNews from './createNews/editNews'
 import NewsDetails from './newsDetails'
 import NewsList from './newsList'
+
+import request from '../../heplers/request'
 
 export interface NewsProps {
   newsId: string
@@ -27,7 +29,6 @@ export interface NewsProps {
 // این مسابقه که برای اولین بار و در سطح با مشارکت تیم هایی از دانشگاه‌های سراسر کشور و علوم پزشکی برگزار شد در سه مرحله به اجرا درآمد مرحله اول در تاریخ ۶ ماه الی ۲۵ شهریورماه ۱۴۰۰ با فراخوان ارسال ایده ها آغاز شد. در این فرایند شرکت کنندگان پس از تیم سازی و ارائه پروژه  و پس از بررسی اساتید و منتورهای ملی و بین المللی  داوری شدند که در نتیجه این داوری از ۵۶ پروپوزال ارسال شده  در حوزه های بیوتکنولوژی پزشکی، بیوتک کشاورزی، بیوتک میکروبی، بیوانفورماتیک، نانو بیوتکنولوژی، بیوتک محیطی، بیوتک دریا ۲۱ طرح پذیرفته شد.`,
 //     fileId:
 //       'https://s6.uupload.ir/files/screenshot_2022-08-05_151203_uh5c.jpg',
-
 //   },
 //   {
 //     newsId: '1245',
@@ -79,19 +80,22 @@ export interface NewsProps {
 // ]
 
 const News = () => {
-    const [news, setNews] = useState<NewsProps[]>([])
+  const [news, setNews] = useState<NewsProps[]>([])
+
   const getData = async () => {
     const response = await request('news/SearchNews', 'POST', {
-    start: 0,
-    step: 10,
-    newsColumn: 1,
-    orderDirection: true,
+      start: 0,
+      step: 10,
+      newsColumn: 1,
+      orderDirection: true,
     })
     setNews(response.responseJSON.news)
   }
+
   useEffect(() => {
     getData()
   }, [])
+
   return (
     <Routes>
       <Route index element={<NewsList newsList={news} />} />
@@ -99,7 +103,7 @@ const News = () => {
       <Route path="/create" element={<CreateNews />} />
       <Route path="/edit/:id" element={<EditNews newsList={news} />} />
     </Routes>
-)
+  )
 }
 
 export default News

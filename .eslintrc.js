@@ -56,6 +56,7 @@ module.exports = {
     'no-restricted-exports': 'off',
     'import/no-unresolved': 'off',
     'no-param-reassign': ['warn', { props: false }],
+    'operator-linebreak': 'off',
     indent: 'off',
     semi: ['error', 'never'],
     'react/function-component-definition': [
