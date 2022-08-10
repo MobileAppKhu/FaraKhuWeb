@@ -15,7 +15,7 @@ import News from '../pages/news'
 import Header from '../components/header'
 import Footer from '../components/Footer'
 import AnnoucementPage from '../pages/annoucement'
-import MyLessonEdit from '../pages/myLessonEdit'
+import MyLessonEdit from '../pages/myLessonEdit/MyLessonEdit'
 
 const AuthRouters = () => (
   <Routes>
