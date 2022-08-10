@@ -2,14 +2,15 @@ import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles(() => ({
   root: {
-   display: 'grid',
-   gridTemplateColumns: '1fr 1fr 1fr',
-   width: '100%',
-flexDirection: 'row-reverse',
-  //  height: 200,
-   margin: 20,
-    // marginTop: 200,
+   display: 'flex',
     backgroundColor: '#ffffff',
+    flexWrap: 'wrap',
+    width: '100vw',
+    justifyContent: 'center',
+  },
+  root2: {
+   display: 'flex',
+   flexWrap: 'wrap',
   },
 }))
 export default useStyles

@@ -7,7 +7,7 @@ import EnterEmail from '../pages/forgetPassword/enterEmail'
 import Landing from '../pages/landing'
 import Login from '../pages/login'
 import Profile from '../pages/profile'
-import MyLesson from '../pages/myLesson'
+import MyLessons from '../pages/myLesson'
 
 import AboutUniversity from '../pages/aboutUniversity'
 import BookFinder from '../pages/bookFinder'
@@ -16,7 +16,7 @@ import News from '../pages/news'
 const AuthRouters = () => (
   <Routes>
     <Route index element={<Landing />} />
-    <Route path="/myLesson" element={<MyLesson />} />
+    <Route path="/myLessons" element={<MyLessons />} />
     <Route path="/login" element={<Login />} />
     <Route path="/profile" element={<Profile />} />
     <Route path="/forgetPassword" element={<ForgetPassword />}>

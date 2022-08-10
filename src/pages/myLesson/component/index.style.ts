@@ -1,10 +1,6 @@
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles(() => ({
-  root: {
-flexDirection: 'row',
-
-  },
   titleLesson: {
     justifyContent: 'space-between',
     marginRight: '52',

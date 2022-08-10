@@ -6,6 +6,7 @@ import img1 from '../../assets/images/user_avatar.jpg'
 import img2 from '../../assets/images/KHU_logo.png'
 
 import useStyles from './styles/index.style'
+import KhuContainer from '../../components/KhuContainer'
 
 const data = [
   {
@@ -35,7 +36,7 @@ teacherName: 'میرطاهری',
     teacherImage: '',
   },
 ]
-const MyLesson = () => {
+const MyLessons = () => {
   const classes = useStyles()
   const [lesson, setlesson] = useState<any[]>([])
   useEffect(() => {
@@ -44,7 +45,7 @@ const MyLesson = () => {
 
   return (
     <div className={classes.root}>
-      <div>
+      <div className={classes.root2}>
         {lesson.map((item:any) => (
           <DataLesson
             key={item.id}
@@ -57,6 +58,7 @@ const MyLesson = () => {
         ))}
       </div>
     </div>
+
   )
 }
-export default MyLesson
+export default MyLessons
