@@ -9,29 +9,32 @@ export default async function request(
   body?: any,
 ) {
   let status: number
+  let header:any
   const reposnse = await fetch(BASE_URL + endpoint, {
     method,
     // mode: 'no-cors',
     headers: {
-      // Accept: '*/*',
+       Accept: 'application/json',
       'Content-Type': 'application/json',
-
     },
+    credentials: 'include',
     body: JSON.stringify(body),
   })
     .then((response) => {
       status = response.status
+      header = response.headers
       return response.json()
     })
     .then((responseJSON) => {
-      if (status >= 200 && status < 300) return { responseJSON, status }
-
-      toast.error(responseJSON.message)
-      return { responseJSON, status }
+      if (status >= 200 && status < 300) return { responseJSON, status, header }
+      responseJSON.errors.forEach((element:any) => {
+        toast.error(element.message)
+      })
+      return { responseJSON, status, header }
     })
     .catch((res) => {
       toast.error('Please log in')
-      return { responseJSON: res, status }
+      return { responseJSON: res, status, header }
     })
   return reposnse
 }

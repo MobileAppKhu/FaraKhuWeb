@@ -14,12 +14,12 @@ interface NewsItemProps extends NewsProps {
 }
 
 const NewsItem: React.FC<NewsItemProps> = ({
-  id,
+  newsId: id,
   author,
   authorImg,
   title,
-  desc,
-  newsImgs,
+  description: desc,
+  fileId,
   hideDesc = false,
   hideImg = false,
   variant = 'small',
@@ -51,9 +51,9 @@ const NewsItem: React.FC<NewsItemProps> = ({
           variant === 'medium' ? ' medium' : ''
         }`}
       >
-        {newsImgs && !hideImg && (
+        {fileId && !hideImg && (
           <div className="newsImg">
-            <img src={newsImgs[0]} alt={getTranslate('تصویر خبر')} />
+            <img src={fileId} alt={getTranslate('تصویر خبر')} />
           </div>
         )}
 

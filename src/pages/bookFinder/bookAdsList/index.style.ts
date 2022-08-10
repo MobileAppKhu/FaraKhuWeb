@@ -53,6 +53,8 @@ const useStyle = makeStyles((theme) => ({
             border: '0.5px solid #5c616e',
             borderRadius: 7,
             cursor: 'pointer',
+            fontSize: 14,
+            fontWeight: 'bold',
 
             '& .filterIcon': {
               display: 'flex',

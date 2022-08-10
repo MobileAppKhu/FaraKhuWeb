@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import { Button, IconButton, Switch, Typography } from '@mui/material'
@@ -7,7 +7,9 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import { NavLink, useNavigate } from 'react-router-dom'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 
+import { useSelector } from 'react-redux'
 import logo from '../../assets/images/logo.png'
 import khuLogo from '../../assets/images/KHU_logo.png'
 import useStyles from './styles/index.style'
@@ -20,17 +22,18 @@ const SwitchContainer: React.FC<{ className: string }> = ({
   children,
 }) => <div className={className}>{children}</div>
 
-interface HeaderProps {
-  floatingSubMenu?: boolean
-}
-
-const Header: React.FC<HeaderProps> = ({ floatingSubMenu = false }) => {
+const Header = () => {
   const classes = useStyles()
-  const [isLightMode, setisLightMode] = useState(false)
-  const [menuIcon, setMenuIcon] = useState(false)
-  const [showSubMenu, setShowSubMenu] = useState(!floatingSubMenu)
-
+  const [isLightMode, setisLightMode] = useState<boolean>(false)
+  const [menuIcon, setMenuIcon] = useState<boolean>(false)
+  const [showSubMenu, setShowSubMenu] = useState<boolean>(false)
+  const [floatingSubMenu, setfloatingSubMenu] = useState<boolean>()
+  const userData = useSelector((state: any) => state.authReducer)
   const navigate = useNavigate()
+  useEffect(() => {
+      setShowSubMenu(!!userData.role)
+      setfloatingSubMenu(!userData.role)
+  }, [userData])
 
   const switchContainerContent = (
     <>
@@ -127,29 +130,39 @@ const Header: React.FC<HeaderProps> = ({ floatingSubMenu = false }) => {
               </SwitchContainer>
             </Button>
           </nav>
-          <div className={classes.loginButtonContainer}>
-            <IconButton size="large">
-              <NotificationsNoneOutlinedIcon color="primary" fontSize="large" />
-            </IconButton>
-            <IconButton
-              className={classes.loginIconButton}
-              title="ورود"
-              size="large"
-              onClick={() => navigate('/login')}
-            >
-              <PersonOutlineIcon color="primary" fontSize="large" />
-            </IconButton>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.loginButton}
-              onClick={() => navigate('/login')}
-            >
-              <Typography variant="h3" color="white" style={{ color: '#FFF' }}>
-                {getTranslate('ورود')}
-              </Typography>
-            </Button>
-          </div>
+          {
+              floatingSubMenu ? (
+                <div className={classes.loginButtonContainer}>
+                  <IconButton size="large">
+                    <NotificationsNoneOutlinedIcon color="primary" fontSize="large" />
+                  </IconButton>
+                  <IconButton
+                    className={classes.loginIconButton}
+                    title="ورود"
+                    size="large"
+                    onClick={() => navigate('/login')}
+                  >
+                    <PersonOutlineIcon color="primary" fontSize="large" />
+                  </IconButton>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.loginButton}
+                    onClick={() => navigate('/login')}
+                  >
+                    <Typography variant="h3" color="white" style={{ color: '#FFF' }}>
+                      {getTranslate('ورود')}
+                    </Typography>
+                  </Button>
+                </div>
+              ) : (
+                <div className={classes.profile}>
+                  <img src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${userData.avatarId}`} alt="profile" className={classes.profilePhotoImage} />
+                  <IconButton size="large">
+                    <NotificationsNoneIcon fontSize="large" />
+                  </IconButton>
+                </div>)
+            }
         </div>
         {!floatingSubMenu && (
           <SubMenu className={`${showSubMenu ? ' open' : ''}`} />

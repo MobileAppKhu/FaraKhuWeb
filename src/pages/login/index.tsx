@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHref, useNavigate } from 'react-router-dom'
 import {
   Button,
   Checkbox,
@@ -9,12 +9,14 @@ import {
   Typography,
 } from '@mui/material'
 
-import { FormatColorResetOutlined } from '@mui/icons-material'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import useStyles from './styles/index.style'
 import KHULogo from '../../assets/images/KHU_logo.png'
 import footerImg from '../../assets/images/footer.svg'
 import { getTranslate } from '../../localization'
 import request from '../../heplers/request'
+import { saveUser } from '../../redux/auth/action'
 
 const Login = () => {
   const classes = useStyles()
@@ -24,12 +26,26 @@ const Login = () => {
   }, [])
   const [password, setpassword] = useState<string>('')
   const [email, setemail] = useState<string>('')
+  const [rememberMe, setrememberMe] = useState(false)
+  const [loading, setloading] = useState<boolean>(false)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const loginHandler = async () => {
-    await request('Account/SignIn', 'POST', { logon: email, password })
+    setloading(true)
+  const login = await request('Account/SignIn', 'POST', { logon: email, password })
+    if (login.status === 200) {
+      if (rememberMe) {
+        localStorage.setItem('token', JSON.stringify(login.responseJSON.profileDto))
+      } else { sessionStorage.setItem('token', JSON.stringify(login.responseJSON.profileDto)) }
+      dispatch(saveUser(login.responseJSON.profileDto))
+      navigate('/')
+      toast.success('ورود با موفقیت انجام شد')
+    }
+    setloading(false)
   }
   return (
     <div className={classes.outerContainer}>
-      <h1 className="sr-only">ورود</h1>
+      <h1 className="sr-only">{getTranslate('ورود')}</h1>
       <div className={classes.innerContainer}>
         <form className={classes.form}>
           <img src={KHULogo} alt="لوگوی خوارزمی" />
@@ -48,7 +64,7 @@ const Login = () => {
               color="primary"
               // label={getTranslate('ایمیل دانشگاهی')}
               value={email}
-              onChange={(e) => setemail(e.target.value)}
+              onChange={(event) => setemail(event.target.value)}
             />
           </div>
           <div className={classes.formControl}>
@@ -60,7 +76,7 @@ const Login = () => {
               type="password"
               fullWidth
               value={password}
-              onChange={(e) => setpassword(e.target.value)}
+              onChange={(event) => setpassword(event.target.value)}
             />
             <div className={classes.helperText}>
               <div className="right">
@@ -84,7 +100,7 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <Button variant="contained" className={classes.submitBtn} fullWidth onClick={loginHandler}>
+          <Button variant="contained" className={classes.submitBtn} fullWidth onClick={loginHandler} disabled={loading}>
             <Typography variant="h4" color="white">
               {getTranslate('تایید')}
             </Typography>
