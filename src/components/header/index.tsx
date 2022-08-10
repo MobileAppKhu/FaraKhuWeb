@@ -96,7 +96,7 @@ const Header = () => {
             <span className={`features navItem${showSubMenu ? ' active' : ''}`}>
               <Button onClick={() => setShowSubMenu((state) => !state)}>
                 <Typography variant="h3" component="span">
-                  {getTranslate('ویژگی‌ها')}
+                  {getTranslate('خدمات')}
                 </Typography>
               </Button>
               {floatingSubMenu && (

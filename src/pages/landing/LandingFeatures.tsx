@@ -78,15 +78,15 @@ const LandingFeatures = () => {
         <div className={classes.container}>
           <div className="right">
             <Typography variant="h2" className="title">
-              {getTranslate('ویژگی‌ها')}
+              {getTranslate('خدمات')}
             </Typography>
             <Typography component="p" className="desc">
               {!matches
                 ? getTranslate(
-                    'برخی از ویژگی‌های سامانه در روبرو آورده شده‌اند که برای استفاده از آن‌ها می‌توانید روی آن‌ها کلیک نمایید.',
+                    'برخی از خدمات سامانه در روبرو آورده شده‌اند که برای استفاده از آن‌ها می‌توانید روی آن‌ها کلیک نمایید.',
                   )
                 : getTranslate(
-                    'برخی از ویژگی‌های سامانه در زیر آورده شده‌اند که برای استفاده از آن‌ها می‌توانید روی آن‌ها کلیک نمایید.',
+                    'برخی از خدمات سامانه در زیر آورده شده‌اند که برای استفاده از آن‌ها می‌توانید روی آن‌ها کلیک نمایید.',
                   )}
             </Typography>
           </div>
