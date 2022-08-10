@@ -46,7 +46,7 @@ const Footer = () => {
             <div className="links">
               <a href="#">
                 <Typography className="item" component="span">
-                  {getTranslate('ویژگی‌ها')}
+                  {getTranslate('خدمات')}
                 </Typography>
               </a>
               <a href="#">
