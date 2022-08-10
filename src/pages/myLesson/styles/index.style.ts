@@ -3,9 +3,9 @@ import { makeStyles } from '@mui/styles'
 const useStyles = makeStyles(() => ({
   root: {
    display: 'flex',
-    backgroundColor: '#ffffff',
+    // backgroundColor: '#ffffff',
     flexWrap: 'wrap',
-    width: '100vw',
+    width: '100%',
     justifyContent: 'center',
   },
   root2: {

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react'
 import { Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
@@ -10,9 +11,10 @@ interface DataLessonProps {
   teacherName: string,
   lessonImage: string,
   teacherImage: string,
+  onClick:()=>void
 }
 
-const DataLesson: React.FC<DataLessonProps> = ({ id, title, teacherName, lessonImage, teacherImage }) => {
+const DataLesson: React.FC<DataLessonProps> = ({ id, title, teacherName, lessonImage, teacherImage, onClick }) => {
   const classes = useStyles()
   const rootClasses = makeStyles(() => ({
     root: {
@@ -32,8 +34,7 @@ marginRight: 150,
     },
   }))()
   return (
-    <div className={rootClasses.root}>
-
+    <div className={rootClasses.root} onClick={onClick} role="button">
       <div className={classes.cardLesson}>
         <div className={classes.titleLesson}>
 

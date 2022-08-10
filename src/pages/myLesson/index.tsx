@@ -1,25 +1,21 @@
 import { useEffect, useState } from 'react'
 import DataLesson from './component'
-// import img1 from '../../../../src/assets/images/user_avatar.jpg'
-// import img2 from '../../assets/images/khu_env_min.jpg'
 import img1 from '../../assets/images/user_avatar.jpg'
-import img2 from '../../assets/images/KHU_logo.png'
 
 import useStyles from './styles/index.style'
-import KhuContainer from '../../components/KhuContainer'
 
 const data = [
   {
     id: 1,
     title: 'سیگنال وسیستم ها',
- teacherName: 'میرطاهری',
+    teacherName: 'میرطاهری',
     lessonImage: img1,
     teacherImage: '',
   },
   {
     id: 2,
     title: 'سیگنال وسیستم ها',
-teacherName: 'میرطاهری',
+    teacherName: 'میرطاهری',
     lessonImage: img1,
     teacherImage: '',
   }, {
@@ -31,7 +27,7 @@ teacherName: 'میرطاهری',
   }, {
     id: 4,
     title: 'سیگنال وسیستم ها',
-teacherName: 'میرطاهری',
+    teacherName: 'میرطاهری',
     lessonImage: img1,
     teacherImage: '',
   },
@@ -54,6 +50,7 @@ const MyLessons = () => {
             teacherName={item.teacherName}
             teacherImage={item.teacherImage}
             lessonImage={item.lessonImage}
+            onClick={() => {}}
           />
         ))}
       </div>
