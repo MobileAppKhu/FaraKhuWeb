@@ -6,6 +6,7 @@ import ConfirmCode from '../pages/forgetPassword/confirmCode'
 import EnterEmail from '../pages/forgetPassword/enterEmail'
 import Landing from '../pages/landing'
 import Login from '../pages/login'
+
 import AboutUniversity from '../pages/aboutUniversity'
 import BookFinder from '../pages/bookFinder'
 
@@ -17,6 +18,7 @@ import Layout from '../components/Layout'
 
 const AuthRouters = () => (
   <Routes>
+
     <Route element={<Layout header footer />}>
       <Route path="/" element={<Landing />} />
       <Route path="/aboutUniversity" element={<AboutUniversity />} />
