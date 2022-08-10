@@ -13,7 +13,7 @@ import BookFinder from '../pages/bookFinder'
 import News from '../pages/news'
 import MyLessons from '../pages/myLessons'
 import AnnoucementPage from '../pages/annoucement'
-
+import MyLesson from '../pages/myLesson'
 import Layout from '../components/Layout'
 
 const MainRouters = () => (
@@ -36,6 +36,7 @@ const MainRouters = () => (
     <Route element={<Layout header />}>
       <Route path="/news/*" element={<News />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/myLesson" element={<MyLesson />} />
       <Route path="/myLessons/*" element={<MyLessons />} />
       <Route path="/bookFinder/*" element={<BookFinder />} />
       <Route path="/declarations" element={<AnnoucementPage />} />
