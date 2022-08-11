@@ -52,7 +52,7 @@ const StudentsTable:React.FC<Lesson> = ({ students }) => (
             </StyledTableCell>
             <StyledTableCell align="center">{student.firstName}</StyledTableCell>
             <StyledTableCell align="center">{student.lastName}</StyledTableCell>
-            <StyledTableCell align="center">{student.userId}</StyledTableCell>
+            <StyledTableCell align="center">{student.studentId}</StyledTableCell>
             <StyledTableCell align="center">{student.email}</StyledTableCell>
           </StyledTableRow>
           ))}

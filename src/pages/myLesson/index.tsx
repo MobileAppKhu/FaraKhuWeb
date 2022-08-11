@@ -58,7 +58,7 @@ export type Lesson={
         firstName:string,
         lastName:string,
         email:string,
-        userId:number
+        studentId:number
       }[]
       times:{
           startTime: string
