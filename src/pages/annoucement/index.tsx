@@ -5,12 +5,12 @@ import AnnoucementItem, { AnnoucementItemProps } from './AnnoucementItem'
 import useStyles from './styles/index.style'
 
 const AnnoucementPage = () => {
-  const [pagination, setpagination] = useState(0)
+  const [pagination, setpagination] = useState(1)
   const [data, setdata] = useState<AnnoucementItemProps[]>([])
   const classes = useStyles()
   const getData = async () => {
     const response = await request('Announcement/SearchAnnouncements', 'POST', {
-      start: pagination,
+      start: (pagination - 1) * 6,
   step: 6,
   announcementColumn: 1,
   orderDirection: true,
@@ -28,7 +28,7 @@ getData()
       </div>
       <div className={classes.paginationContainer}>
         <Pagination
-          count={100}
+          count={10}
           page={pagination}
           onChange={(event, page) => setpagination(page)}
           size="large"

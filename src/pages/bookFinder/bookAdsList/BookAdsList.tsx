@@ -7,6 +7,7 @@ import {
   Menu,
   MenuItem,
   OutlinedInput,
+  Pagination,
   Typography,
 } from '@mui/material'
 import FilterListIcon from '@mui/icons-material/FilterList'
@@ -45,6 +46,7 @@ const BookAdsList = () => {
   const [data, setData] = useState<OfferType[]>([])
   const [filterData, setfilterData] = useState<OfferType[]>([])
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [pagination, setpagination] = useState(0)
   const open = Boolean(anchorEl)
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -62,7 +64,7 @@ const BookAdsList = () => {
 
   const getData = async () => {
     const response = await request('Offer/SearchOffers', 'POST', {
-      start: 0,
+      start: pagination * 10,
       step: 10,
       offerColumn: 1,
       orderDirection: true,
@@ -75,7 +77,7 @@ const BookAdsList = () => {
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [pagination])
 
   useEffect(() => {
     let newData = data
@@ -221,6 +223,17 @@ const BookAdsList = () => {
               </Grid>
             ))}
           </Grid>
+
+        </div>
+        <div className={classes.pagination}>
+
+          <Pagination
+            count={10}
+            page={pagination}
+            onChange={(event, page) => setpagination(page)}
+            size="large"
+            dir="ltr"
+          />
         </div>
         <CreateAdModal
           open={openCreateAdModal}

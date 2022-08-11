@@ -180,6 +180,12 @@ const useStyle = makeStyles((theme) => ({
       },
     },
   },
+  pagination: {
+    marginTop: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+  },
 }))
 
 export default useStyle
