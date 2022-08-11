@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Box, Button, IconButton, Typography } from '@mui/material'
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
@@ -38,6 +39,7 @@ interface DataProps {
 
 const CreateLesson = () => {
   const classes = useStyle()
+  const navigate = useNavigate()
 
   const [data, setData] = useState<DataProps>({
     title: '',
@@ -232,28 +234,18 @@ const CreateLesson = () => {
             </div>
 
             <div className="confirmBtn">
-              <Button variant="contained" size="large" disabled={loading}>
+              <Button
+                variant="contained"
+                size="large"
+                disabled={loading}
+                onClick={() => navigate('addStudents')}
+              >
                 {getTranslate('صفحه بعد')}
               </Button>
             </div>
           </div>
         </Box>
       </KhuContainer>
-      <KhuModal
-        title="درس مورد نظر با موفقیت ایجاد شد."
-        buttons={[
-          {
-            buttonText: 'باشه',
-            textColor: 'primary.main',
-            bgColor: 'transparent',
-            onClick: () => {
-              setOpenSuccessModal(false)
-            },
-          },
-        ]}
-        open={openSuccessModal}
-        handleClose={() => setOpenSuccessModal(false)}
-      />
     </div>
   )
 }
