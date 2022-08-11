@@ -12,7 +12,6 @@ const LessonInfo:React.FC<Lesson> = ({ times, endDate, address }) => {
     const navigate = useNavigate()
     return (
       <div className="class-info-container ">
-
         <div className="class-info ">
           <div className="class-time info">
             <img className="icon" src={clockLogo} alt="clock logo" />
@@ -30,7 +29,6 @@ const LessonInfo:React.FC<Lesson> = ({ times, endDate, address }) => {
               {endDate.substring(0, 10).split('-').reverse().join('-')}
             </h3>
           </div>
-
           <div className="exam-location ">
             <img className="icon" src={locationLogo} alt="location logo" />
             <h3>

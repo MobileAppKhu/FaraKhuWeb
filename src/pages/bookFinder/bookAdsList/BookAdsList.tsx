@@ -64,7 +64,7 @@ const BookAdsList = () => {
 
   const getData = async () => {
     const response = await request('Offer/SearchOffers', 'POST', {
-      start: pagination * 10,
+      start: (pagination - 1) * 10,
       step: 10,
       offerColumn: 1,
       orderDirection: true,
