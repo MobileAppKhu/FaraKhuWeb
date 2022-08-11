@@ -7,10 +7,15 @@ const useStyles = makeStyles(() => ({
     flexWrap: 'wrap',
     width: '100%',
     justifyContent: 'center',
+    marginBottom: 150,
+    marginTop: 200,
   },
   root2: {
-   display: 'flex',
-   flexWrap: 'wrap',
+      display: 'grid',
+    gridTemplateColumns: 'repeat(3,1fr)',
+    // backgroundColor: '#ffffff',
+    columnGap: '150px',
+    rowGap: '120px',
   },
 }))
 export default useStyles

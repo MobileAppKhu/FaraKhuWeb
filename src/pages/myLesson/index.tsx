@@ -33,7 +33,7 @@ const data = [
     teacherImage: '',
   },
 ]
-const MyLessons = () => {
+const MyLesson = () => {
   const classes = useStyles()
   const [lesson, setlesson] = useState<any[]>([])
   useEffect(() => {
@@ -60,4 +60,4 @@ const MyLessons = () => {
 
   )
 }
-export default MyLessons
+export default MyLesson

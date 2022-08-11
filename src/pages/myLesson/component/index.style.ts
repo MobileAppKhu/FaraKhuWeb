@@ -3,7 +3,6 @@ import { makeStyles } from '@mui/styles'
 const useStyles = makeStyles(() => ({
   titleLesson: {
     justifyContent: 'space-between',
-    marginRight: '52',
     fontSize: 32,
     fontWeight: 'bold',
     alignItems: 'center',

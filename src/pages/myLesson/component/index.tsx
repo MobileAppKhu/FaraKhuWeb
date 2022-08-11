@@ -26,11 +26,12 @@ const DataLesson: React.FC<DataLessonProps> = ({ id, title, teacherName, lessonI
       display: 'flex',
       flexWrap: 'wrap',
       backgroundColor: '#ffffff',
-      marginTop: 200,
+      // marginTop: 200,
       width: 320,
       height: 320,
       flexDirection: 'column-reverse',
-marginRight: 150,
+      cursor: 'pointer',
+// marginRight: 150,
     },
   }))()
   return (
