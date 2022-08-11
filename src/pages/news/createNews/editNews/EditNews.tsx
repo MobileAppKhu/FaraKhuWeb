@@ -15,7 +15,7 @@ import { editorToolbarOptions } from '../editorToolbarOptions'
 
 import useStyle from '../CreateNews.style'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import request from '../../../../heplers/request'
+import request, { uploadFile } from '../../../../heplers/request'
 
 interface ImagePicker {
   id: number
@@ -47,25 +47,21 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
       }
     })
 
-    const [images, setImages] = useState<ImagePicker[]>(initialImages)
+    const [images, setImages] = useState<ImagePicker>(initialImages[0])
     const [editorState, setEditorState] = useState(EditorState.createEmpty()) // edit this: should be based on the "desc" prop
     const [confirmModal, setConfirmModal] = useState(false)
 
-    function handleChange(index: number) {
-      return (e: ChangeEvent<HTMLInputElement>) => {
-        const newImages = [...images]
-        newImages[index].file = e.target.files?.[0]
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const newImages = images
+        newImages.file = e.target.files?.[0]
         setImages(newImages)
       }
-    }
 
-    function handleDelete(index: number) {
-      return (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+    const handleDelete = (e: ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
-        const newImages = [...images]
-        newImages[index].file = undefined
+        const newImages = images
+        newImages.file = undefined
         setImages(newImages)
-      }
     }
 
     function getImageAddress(file: ImagePicker['file']) {
@@ -82,6 +78,12 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
         }
     }
     const updateNews = async () => {
+      if (images.file !== `${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${fileId}`) {
+          const formData = new FormData()
+    formData.append('file', images.file!)
+    const img = await uploadFile(formData)
+    images.file = `${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${img.res.fileId}`
+      }
       const response = await request('news/editNews', 'POST', {
         newsId: id,
         title: newsTitle,
@@ -115,31 +117,31 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
                 {getTranslate('عکس:')}
               </Typography>
               <Grid className="imagePickers" container columnSpacing={2}>
-                {images.map((image, index) => (
-                  <Grid item xs={4} key={image.id}>
-                    <label className="iamgePicker">
-                      {images[index].file && (
-                        <img src={getImageAddress(images[index].file)} alt="" />
+
+                <Grid item xs={4}>
+                  <label className="iamgePicker">
+                    {images.file && (
+                    <img src={getImageAddress(images.file)} alt="" />
                       )}
-                      {!images[index].file && <AddIcon fontSize="large" />}
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleChange(index)}
-                      />
-                      {images[index].file && (
-                        <IconButton
-                          className="deleteIcon"
-                          title="حذف تصویر"
-                          size="small"
-                          onClick={handleDelete(index)}
-                        >
-                          <DeleteOutlineIcon />
-                        </IconButton>
+                    {!images.file && <AddIcon fontSize="large" />}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleChange}
+                    />
+                    {images.file && (
+                    <IconButton
+                      className="deleteIcon"
+                      title="حذف تصویر"
+                      size="small"
+                      onClick={(e:any) => handleDelete(e)}
+                    >
+                      <DeleteOutlineIcon />
+                    </IconButton>
                       )}
-                    </label>
-                  </Grid>
-                ))}
+                  </label>
+                </Grid>
+
               </Grid>
             </div>
             <div className="inputContainer description">
@@ -173,7 +175,6 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
                 variant="outlined"
                 disableElevation
                 onClick={() => setConfirmModal(true)}
-
               >
                 {getTranslate('حذف خبر')}
               </Button>
@@ -208,7 +209,10 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
       </div>
     )
   }
-
+  const navigate = useNavigate()
+  if (newsList.length === 0) {
+navigate('/news')
+    }
   return render()
 }
 

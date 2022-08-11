@@ -45,8 +45,6 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
     if (!selectedNews) return <div>404</div>
 
     const { title, description, fileId } = selectedNews
-    console.log(`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${fileId}`)
-
     const imgItems = () => (
       <img
         src={`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${fileId}`}
