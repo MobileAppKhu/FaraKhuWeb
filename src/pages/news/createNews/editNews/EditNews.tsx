@@ -43,7 +43,7 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
     ]
     initialImages.forEach((image, index) => {
       if (fileId) {
-        image.file = fileId
+        image.file = `${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${fileId}`
       }
     })
 
@@ -80,6 +80,18 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
           toast.success('خبر با موفقیت حذف شد')
           navigate('/news')
         }
+    }
+    const updateNews = async () => {
+      const response = await request('news/editNews', 'POST', {
+        newsId: id,
+        title: newsTitle,
+        description: editorState.getCurrentContent().getPlainText(),
+        fileId,
+      })
+      if (response.status < 300) {
+        toast.success('خبر با موفقیت ویرایش شد')
+        navigate('/news')
+      }
     }
     return (
       <div className={classes.background}>
@@ -152,6 +164,7 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
                 className="confirmButton"
                 variant="contained"
                 disableElevation
+                onClick={updateNews}
               >
                 {getTranslate('ذخیره تغییرات')}
               </Button>
