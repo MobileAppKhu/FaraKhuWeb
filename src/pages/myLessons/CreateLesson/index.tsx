@@ -7,6 +7,7 @@ import AddIcon from '@mui/icons-material/Add'
 
 import { DataObject } from '@mui/icons-material'
 import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux'
 import KhuContainer from '../../../components/KhuContainer'
 import KhuSelect from '../../../components/KhuSelect'
 
@@ -41,7 +42,7 @@ interface DataProps {
   addStudentDto:{
     studentIds:any[]
   }
-  instructorId:string
+  instructorId:string|undefined
   endDate:string
 }
 
@@ -67,7 +68,7 @@ const CreateLesson = () => {
 
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
   const [loading, setloading] = useState(false)
-
+  const { role } = useSelector((state:any) => state.authRouters)
   const handleChange =
     (field: keyof typeof data) => (value: string | number) => {
       setData({ ...data, [field]: value })
@@ -82,7 +83,7 @@ const CreateLesson = () => {
     formData.append('file', newData.avatarId!)
     const upload = await uploadFile(formData)
     newData.avatarId = upload.res.fileId
-    newData.instructorId = '640db9c2-aeeb-47d2-9da1-4e58bc06e0ac'
+    newData.instructorId = role === 'Owner' ? '640db9c2-aeeb-47d2-9da1-4e58bc06e0ac' : undefined
     const response = await request('course/AddCourse', 'POST', newData)
     if (response.status === 200) {
         toast.success('درس با موفقیت اضافه شد')
