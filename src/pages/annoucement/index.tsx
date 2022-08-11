@@ -1,19 +1,30 @@
 import { Pagination } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import AnnoucementItem from './AnnoucementItem'
+import request from '../../heplers/request'
+import AnnoucementItem, { AnnoucementItemProps } from './AnnoucementItem'
 import useStyles from './styles/index.style'
 
 const AnnoucementPage = () => {
-  const data = Array(5).fill(null).map(() => ({ teacherName: '', title: '', imgSrc: '' }))
-  const [pagination, setpagination] = useState(1)
+  const [pagination, setpagination] = useState(0)
+  const [data, setdata] = useState<AnnoucementItemProps[]>([])
   const classes = useStyles()
+  const getData = async () => {
+    const response = await request('Announcement/SearchAnnouncements', 'POST', {
+      start: pagination,
+  step: 6,
+  announcementColumn: 1,
+  orderDirection: true,
+    })
+    setdata(response.responseJSON.announcements)
+  }
   useEffect(() => {
-  }, [])
+getData()
+  }, [pagination])
 
   return (
     <div className={classes.root}>
       <div className={classes.annoucementItemContainer}>
-        {data.map((item, index) => <AnnoucementItem {...item} key={index.toString() + item.teacherName} />)}
+        {data.map((item, index) => <AnnoucementItem {...item} />)}
       </div>
       <div className={classes.paginationContainer}>
         <Pagination
