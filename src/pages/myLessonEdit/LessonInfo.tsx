@@ -1,48 +1,46 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import clockLogo from './myLessonIcons/wall clock.png'
 import calenderLogo from './myLessonIcons/icon_calendar_simple.png'
 import locationLogo from './myLessonIcons/location.png'
 
 import './styles/lessonInfo.css'
-import { getTranslate } from '../../localization'
+import { Lesson } from '../myLesson'
 
-interface LessonInfoProps {
-    lessons: {examLoc:string, classTime:string, examTime:string, className:string}[]
-}
-const LessonInfo:React.FC<LessonInfoProps> = ({ lessons }) => {
-    console.log('hi')
+const LessonInfo:React.FC<Lesson> = ({ times, endDate, address }) => {
+    console.log('')
+    const navigate = useNavigate()
     return (
       <div className="class-info-container ">
-        {lessons.slice(0, 1).map((lesson) => (
-          <div className="class-info ">
-            <div className="class-time info">
-              <img className="icon" src={clockLogo} alt="clock logo" />
-              <h3>
-                ساعت کلاس:
-                {' '}
-                {lesson.classTime}
-              </h3>
-            </div>
-            <div className="exam-time info">
-              <img className="icon" src={calenderLogo} alt="calender logo" />
-              <h3>
-                تاریخ امتحان
-                {' '}
-                {lesson.examTime}
-              </h3>
-            </div>
 
-            <div className="exam-location ">
-              <img className="icon" src={locationLogo} alt="location logo" />
-              <h3>
-                محل برگزاری امتحان
-                {' '}
-                {lesson.examLoc}
-              </h3>
-            </div>
+        <div className="class-info ">
+          <div className="class-time info">
+            <img className="icon" src={clockLogo} alt="clock logo" />
+            <h3>
+              ساعت کلاس:
+              {' '}
+              {times[0].startTime.substring(0, 4)}
+            </h3>
           </div>
-                ))}
-        <button className="anouncement-button" type="button">اطلاعیه ها/نظر سنجی</button>
+          <div className="exam-time info">
+            <img className="icon" src={calenderLogo} alt="calender logo" />
+            <h3>
+              تاریخ امتحان
+              {' '}
+              {endDate.substring(0, 10).split('-').join('-')}
+            </h3>
+          </div>
+
+          <div className="exam-location ">
+            <img className="icon" src={locationLogo} alt="location logo" />
+            <h3>
+              محل برگزاری امتحان
+              {' '}
+              {address}
+            </h3>
+          </div>
+        </div>
+        <button className="anouncement-button" type="button" onClick={() => navigate('announcements_polls')}>اطلاعیه ها/نظر سنجی</button>
       </div>)
 }
 export default LessonInfo

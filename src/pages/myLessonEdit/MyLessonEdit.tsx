@@ -7,12 +7,13 @@ import lessonPhoto from './myLessonIcons/ai.jpg'
 import teacherPhoto from './myLessonIcons/pedram.jpg'
 import LessonInfo from './LessonInfo'
 import StudentsTable from './StudentsTable'
+import { Lesson } from '../myLesson'
 
 // import MuiModal from '@mui/material/Modal'
 
 const lessonsData = [{
   examLoc: 'Bellgrove',
-  classTime: '8:49',
+  classTime: ['8:49'],
   examTime: '1/14/2022',
   className: 'Funk-Powlowski',
 }, {
@@ -53,10 +54,11 @@ const lessonsData = [{
 }]
 interface MyLessonEditProps{
   isOpen:boolean,
-  onClose:()=>void
+  onClose:()=>void,
+  lesson:Lesson
 }
-const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose }) => {
-    console.log('Hi1')
+const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose, lesson }) => {
+    console.log('')
     return (
       <Modal open={isOpen} onClose={onClose} className="modal">
         <Fade in={isOpen}>
@@ -65,15 +67,14 @@ const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose }) => {
               <img className="lesson-image" src={lessonPhoto} alt="" />
               <div className="transparent-image-info">
                 <span className="Course-name">
-                  هوش مصنوعی و سیستم‌های خبره
+                  {lesson.courseType}
                 </span>
                 <div className="Teacher">
                   <img className="teacher-photo" src={teacherPhoto} alt="" />
                   <span className="Title">
-                    دکتر میرمحسن پدرام
+                    {`${lesson.instructor.firstName} ${lesson.instructor.lastName}`}
                   </span>
                 </div>
-
               </div>
               <div className="close-logo">
                 <IconButton onClick={onClose}>
@@ -83,12 +84,12 @@ const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose }) => {
 
             </div>
             <div className="lesson-info">
-              <LessonInfo lessons={lessonsData} />
+              <LessonInfo {...lesson} />
             </div>
 
             <div className="table-container">
               <h2>{getTranslate('لیست دانشجویان')}</h2>
-              <StudentsTable />
+              <StudentsTable {...lesson} />
             </div>
           </Paper>
         </Fade>

@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
   cardDes: {
     flexDirection: 'row-reverse',
     display: 'flex',
+    columnGap: 10,
   },
   cardLesson: {
     backdropFilter: 'blur(4px)',
@@ -31,10 +32,8 @@ const useStyles = makeStyles(() => ({
   },
   teacherImagestyle: {
     width: 24,
-    alignItems: 'flex-end',
-backgroundColor: 'red',
     height: 24,
-    borderRadius: 45,
+    borderRadius: 12,
   },
 }))
 export default useStyles
