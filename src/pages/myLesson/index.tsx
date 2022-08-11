@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { Button } from '@mui/material'
 import DataLesson from './component'
 import img1 from '../../assets/images/user_avatar.jpg'
 
 import useStyles from './styles/index.style'
 import MyLessonEdit from '../myLessonEdit/MyLessonEdit'
 import request from '../../heplers/request'
+import { getTranslate } from '../../localization'
 
 const data = [
   {
@@ -71,7 +73,7 @@ const MyLesson = () => {
   const { role, userId } = useSelector((state:any) => state.authReducer)
   const getLessons = async () => {
     const response = await request('course/SearchCourse', 'POST', {
-      [role === 'Student' ? 'student' : 'instructor']: userId,
+      [role === 'Student' ? 'student' : 'instructor']: role === 'Owner' ? undefined : userId,
       start: 0,
       step: 6,
       courseColumn: 1,
@@ -86,6 +88,12 @@ const MyLesson = () => {
   const [modalIsOpen, setmodalIsOpen] = useState<boolean>(false)
   return (
     <div className={classes.root}>
+      {(role === 'Instructor' || role === 'Owner') &&
+        <div className={classes.addButton}>
+          <Button variant="contained" size="large">
+            {getTranslate('اضافه کردن درس')}
+          </Button>
+        </div>}
       <div className={classes.root2}>
         {lesson.map((item, index) => (
           <DataLesson

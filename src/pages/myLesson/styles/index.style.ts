@@ -8,7 +8,8 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     justifyContent: 'center',
     marginBottom: 150,
-    marginTop: 200,
+    paddingTop: 200,
+    position: 'relative',
   },
   root2: {
       display: 'grid',
@@ -16,6 +17,11 @@ const useStyles = makeStyles(() => ({
     // backgroundColor: '#ffffff',
     columnGap: '150px',
     rowGap: '120px',
+  },
+  addButton: {
+    position: 'absolute',
+    top: 100,
+
   },
 }))
 export default useStyles
