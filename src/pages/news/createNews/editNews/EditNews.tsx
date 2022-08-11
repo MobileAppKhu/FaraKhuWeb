@@ -1,11 +1,12 @@
 import React, { useState, ChangeEvent, MouseEvent } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material'
 import { EditorState } from 'draft-js'
 import { Editor } from 'react-draft-wysiwyg'
 import AddIcon from '@mui/icons-material/Add'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 
+import { toast } from 'react-toastify'
 import KhuModal from '../../../../components/KhuModal'
 import KhuContainer from '../../../../components/KhuContainer'
 import { NewsProps } from '../../News'
@@ -14,6 +15,7 @@ import { editorToolbarOptions } from '../editorToolbarOptions'
 
 import useStyle from '../CreateNews.style'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import request from '../../../../heplers/request'
 
 interface ImagePicker {
   id: number
@@ -69,7 +71,16 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
     function getImageAddress(file: ImagePicker['file']) {
       return typeof file === 'string' ? file : URL.createObjectURL(file as File)
     }
-
+    const navigate = useNavigate()
+    const deleteNews = async () => {
+        const response = await request('news/DeleteNews', 'POST', {
+          newsId: id,
+        })
+        if (response.status < 300) {
+          toast.success('خبر با موفقیت حذف شد')
+          navigate('/news')
+        }
+    }
     return (
       <div className={classes.background}>
         <KhuContainer>
@@ -148,6 +159,8 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
                 className="deleteButton"
                 variant="outlined"
                 disableElevation
+                onClick={() => setConfirmModal(true)}
+
               >
                 {getTranslate('حذف خبر')}
               </Button>
@@ -164,9 +177,7 @@ const EditNews: React.FC<EditNewsProps> = ({ newsList }) => {
               bgColor: 'error.main',
               borderColor: 'error.main',
               hoverColor: 'error.main',
-              onClick: () => {
-                console.log('the news was deleted successfully')
-              },
+              onClick: deleteNews,
             },
             {
               buttonText: 'خیر',

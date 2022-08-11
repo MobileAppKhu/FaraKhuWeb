@@ -6,6 +6,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import { useNavigate, useParams } from 'react-router-dom'
 import AliceCarousel from 'react-alice-carousel'
 
+import { useSelector } from 'react-redux'
 import KhuContainer from '../../../components/KhuContainer'
 import { getTranslate } from '../../../localization'
 import { NewsProps } from '../News'
@@ -44,17 +45,20 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
     if (!selectedNews) return <div>404</div>
 
     const { title, description, fileId } = selectedNews
+    console.log(`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${fileId}`)
+
     const imgItems = () => (
       <img
-        src={fileId}
+        src={`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${fileId}`}
         alt={getTranslate('تصویر خبر')}
         onDragStart={(e) => e.preventDefault()}
       />
     )
 
     // temp
+    const { role } = useSelector((state: any) => state.authReducer)
     const date = '21 اردیبهشت 1400'
-    const isAdmin = true
+    const isAdmin = role === 'Owner' || role === 'Admin'
 
     return (
       <div className={classes.background}>
@@ -84,21 +88,16 @@ const NewsDetails: React.FC<NewsDetailsProps> = ({ newsList }) => {
             </Typography>
 
             <div className="images">
-              <AliceCarousel
-                responsive={{
-                  0: { items: 1 },
-                }}
-                items={[imgItems]}
-                renderNextButton={renderNextButton}
-                renderPrevButton={renderPrevButton}
-                touchTracking
+              <img
+                src={`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${fileId}`}
+                alt={getTranslate('تصویر خبر')}
+                onDragStart={(e) => e.preventDefault()}
               />
             </div>
 
             <Typography className="desc" component="p">
               {description}
             </Typography>
-
             <div className="separator gray" />
           </div>
         </KhuContainer>

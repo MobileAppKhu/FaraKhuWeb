@@ -57,45 +57,40 @@ interface MyLessonEditProps{
   onClose:()=>void,
   lesson:Lesson
 }
-const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose, lesson }) => {
-    console.log('')
-    return (
-      <Modal open={isOpen} onClose={onClose} className="modal">
-        <Fade in={isOpen}>
-          <Paper className="outer-container">
-            <div className="lesson-image-container">
-              <img className="lesson-image" src={lessonPhoto} alt="" />
-              <div className="transparent-image-info">
-                <span className="Course-name">
-                  {lesson.courseType}
-                </span>
-                <div className="Teacher">
-                  <img className="teacher-photo" src={teacherPhoto} alt="" />
-                  <span className="Title">
-                    {`${lesson.instructor.firstName} ${lesson.instructor.lastName}`}
-                  </span>
-                </div>
-              </div>
-              <div className="close-logo">
-                <IconButton onClick={onClose}>
-                  <CloseIcon fontSize="large" />
-                </IconButton>
-              </div>
-
+const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose, lesson }) => (
+  <Modal open={isOpen} onClose={onClose} className="modal">
+    <Fade in={isOpen}>
+      <Paper className="outer-container">
+        <div className="lesson-image-container">
+          <img className="lesson-image" src={lessonPhoto} alt="lessonPhoto" />
+          <div className="transparent-image-info">
+            <span className="Course-name">
+              {lesson.courseType}
+            </span>
+            <div className="Teacher">
+              <img className="teacher-photo" src={teacherPhoto} alt="" />
+              <span className="Title">
+                {`${lesson.instructor.firstName} ${lesson.instructor.lastName}`}
+              </span>
             </div>
-            <div className="lesson-info">
-              <LessonInfo {...lesson} />
-            </div>
+          </div>
+          <div className="close-logo">
+            <IconButton onClick={onClose}>
+              <CloseIcon fontSize="large" />
+            </IconButton>
+          </div>
+        </div>
+        <div className="lesson-info">
+          <LessonInfo {...lesson} />
+        </div>
 
-            <div className="table-container">
-              <h2>{getTranslate('لیست دانشجویان')}</h2>
-              <StudentsTable {...lesson} />
-            </div>
-          </Paper>
-        </Fade>
-
-      </Modal>
+        <div className="table-container">
+          <h2>{getTranslate('لیست دانشجویان')}</h2>
+          <StudentsTable {...lesson} />
+        </div>
+      </Paper>
+    </Fade>
+  </Modal>
 
     )
-}
 export default MyLessonEdit

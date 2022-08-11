@@ -31,6 +31,10 @@ export default async function request(
       responseJSON.errors.forEach((element:any) => {
         toast.error(element.message)
       })
+      if (status === 401) {
+      toast.error('Please log in')
+      }
+
       return { responseJSON, status, header }
     })
     .catch((res) => {

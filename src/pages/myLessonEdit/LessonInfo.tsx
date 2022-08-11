@@ -8,7 +8,6 @@ import './styles/lessonInfo.css'
 import { Lesson } from '../myLesson'
 
 const LessonInfo:React.FC<Lesson> = ({ times, endDate, address }) => {
-    console.log('')
     const navigate = useNavigate()
     return (
       <div className="class-info-container ">

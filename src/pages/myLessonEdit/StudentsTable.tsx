@@ -32,35 +32,32 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }))
 
-const StudentsTable:React.FC<Lesson> = ({ students }) => {
-    console.log('hi')
-  return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell align="center">{getTranslate('ردیف')}</StyledTableCell>
-            <StyledTableCell align="center">{getTranslate('نام')}</StyledTableCell>
-            <StyledTableCell align="center">{getTranslate('نام خانوادگی')}</StyledTableCell>
-            <StyledTableCell align="center">{getTranslate('شماره دانشجویی')}</StyledTableCell>
-            <StyledTableCell align="center">{getTranslate('ایمیل')}</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {students.map((student, index) => (
-            <StyledTableRow key={student.firstName + student.lastName}>
-              <StyledTableCell align="center" component="th" scope="row">
-                {index + 1}
-              </StyledTableCell>
-              <StyledTableCell align="center">{student.firstName}</StyledTableCell>
-              <StyledTableCell align="center">{student.lastName}</StyledTableCell>
-              <StyledTableCell align="center">{student.userId}</StyledTableCell>
-              <StyledTableCell align="center">{student.email}</StyledTableCell>
-            </StyledTableRow>
+const StudentsTable:React.FC<Lesson> = ({ students }) => (
+  <TableContainer component={Paper}>
+    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <TableHead>
+        <TableRow>
+          <StyledTableCell align="center">{getTranslate('ردیف')}</StyledTableCell>
+          <StyledTableCell align="center">{getTranslate('نام')}</StyledTableCell>
+          <StyledTableCell align="center">{getTranslate('نام خانوادگی')}</StyledTableCell>
+          <StyledTableCell align="center">{getTranslate('شماره دانشجویی')}</StyledTableCell>
+          <StyledTableCell align="center">{getTranslate('ایمیل')}</StyledTableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {students.map((student, index) => (
+          <StyledTableRow key={student.firstName + student.lastName}>
+            <StyledTableCell align="center" component="th" scope="row">
+              {index + 1}
+            </StyledTableCell>
+            <StyledTableCell align="center">{student.firstName}</StyledTableCell>
+            <StyledTableCell align="center">{student.lastName}</StyledTableCell>
+            <StyledTableCell align="center">{student.userId}</StyledTableCell>
+            <StyledTableCell align="center">{student.email}</StyledTableCell>
+          </StyledTableRow>
           ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+      </TableBody>
+    </Table>
+  </TableContainer>
   )
-}
 export default StudentsTable
