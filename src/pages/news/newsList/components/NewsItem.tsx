@@ -14,7 +14,7 @@ interface NewsItemProps extends NewsProps {
 }
 
 const NewsItem: React.FC<NewsItemProps> = ({
-  newsId: id,
+  newsId,
   author,
   authorImg,
   title,
@@ -38,7 +38,7 @@ const NewsItem: React.FC<NewsItemProps> = ({
       <div className="author">
         <img
           className="authorImg"
-          src={authorImg}
+          src="https://khu.ac.ir/templates/tmpl_modern01/images/main_logo.png"
           alt={getTranslate('تصویر نویسنده خبر')}
         />
         <Typography className="authorName" component="span">
@@ -53,14 +53,14 @@ const NewsItem: React.FC<NewsItemProps> = ({
       >
         {fileId && !hideImg && (
           <div className="newsImg">
-            <img src={fileId} alt={getTranslate('تصویر خبر')} />
+            <img src={`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${fileId}`} alt={getTranslate('تصویر خبر')} />
           </div>
         )}
 
         <Typography
           className="title"
           variant="h2"
-          onClick={() => navigate(`${id}`)}
+          onClick={() => navigate(`${newsId}`)}
         >
           {title}
         </Typography>
@@ -72,7 +72,7 @@ const NewsItem: React.FC<NewsItemProps> = ({
         )}
 
         <div className="readMore">
-          <Button onClick={() => navigate(`${id}`)}>
+          <Button onClick={() => navigate(`${newsId}`)}>
             {getTranslate('بیشتر بخوانید')}
           </Button>
         </div>

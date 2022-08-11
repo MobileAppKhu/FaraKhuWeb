@@ -5,6 +5,8 @@ import { Editor } from 'react-draft-wysiwyg'
 import AddIcon from '@mui/icons-material/Add'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import KhuModal from '../../../components/KhuModal'
 import KhuContainer from '../../../components/KhuContainer'
 import { getTranslate } from '../../../localization'
@@ -12,6 +14,7 @@ import { editorToolbarOptions } from './editorToolbarOptions'
 
 import useStyle from './CreateNews.style'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import request, { uploadFile } from '../../../heplers/request'
 
 interface ImagePicker {
   id: number
@@ -20,33 +23,36 @@ interface ImagePicker {
 
 const CreateNews = () => {
   const classes = useStyle()
-
+  const navigate = useNavigate()
   const [newsTitle, setNewsTitle] = useState('')
-  const [images, setImages] = useState<ImagePicker[]>([
-    { id: 0, file: undefined },
-    { id: 1, file: undefined },
-    { id: 2, file: undefined },
-  ])
+  const [images, setImages] = useState<File>()
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
 
-  function handleChange(index: number) {
-    return (e: ChangeEvent<HTMLInputElement>) => {
-      const newImages = [...images]
-      newImages[index].file = e.target.files?.[0]
-      setImages(newImages)
-    }
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setImages(e.target.files?.[0])
   }
 
-  function handleDelete(index: number) {
+  function handleDelete() {
     return (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
       e.preventDefault()
-      const newImages = [...images]
-      newImages[index].file = undefined
-      setImages(newImages)
+      setImages(undefined)
     }
   }
-
+  const submit = async () => {
+    const formData = new FormData()
+    formData.append('file', images!)
+    const img = await uploadFile(formData)
+    const response = await request('News/AddNews', 'POST', {
+      title: newsTitle,
+      description: editorState.getCurrentContent().getPlainText(),
+      fileId: img.res.fileId,
+    })
+    if (response.status === 200) {
+      navigate('/news')
+      toast.success('خبر با موفقیت ایجاد شد')
+    }
+  }
   return (
     <div className={classes.background}>
       <KhuContainer>
@@ -69,34 +75,32 @@ const CreateNews = () => {
               {getTranslate('عکس:')}
             </Typography>
             <Grid className="imagePickers" container columnSpacing={2}>
-              {images.map((image, index) => (
-                <Grid item xs={4} key={image.id}>
-                  <label className="iamgePicker">
-                    {images[index].file && (
-                      <img
-                        src={URL.createObjectURL(images[index].file!)}
-                        alt=""
-                      />
+              <Grid item xs={4}>
+                <label className="iamgePicker">
+                  {images && (
+                  <img
+                    src={URL.createObjectURL(images)}
+                    alt=""
+                  />
                     )}
-                    {!images[index].file && <AddIcon fontSize="large" />}
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleChange(index)}
-                    />
-                    {images[index].file && (
-                      <IconButton
-                        className="deleteIcon"
-                        title="حذف تصویر"
-                        size="small"
-                        onClick={handleDelete(index)}
-                      >
-                        <DeleteOutlineIcon />
-                      </IconButton>
+                  {!images && <AddIcon fontSize="large" />}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleChange}
+                  />
+                  {images && (
+                  <IconButton
+                    className="deleteIcon"
+                    title="حذف تصویر"
+                    size="small"
+                    onClick={() => handleDelete()}
+                  >
+                    <DeleteOutlineIcon />
+                  </IconButton>
                     )}
-                  </label>
-                </Grid>
-              ))}
+                </label>
+              </Grid>
             </Grid>
           </div>
           <div className="inputContainer description">
@@ -121,6 +125,7 @@ const CreateNews = () => {
               className="confirmButton"
               variant="contained"
               disableElevation
+              onClick={submit}
             >
               {getTranslate('تایید')}
             </Button>
