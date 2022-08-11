@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import DataLesson from './component'
 import img1 from '../../assets/images/user_avatar.jpg'
 
@@ -84,13 +85,13 @@ const MyLesson = () => {
   useEffect(() => {
    getLessons()
   }, [])
-
+  const navigate = useNavigate()
   const [modalIsOpen, setmodalIsOpen] = useState<boolean>(false)
   return (
     <div className={classes.root}>
       {(role === 'Instructor' || role === 'Owner') &&
         <div className={classes.addButton}>
-          <Button variant="contained" size="large">
+          <Button variant="contained" size="large" onClick={() => navigate('/mylessons/createLesson')}>
             {getTranslate('اضافه کردن درس')}
           </Button>
         </div>}
