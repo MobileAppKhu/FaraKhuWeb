@@ -15,6 +15,7 @@ import AnnoucementPage from '../pages/annoucement'
 import MyLessonEdit from '../pages/myLessonEdit/MyLessonEdit'
 
 import Layout from '../components/Layout'
+import UniversityMap from '../pages/universityMap'
 
 const AuthRouters = () => (
   <Routes>
@@ -22,6 +23,7 @@ const AuthRouters = () => (
     <Route element={<Layout header footer />}>
       <Route path="/" element={<Landing />} />
       <Route path="/aboutUniversity" element={<AboutUniversity />} />
+      <Route path="/map" element={<UniversityMap />} />
     </Route>
 
     <Route element={<Layout />}>

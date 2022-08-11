@@ -15,12 +15,15 @@ import MyLessons from '../pages/myLessons'
 import AnnoucementPage from '../pages/annoucement'
 import MyLesson from '../pages/myLesson'
 import Layout from '../components/Layout'
+import UniversityMap from '../pages/universityMap'
 
 const MainRouters = () => (
   <Routes>
     <Route element={<Layout header footer />}>
       <Route path="/" element={<Landing />} />
       <Route path="/aboutUniversity" element={<AboutUniversity />} />
+      <Route path="/map" element={<UniversityMap />} />
+
     </Route>
 
     <Route element={<Layout />}>
