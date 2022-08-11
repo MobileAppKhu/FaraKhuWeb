@@ -10,6 +10,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#fff',
     borderRadius: 15,
     flexDirection: 'column',
+    cursor: 'pointer',
   },
   imgContainer: {
     width: '100%',

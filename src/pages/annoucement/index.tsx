@@ -4,7 +4,7 @@ import request from '../../heplers/request'
 import AnnoucementItem, { AnnoucementItemProps } from './AnnoucementItem'
 import useStyles from './styles/index.style'
 
-const AnnoucementPage = () => {
+const AnnoucementList = () => {
   const [pagination, setpagination] = useState(1)
   const [data, setdata] = useState<AnnoucementItemProps[]>([])
   const classes = useStyles()
@@ -37,4 +37,4 @@ getData()
       </div>
     </div>)
 }
-export default AnnoucementPage
+export default AnnoucementList

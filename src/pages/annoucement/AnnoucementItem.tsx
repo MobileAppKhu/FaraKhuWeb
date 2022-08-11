@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/no-unused-prop-types */
 import { Typography } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import useStyles from './styles/AnnoucementItem.style'
 
 export type AnnoucementItemProps ={
@@ -15,8 +17,9 @@ export type AnnoucementItemProps ={
 const AnnoucementItem: React.FC<AnnoucementItemProps> = ({ announcementTitle, announcementId, avatarId, userFullname, creatorAvatarId,
 }) => {
   const classes = useStyles()
+  const navigate = useNavigate()
   return (
-    <div className={classes.root} id={announcementId}>
+    <div className={classes.root} id={announcementId} onClick={() => navigate(`/declarations/${announcementId}`)}>
       <div>
         <img src={`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${avatarId}`} alt="AnnoucementItemPic" className={classes.imgContainer} />
       </div>

@@ -7,6 +7,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
+    width: '100%',
   },
   annoucementItemContainer: {
     display: 'grid',

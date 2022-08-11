@@ -11,7 +11,7 @@ import AboutUniversity from '../pages/aboutUniversity'
 import BookFinder from '../pages/bookFinder'
 
 import News from '../pages/news'
-import AnnoucementPage from '../pages/annoucement'
+import AnnoucementList from '../pages/annoucement'
 import MyLessonEdit from '../pages/myLessonEdit/MyLessonEdit'
 
 import Layout from '../components/Layout'
@@ -41,7 +41,7 @@ const AuthRouters = () => (
       <Route path="/profile" element={<Navigate to="/login" replace />} />
       <Route path="/myLessons/*" element={<Navigate to="/login" replace />} />
       <Route path="/bookFinder/*" element={<BookFinder />} />
-      <Route path="/declarations" element={<AnnoucementPage />} />
+      <Route path="/declarations" element={<AnnoucementList />} />
     </Route>
 
     <Route path="*" element={<div>404</div>} />

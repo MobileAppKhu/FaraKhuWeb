@@ -12,10 +12,11 @@ import AboutUniversity from '../pages/aboutUniversity'
 import BookFinder from '../pages/bookFinder'
 import News from '../pages/news'
 import MyLessons from '../pages/myLessons'
-import AnnoucementPage from '../pages/annoucement'
+import AnnoucementList from '../pages/annoucement'
 import MyLesson from '../pages/myLesson'
 import Layout from '../components/Layout'
 import UniversityMap from '../pages/universityMap'
+import AnnoucementPage from '../pages/annoucementPage'
 
 const MainRouters = () => (
   <Routes>
@@ -41,7 +42,8 @@ const MainRouters = () => (
       <Route path="/myLesson" element={<MyLesson />} />
       <Route path="/myLessons/*" element={<MyLessons />} />
       <Route path="/bookFinder/*" element={<BookFinder />} />
-      <Route path="/declarations" element={<AnnoucementPage />} />
+      <Route path="/declarations" element={<AnnoucementList />} />
+      <Route path="/declarations/:id" element={<AnnoucementPage />} />
     </Route>
 
     <Route path="*" element={<div>404</div>} />
