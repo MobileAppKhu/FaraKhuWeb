@@ -81,9 +81,13 @@ const Header = () => {
             </IconButton>
             <img alt="logo" src={khuLogo} className={classes.khuLogo} />
           </div>
-          <div className={classes.imgContainer}>
-            <img alt="logo" src={logo} className={classes.img} />
-          </div>
+          <ButtonBase onClick={() => navigate('/')}>
+
+            <div className={classes.imgContainer}>
+              <img alt="logo" src={logo} className={classes.img} />
+            </div>
+          </ButtonBase>
+
           <SwitchContainer className={classes.switchContainer}>
             {switchContainerContent}
           </SwitchContainer>

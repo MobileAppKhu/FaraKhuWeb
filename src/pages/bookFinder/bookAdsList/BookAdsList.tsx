@@ -46,7 +46,7 @@ const BookAdsList = () => {
   const [data, setData] = useState<OfferType[]>([])
   const [filterData, setfilterData] = useState<OfferType[]>([])
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const [pagination, setpagination] = useState(0)
+  const [pagination, setpagination] = useState(1)
   const open = Boolean(anchorEl)
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
