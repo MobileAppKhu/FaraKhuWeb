@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: '102%',
     borderRadius: 4,
-    zIndex: 2,
+    zIndex: 1000,
     overflow: 'hidden',
     overflowY: 'auto',
     backgroundColor: theme.palette.background.paper,
