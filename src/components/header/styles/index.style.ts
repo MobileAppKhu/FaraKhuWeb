@@ -179,6 +179,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row-reverse',
     alignItems: 'center',
     columnGap: 32,
+    cursor: 'pointer',
   },
 }))
 

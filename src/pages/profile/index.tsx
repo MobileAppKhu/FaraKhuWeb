@@ -1,13 +1,16 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { Button, Container, IconButton, Typography } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { Button, ButtonBase, Container, IconButton, Typography } from '@mui/material'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GoogleIcon from '@mui/icons-material/Google'
 import LogoutIcon from '@mui/icons-material/Logout'
 import EditIcon from '@mui/icons-material/Edit'
 
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { getTranslate } from '../../localization'
 import useStyles from './index.style'
+import { logOut } from '../../redux/auth/action'
 
 const Profile = () => {
   const classes = useStyles()
@@ -27,7 +30,15 @@ const Profile = () => {
     linkedIn,
     googleScholar,
   } = useSelector((state: any) => state.authReducer)
-
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const LogoutFunction = () => {
+    localStorage.clear()
+    sessionStorage.clear()
+    dispatch(logOut())
+    navigate('/')
+    toast.success('با موفقیت خارج شدید')
+  }
   return (
     <div className={classes.outerContainer}>
       <Container maxWidth="xl" sx={{ p: 0 }}>
@@ -125,20 +136,23 @@ const Profile = () => {
                   <GoogleIcon className="icon" />
                 </IconButton>
               </div>
-              <div className="exitButtonContainer">
+              <ButtonBase
+                className="exitButtonContainer"
+                onClick={LogoutFunction}
+              >
                 <div className="exitButton">
                   <IconButton title={getTranslate('خروج از حساب کاربری')}>
                     <LogoutIcon className="icon" />
                   </IconButton>
                 </div>
-              </div>
-              <Button
+              </ButtonBase>
+              <div
                 className="fullWidthExitButton"
                 title={getTranslate('خروج از حساب کاربری')}
               >
                 <LogoutIcon className="icon" />
                 <Typography component="span">{getTranslate('خروج')}</Typography>
-              </Button>
+              </div>
             </div>
           </div>
         </div>

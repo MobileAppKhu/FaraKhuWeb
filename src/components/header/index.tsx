@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { Button, IconButton, Switch, Typography } from '@mui/material'
+import { Button, ButtonBase, IconButton, Switch, Typography } from '@mui/material'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
@@ -166,7 +166,7 @@ const Header = () => {
               </Button>
             </div>
           ) : (
-            <div className={classes.profile}>
+            <ButtonBase className={classes.profile} onClick={() => navigate('/profile')}>
               <img
                 src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${userData.avatarId}`}
                 alt="profile"
@@ -175,7 +175,7 @@ const Header = () => {
               <IconButton size="large">
                 <NotificationsNoneIcon fontSize="large" />
               </IconButton>
-            </div>
+            </ButtonBase>
           )}
         </div>
         {!floatingSubMenu && (

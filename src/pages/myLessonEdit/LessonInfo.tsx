@@ -15,14 +15,6 @@ const LessonInfo:React.FC<LessonInfoProps> = ({ lessons }) => {
       <div className="class-info-container ">
         {lessons.slice(0, 1).map((lesson) => (
           <div className="class-info ">
-            {/* <div className="class-name">
-              <h3>
-                اسم کلاس
-                {' '}
-                {lesson.className}
-              </h3>
-            </div> */}
-
             <div className="class-time info">
               <img className="icon" src={clockLogo} alt="clock logo" />
               <h3>

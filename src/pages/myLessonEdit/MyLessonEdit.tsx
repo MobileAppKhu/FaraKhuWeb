@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Fade, IconButton, Modal } from '@mui/material'
+import { Fade, IconButton, Modal, Paper } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { getTranslate } from '../../localization'
 import './styles/myLessonEdit.css'
@@ -60,7 +60,7 @@ const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose }) => {
     return (
       <Modal open={isOpen} onClose={onClose} className="modal">
         <Fade in={isOpen}>
-          <div className="outer-container">
+          <Paper className="outer-container">
             <div className="lesson-image-container">
               <img className="lesson-image" src={lessonPhoto} alt="" />
               <div className="transparent-image-info">
@@ -90,7 +90,7 @@ const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose }) => {
               <h2>{getTranslate('لیست دانشجویان')}</h2>
               <StudentsTable />
             </div>
-          </div>
+          </Paper>
         </Fade>
 
       </Modal>
