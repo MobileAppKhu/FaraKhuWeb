@@ -35,15 +35,6 @@ const AuthRouters = () => (
       </Route>
 
     </Route>
-
-    <Route element={<Layout header />}>
-      <Route path="/news/*" element={<News />} />
-      <Route path="/profile" element={<Navigate to="/login" replace />} />
-      <Route path="/myLessons/*" element={<Navigate to="/login" replace />} />
-      <Route path="/bookFinder/*" element={<BookFinder />} />
-      <Route path="/declarations" element={<AnnoucementList />} />
-    </Route>
-
     <Route path="*" element={<div>404</div>} />
   </Routes>
 )
