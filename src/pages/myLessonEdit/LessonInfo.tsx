@@ -27,7 +27,7 @@ const LessonInfo:React.FC<Lesson> = ({ times, endDate, address }) => {
             <h3>
               تاریخ امتحان
               {' '}
-              {endDate.substring(0, 10).split('-').join('-')}
+              {endDate.substring(0, 10).split('-').reverse().join('-')}
             </h3>
           </div>
 
