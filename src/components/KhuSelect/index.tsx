@@ -36,8 +36,8 @@ const KhuSelect = ({
           .querySelector(`.${classes.container}`)
           ?.contains(e.target as Node)
       ) {
-        setOpen(false)
-        setFocuesd(false)
+        // setOpen(false)
+        // setFocuesd(false)
       }
     })
   }, [])

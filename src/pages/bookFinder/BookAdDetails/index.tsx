@@ -16,15 +16,15 @@ const BookAdDetails = () => {
   const getData = async () => {
     const response = await request('Offer/SearchOffers', 'POST', {
       offerId: id,
-        start: 0,
-  step: 1,
-  offerColumn: 1,
-  orderDirection: true,
+      start: 0,
+      step: 1,
+      offerColumn: 1,
+      orderDirection: true,
     })
     setad(response.responseJSON.offer[0])
   }
   useEffect(() => {
-   getData()
+    getData()
   }, [])
 
   const render = () => {

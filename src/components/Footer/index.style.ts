@@ -37,7 +37,11 @@ const useStyles = makeStyles((theme) => ({
         },
 
         '& .icon': {
-          color: 'inherit',
+          color: theme.palette.primary.light,
+
+          '& *': {
+            color: 'inherit',
+          },
         },
       },
 
@@ -118,6 +122,11 @@ const useStyles = makeStyles((theme) => ({
           '& .langIcon': {
             display: 'flex',
             alignItems: 'center',
+            color: theme.palette.primary.light,
+
+            '& *': {
+              color: 'inherit',
+            },
           },
 
           '& .currentLang': {
@@ -137,6 +146,10 @@ const useStyles = makeStyles((theme) => ({
           '& .menuArrow': {
             display: 'flex',
             alignItems: 'center',
+            color: theme.palette.primary.light,
+            '& *': {
+              color: 'inherit',
+            },
           },
         },
 
