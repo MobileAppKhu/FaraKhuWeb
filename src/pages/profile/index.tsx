@@ -98,7 +98,7 @@ const Profile = () => {
                   </Typography>
                   <ul>
                     {favourites?.map((favorite: string) => (
-                      <li>
+                      <li key={favorite}>
                         <span className="itemBullet" />
                         <Typography
                           variant="body1"

@@ -24,7 +24,7 @@ getData()
   return (
     <div className={classes.root}>
       <div className={classes.annoucementItemContainer}>
-        {data.map((item, index) => <AnnoucementItem {...item} />)}
+        {data.map((item, index) => <AnnoucementItem {...item} key={item.announcementId} />)}
       </div>
       <div className={classes.paginationContainer}>
         <Pagination

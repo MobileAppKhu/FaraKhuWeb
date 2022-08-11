@@ -167,11 +167,11 @@ const Header = () => {
             </div>
           ) : (
             <ButtonBase className={classes.profile} onClick={() => navigate('/profile')}>
-              <img
+              {userData && userData.avatarId && <img
                 src={`https://api.farakhu.markop.ir/api/File/Download?fileId=${userData.avatarId}`}
                 alt="profile"
                 className={classes.profilePhotoImage}
-              />
+              />}
               <IconButton size="large">
                 <NotificationsNoneIcon fontSize="large" />
               </IconButton>

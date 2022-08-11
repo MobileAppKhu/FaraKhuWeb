@@ -1,4 +1,5 @@
 import React from 'react'
+import { ButtonBase } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import clockLogo from './myLessonIcons/wall clock.png'
 import calenderLogo from './myLessonIcons/icon_calendar_simple.png'
@@ -39,7 +40,7 @@ const LessonInfo:React.FC<Lesson> = ({ times, endDate, address }) => {
             </h3>
           </div>
         </div>
-        <button className="anouncement-button" type="button" onClick={() => navigate('announcements_polls')}>اطلاعیه ها/نظر سنجی</button>
+        <ButtonBase className="anouncement-button" type="button" onClick={() => navigate('announcements_polls')}>اطلاعیه ها/نظر سنجی</ButtonBase>
       </div>)
 }
 export default LessonInfo

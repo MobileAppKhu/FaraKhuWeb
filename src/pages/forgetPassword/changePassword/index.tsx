@@ -38,7 +38,7 @@ const ChangePassword = () => {
         {getTranslate('تغییر رمز عبور')}
       </Typography>
       {inputs.map((input, i) => (
-        <div className={classes.formControl}>
+        <div className={classes.formControl} key={input.label}>
           <div className={classes.inputLable}>{getTranslate(input.label)}</div>
           <OutlinedInput
             size="small"
