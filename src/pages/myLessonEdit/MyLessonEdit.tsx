@@ -62,13 +62,13 @@ const MyLessonEdit:React.FC<MyLessonEditProps> = ({ isOpen, onClose, lesson }) =
     <Fade in={isOpen}>
       <Paper className="outer-container">
         <div className="lesson-image-container">
-          <img className="lesson-image" src={lessonPhoto} alt="lessonPhoto" />
+          <img className="lesson-image" src={`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${lesson.avatarId}`} alt="lessonPhoto" />
           <div className="transparent-image-info">
             <span className="Course-name">
               {lesson.courseType}
             </span>
             <div className="Teacher">
-              <img className="teacher-photo" src={teacherPhoto} alt="" />
+              <img className="teacher-photo" src={`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${lesson.instructor.avatarId}`} alt="" />
               <span className="Title">
                 {`${lesson.instructor.firstName} ${lesson.instructor.lastName}`}
               </span>

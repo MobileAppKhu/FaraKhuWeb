@@ -40,7 +40,7 @@ const LessonInfo:React.FC<Lesson> = ({ times, endDate, address }) => {
             </h3>
           </div>
         </div>
-        <ButtonBase className="anouncement-button" type="button" onClick={() => navigate('announcements_polls')}>اطلاعیه ها/نظر سنجی</ButtonBase>
+        <button className="anouncement-button" type="button" onClick={() => navigate('announcements_polls')}>اطلاعیه ها/نظر سنجی</button>
       </div>)
 }
 export default LessonInfo
