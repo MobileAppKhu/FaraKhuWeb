@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Typography } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import NoPhotographyOutlinedIcon from '@mui/icons-material/NoPhotographyOutlined'
@@ -7,20 +7,29 @@ import KhuContainer from '../../../components/KhuContainer'
 import { BookAd } from '../BookFinder'
 import { getTranslate } from '../../../localization'
 import useStyle from './BookAdDetails.style'
+import request from '../../../heplers/request'
 
-interface BookAdDetailsProps {
-  ads: BookAd[]
-}
-
-const BookAdDetails: React.FC<BookAdDetailsProps> = ({ ads }) => {
+const BookAdDetails = () => {
   const classes = useStyle()
   const { id } = useParams<{ id: string }>()
-
-  const selectedBookAd = ads.find((ad) => ad.id === +id!)
+  const [ad, setad] = useState<BookAd>()
+  const getData = async () => {
+    const response = await request('Offer/SearchOffers', 'POST', {
+      offerId: id,
+        start: 0,
+  step: 1,
+  offerColumn: 1,
+  orderDirection: true,
+    })
+    setad(response.responseJSON.offer[0])
+  }
+  useEffect(() => {
+   getData()
+  }, [])
 
   const render = () => {
-    if (!selectedBookAd) return <div>404</div>
-    const { title, price, imgUrl, description, offerType } = selectedBookAd
+    if (!ad) return <div>404</div>
+    const { title, price, imgUrl, description, offerType } = ad
 
     return (
       <div className={classes.background}>

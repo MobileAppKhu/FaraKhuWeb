@@ -63,12 +63,15 @@ const CreateAdModal: React.FC<ModalProps> = ({ open, handleClose }) => {
       avatarId: 'smiley.png',
       price: data.price,
       offerType: data.offerType,
-      description: `${data.description}\n\n${data.contact}`,
+      description: `${data.description}
+
+      ${getTranslate('راه ارتباطی')}: ${data.contact}`,
     }
 
     const response = await request('Offer/AddOffer', 'POST', requestData)
     if (response.status === 200) {
       toast.success('آگهی شما با موفقیت ارسال شد')
+      handleClose()
     }
     setloading(false)
   }
