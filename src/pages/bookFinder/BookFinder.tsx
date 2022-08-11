@@ -7,6 +7,7 @@ export interface BookAd {
   title: string
   price: number | 'توافقی'
   imgUrl?: string
+  avatarId:string
   description: string
   offerType: 1 | 2 | 3
 }

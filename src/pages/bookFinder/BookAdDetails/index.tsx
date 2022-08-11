@@ -29,7 +29,7 @@ const BookAdDetails = () => {
 
   const render = () => {
     if (!ad) return <div>404</div>
-    const { title, price, imgUrl, description, offerType } = ad
+    const { title, price, imgUrl, description, offerType, avatarId } = ad
 
     return (
       <div className={classes.background}>
@@ -82,9 +82,9 @@ const BookAdDetails = () => {
                 )}
               </div>
             </div>
-            <div className={`img${!imgUrl ? ' noImg' : ''}`}>
-              {imgUrl && <img src={imgUrl} alt="" />}
-              {!imgUrl && <NoPhotographyOutlinedIcon fontSize="large" />}
+            <div className={`img${!avatarId ? ' noImg' : ''}`}>
+              {avatarId && <img src={`${process.env.REACT_APP_API_BASE_URL}File/Download?fileId=${avatarId}`} alt="avatarId" />}
+              {!avatarId && <NoPhotographyOutlinedIcon fontSize="large" />}
             </div>
           </div>
         </KhuContainer>
