@@ -76,7 +76,7 @@ const MyLesson = () => {
     const response = await request('course/SearchCourse', 'POST', {
       [role === 'Student' ? 'student' : 'instructor']: role === 'Owner' ? undefined : userId,
       start: 0,
-      step: 6,
+      step: 10,
       courseColumn: 1,
       orderDirection: true,
     })

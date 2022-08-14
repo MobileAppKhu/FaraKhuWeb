@@ -7,7 +7,7 @@
 /src/.env
 # testing
 /coverage
-
+.VSCodeCounter
 # production
 /build
 # misc

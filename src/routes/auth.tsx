@@ -33,7 +33,6 @@ const AuthRouters = () => (
         <Route path="confirmCode" element={<ConfirmCode />} />
         <Route path="changePassword" element={<ChangePassword />} />
       </Route>
-
     </Route>
     <Route path="*" element={<div>404</div>} />
   </Routes>

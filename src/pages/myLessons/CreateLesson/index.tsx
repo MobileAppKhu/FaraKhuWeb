@@ -68,7 +68,7 @@ const CreateLesson = () => {
 
   const [openSuccessModal, setOpenSuccessModal] = useState(false)
   const [loading, setloading] = useState(false)
-  const { role } = useSelector((state:any) => state.authRouters)
+  // const { role } = useSelector((state:any) => state.authRouters)
   const handleChange =
     (field: keyof typeof data) => (value: string | number) => {
       setData({ ...data, [field]: value })
@@ -83,13 +83,12 @@ const CreateLesson = () => {
     formData.append('file', newData.avatarId!)
     const upload = await uploadFile(formData)
     newData.avatarId = upload.res.fileId
-    newData.instructorId = role === 'Owner' ? '640db9c2-aeeb-47d2-9da1-4e58bc06e0ac' : undefined
+    newData.instructorId = '640db9c2-aeeb-47d2-9da1-4e58bc06e0ac'
     const response = await request('course/AddCourse', 'POST', newData)
     if (response.status === 200) {
         toast.success('درس با موفقیت اضافه شد')
         navigate('/myLessons')
     }
-    console.log(response)
   }
   return (
     <div className={classes.background}>
